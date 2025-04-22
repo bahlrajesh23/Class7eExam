@@ -1,0 +1,94 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #eef; /* Default background for quiz pages */
+    color: #333;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #1a237e; /* Dark blue heading */
+  }
+  
+  .quiz-container { /* Add a container for better layout */
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .question {
+    margin: 25px 0;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .question p {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+  }
+  
+  .options label {
+    display: block;
+    margin: 8px 0 8px 20px; /* Indent options slightly */
+    cursor: pointer;
+  }
+  
+  .options input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  button {
+    display: block;
+    margin: 20px auto 0 auto; /* Center button */
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #45a049; /* Darker green */
+  }
+  
+  #result {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 25px;
+    color: #2e7d32; /* Darker green for success */
+    text-align: center;
+    padding: 10px;
+    background-color: #e8f5e9; /* Light green background */
+    border-radius: 5px;
+  }
+  
+  #error {
+    color: #d32f2f; /* Red for error */
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #ffebee; /* Light red background */
+    border-radius: 5px;
+  }
+  
+  .navigation-link { /* Style for back link */
+      display: block;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1em;
+      color: #0056b3;
+      text-decoration: none;
+  }
+  
+  .navigation-link:hover {
+      text-decoration: underline;
+  }
