@@ -3,18 +3,140 @@
 <head>
   <meta charset="UTF-8">
   <title>Antarctica Quiz for Kids</title>
-  <link rel="stylesheet" href="../css/style.css"> </head>
+  <style>
+    /* General body styling */
+    body {
+      font-family: Arial, sans-serif; /* Standard font */
+      max-width: 800px; /* Limit content width for readability */
+      margin: 20px auto; /* Center the content with margin */
+      padding: 20px; /* Padding around the content */
+      background-color: #f0f4f8; /* Light background for the page */
+    }
+    /* Container for the quiz elements */
+    .quiz-container {
+      background: #ffffff; /* White background for the quiz area */
+      padding: 25px; /* Padding inside the container */
+      border-radius: 8px; /* Rounded corners */
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Subtle shadow */
+    }
+     /* Link back style */
+    .navigation-link {
+        display: block;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #1a73e8;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .navigation-link:hover {
+        text-decoration: underline;
+    }
+    /* Styling for each question block */
+    .question {
+      margin-bottom: 25px; /* Space below each question */
+      padding: 20px; /* Padding inside question block */
+      background: #f9f9f9; /* Slightly off-white background for questions */
+      border-radius: 5px; /* Rounded corners */
+      border-left: 5px solid #1e88e5; /* Accent border on the left */
+    }
+    /* Question text styling */
+    .question p {
+        font-weight: bold; /* Make question text bold */
+        margin-bottom: 10px; /* Space below question text */
+        color: #333; /* Darker text color */
+    }
+    /* Styling for radio button options */
+    .options label {
+      display: block; /* Each option on a new line */
+      margin: 10px 0 10px 5px; /* Spacing around options */
+      padding: 8px; /* Padding inside label */
+      border-radius: 4px; /* Rounded corners for label */
+      cursor: pointer; /* Indicate it's clickable */
+      transition: background-color 0.2s ease-in-out; /* Smooth background transition on hover */
+    }
+    .options label:hover {
+        background-color: #e3f2fd; /* Light blue background on hover */
+    }
+    /* Spacing for radio button itself */
+    .options input[type="radio"] {
+        margin-right: 8px; /* Space between radio button and text */
+    }
+    /* Submit button styling */
+    button {
+      background: #4CAF50; /* Green background */
+      color: white; /* White text */
+      border: none; /* No border */
+      padding: 12px 25px; /* Padding inside button */
+      border-radius: 4px; /* Rounded corners */
+      cursor: pointer; /* Pointer cursor on hover */
+      font-size: 16px; /* Font size */
+      margin-top: 20px; /* Space above the button */
+      display: block; /* Make it a block element */
+      margin-left: auto; /* Center button (along with margin-right: auto) */
+      margin-right: auto;
+      transition: background-color 0.3s ease; /* Smooth transition */
+    }
+    button:hover {
+      background: #45a049; /* Darker green on hover */
+    }
+    /* Error message styling */
+    #error {
+      color: #d32f2f; /* Red text color */
+      padding: 12px; /* Padding */
+      background: #ffebee; /* Light red background */
+      border-left: 4px solid #d32f2f; /* Red accent border */
+      margin: 15px 0; /* Margin top and bottom */
+      border-radius: 4px; /* Rounded corners */
+      display: none; /* Hidden by default */
+    }
+    /* Result display styling */
+    #result {
+      font-weight: bold; /* Bold text */
+      font-size: 1.2em; /* Larger font size */
+      margin: 20px 0; /* Margin top and bottom */
+      padding: 15px; /* Padding */
+      background: #e8f5e9; /* Light green background */
+      border-left: 4px solid #2e7d32; /* Green accent border */
+      border-radius: 4px; /* Rounded corners */
+      text-align: center; /* Center the text */
+    }
+    /* Container for all feedback items */
+     #feedback {
+        margin-top: 20px; /* Add space above the feedback section */
+     }
+    #feedback h3 {
+        margin-bottom: 15px; /* Space below the feedback heading */
+        color: #c62828; /* Reddish color for the heading */
+    }
+    /* Styling for individual feedback items (wrong answers) */
+    .feedback-item {
+      margin: 15px 0; /* Margin top and bottom */
+      padding: 15px; /* Padding */
+      background: #fff3e0; /* Light orange background */
+      border-left: 4px solid #ef6c00; /* Orange accent border */
+      border-radius: 4px; /* Rounded corners */
+    }
+    /* Styling for the correct answer text within feedback */
+    .correct-answer {
+      color: #2e7d32; /* Green text color for correct answer */
+      font-weight: bold; /* Bold text */
+      margin-top: 8px; /* Space above the correct answer text */
+    }
+  </style>
+</head>
 <body>
   <a href="../index.html" class="navigation-link">⬅️ Back to Quiz List</a>
 
-  <div class="quiz-container"> <h1>❄️ Antarctica Quiz</h1>
+  <div class="quiz-container">
+    <h1>❄️ Antarctica Quiz</h1>
     <form id="quizForm">
-      <div id="error"></div> <div id="result"></div> <div class="question">
+      <div id="error"></div>
+      <div id="result"></div>
+      <div id="feedback"></div> <div class="question">
         <p>1. What is the area of Antarctica?</p>
         <div class="options">
           <label><input type="radio" name="q1" value="0"> 10 million sq km</label>
-          <label><input type="radio" name="q1" value="1"> 14.2 million sq km</label>
-          <label><input type="radio" name="q1" value="0"> 12.5 million sq km</label>
+          <label><input type="radio" name="q1" value="1"> 14.2 million sq km</label> <label><input type="radio" name="q1" value="0"> 12.5 million sq km</label>
         </div>
       </div>
 
@@ -23,15 +145,13 @@
         <div class="options">
           <label><input type="radio" name="q2" value="0"> Atlantic Ocean</label>
           <label><input type="radio" name="q2" value="0"> Pacific Ocean</label>
-          <label><input type="radio" name="q2" value="1"> Southern Ocean (often includes parts of Atlantic, Pacific, Indian)</label> 
-          </div>
+          <label><input type="radio" name="q2" value="1"> Southern Ocean (often includes parts of Atlantic, Pacific, Indian)</label> </div>
       </div>
 
       <div class="question">
         <p>3. What is East Antarctica called?</p>
         <div class="options">
-          <label><input type="radio" name="q3" value="1"> Greater Antarctica</label>
-          <label><input type="radio" name="q3" value="0"> Lesser Antarctica</label>
+          <label><input type="radio" name="q3" value="1"> Greater Antarctica</label> <label><input type="radio" name="q3" value="0"> Lesser Antarctica</label>
           <label><input type="radio" name="q3" value="0"> Eastern Antarctica</label>
         </div>
       </div>
@@ -40,8 +160,7 @@
         <p>4. What is the west side called?</p>
         <div class="options">
           <label><input type="radio" name="q4" value="0"> Greater Antarctica</label>
-          <label><input type="radio" name="q4" value="1"> Lesser Antarctica</label>
-          <label><input type="radio" name="q4" value="0"> Western Antarctica</label>
+          <label><input type="radio" name="q4" value="1"> Lesser Antarctica</label> <label><input type="radio" name="q4" value="0"> Western Antarctica</label>
         </div>
       </div>
 
@@ -49,16 +168,14 @@
         <p>5. Antarctica is divided into East & West by:</p>
         <div class="options">
           <label><input type="radio" name="q5" value="0"> Arctic Circle</label>
-          <label><input type="radio" name="q5" value="1"> Transantarctic Mountain Chain</label>
-          <label><input type="radio" name="q5" value="0"> Equator</label>
+          <label><input type="radio" name="q5" value="1"> Transantarctic Mountain Chain</label> <label><input type="radio" name="q5" value="0"> Equator</label>
         </div>
       </div>
 
       <div class="question">
         <p>6. Average temperature in Antarctica?</p>
         <div class="options">
-          <label><input type="radio" name="q6" value="1"> -34.4°C / -30°F</label> 
-          <label><input type="radio" name="q6" value="0"> -20°C</label>
+          <label><input type="radio" name="q6" value="1"> -34.4°C / -30°F</label> <label><input type="radio" name="q6" value="0"> -20°C</label>
           <label><input type="radio" name="q6" value="0"> 0°C</label>
         </div>
       </div>
@@ -66,8 +183,7 @@
       <div class="question">
         <p>7. Lowest temperature ever recorded?</p>
         <div class="options">
-           <label><input type="radio" name="q7" value="1"> -89.2°C / -128.6°F</label>
-          <label><input type="radio" name="q7" value="0"> -50°C</label>
+          <label><input type="radio" name="q7" value="1"> -89.2°C / -128.6°F</label> <label><input type="radio" name="q7" value="0"> -50°C</label>
           <label><input type="radio" name="q7" value="0"> -70°C</label>
         </div>
       </div>
@@ -84,15 +200,14 @@
         <p>9. How much of the world's ice is in Antarctica?</p>
         <div class="options">
           <label><input type="radio" name="q9" value="0"> 50%</label>
-          <label><input type="radio" name="q9" value="1"> 90%</label>
-          <label><input type="radio" name="q9" value="0"> 75%</label>
+          <label><input type="radio" name="q9" value="1"> 90%</label> <label><input type="radio" name="q9" value="0"> 75%</label>
         </div>
       </div>
 
       <div class="question">
         <p>10. What percent of freshwater is in Antarctica?</p>
         <div class="options">
-           <label><input type="radio" name="q10" value="1"> 70%</label> <label><input type="radio" name="q10" value="0"> 60%</label>
+          <label><input type="radio" name="q10" value="1"> 70%</label> <label><input type="radio" name="q10" value="0"> 60%</label>
           <label><input type="radio" name="q10" value="0"> 30%</label>
         </div>
       </div>
@@ -100,8 +215,7 @@
       <div class="question">
         <p>11. Size of ice sheet in Antarctica?</p>
         <div class="options">
-          <label><input type="radio" name="q11" value="1"> ~7 million cubic miles / ~29 million cubic km</label>
-          <label><input type="radio" name="q11" value="0"> 1 million cubic miles</label>
+          <label><input type="radio" name="q11" value="1"> ~7 million cubic miles / ~29 million cubic km</label> <label><input type="radio" name="q11" value="0"> 1 million cubic miles</label>
           <label><input type="radio" name="q11" value="0"> 10 million cubic miles</label>
         </div>
       </div>
@@ -109,8 +223,7 @@
       <div class="question">
         <p>12. Name the two seasons in Antarctica?</p>
         <div class="options">
-          <label><input type="radio" name="q12" value="1"> Summer (light) and Winter (dark)</label>
-          <label><input type="radio" name="q12" value="0"> Spring and Autumn</label>
+          <label><input type="radio" name="q12" value="1"> Summer (light) and Winter (dark)</label> <label><input type="radio" name="q12" value="0"> Spring and Autumn</label>
           <label><input type="radio" name="q12" value="0"> Monsoon and Dry</label>
         </div>
       </div>
@@ -118,8 +231,7 @@
       <div class="question">
         <p>13. What is the vegetation?</p>
         <div class="options">
-          <label><input type="radio" name="q13" value="1"> Mostly mosses, lichen, algae, and two flowering plants</label>
-          <label><input type="radio" name="q13" value="0"> Trees and shrubs</label>
+          <label><input type="radio" name="q13" value="1"> Mostly mosses, lichen, algae, and two flowering plants</label> <label><input type="radio" name="q13" value="0"> Trees and shrubs</label>
           <label><input type="radio" name="q13" value="0"> Grasslands</label>
         </div>
       </div>
@@ -127,8 +239,7 @@
       <div class="question">
         <p>14. How old is the oldest ice in Antarctica?</p>
         <div class="options">
-          <label><input type="radio" name="q14" value="1"> 800,000 years (and much older)</label>
-          <label><input type="radio" name="q14" value="0"> 100,000 years</label>
+          <label><input type="radio" name="q14" value="1"> 800,000 years (and much older)</label> <label><input type="radio" name="q14" value="0"> 100,000 years</label>
           <label><input type="radio" name="q14" value="0"> 1 million years</label>
         </div>
       </div>
@@ -136,8 +247,7 @@
       <div class="question">
         <p>15. Which animals live in Antarctica?</p>
         <div class="options">
-          <label><input type="radio" name="q15" value="1"> Penguins, Seals (like Leopard Seal), Whales (like Fin, Humpback), Krill, various birds</label>
-          <label><input type="radio" name="q15" value="0"> Tigers and Lions</label>
+          <label><input type="radio" name="q15" value="1"> Penguins, Seals (like Leopard Seal), Whales (like Fin, Humpback), Krill, various birds</label> <label><input type="radio" name="q15" value="0"> Tigers and Lions</label>
           <label><input type="radio" name="q15" value="0"> Zebras and Giraffes</label>
         </div>
       </div>
@@ -145,8 +255,7 @@
       <div class="question">
         <p>16. How is life on Antarctica?</p>
         <div class="options">
-          <label><input type="radio" name="q16" value="1"> No permanent residents; primarily scientists and support staff (plus tourists)</label>
-          <label><input type="radio" name="q16" value="0"> Many cities</label>
+          <label><input type="radio" name="q16" value="1"> No permanent residents; primarily scientists and support staff (plus tourists)</label> <label><input type="radio" name="q16" value="0"> Many cities</label>
           <label><input type="radio" name="q16" value="0"> Only animals live there</label>
         </div>
       </div>
@@ -154,52 +263,127 @@
       <div class="question">
         <p>17. What is the seasonal population?</p>
         <div class="options">
-          <label><input type="radio" name="q17" value="1"> Around 1,000 (winter) to 5,000 (summer) people</label>
-          <label><input type="radio" name="q17" value="0"> 10,000 always</label>
+          <label><input type="radio" name="q17" value="1"> Around 1,000 (winter) to 5,000 (summer) people</label> <label><input type="radio" name="q17" value="0"> 10,000 always</label>
           <label><input type="radio" name="q17" value="0"> 500 always</label>
         </div>
       </div>
-      <button type="button" onclick="calculateScore()">Submit Quiz</button>
 
-    </form> </div> <script>
-    function calculateScore() {
-      const form = document.getElementById('quizForm');
-      const resultDiv = document.getElementById('result');
+      <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+
+    </form>
+  </div>
+
+  <script>
+    // Object storing the correct answer TEXT for each question.
+    const correctAnswers = {
+      q1: "14.2 million sq km",
+      q2: "Southern Ocean (often includes parts of Atlantic, Pacific, Indian)",
+      q3: "Greater Antarctica",
+      q4: "Lesser Antarctica",
+      q5: "Transantarctic Mountain Chain",
+      q6: "-34.4°C / -30°F",
+      q7: "-89.2°C / -128.6°F",
+      q8: "15°C / 59°F",
+      q9: "90%",
+      q10: "70%",
+      q11: "~7 million cubic miles / ~29 million cubic km",
+      q12: "Summer (light) and Winter (dark)",
+      q13: "Mostly mosses, lichen, algae, and two flowering plants",
+      q14: "800,000 years (and much older)",
+      q15: "Penguins, Seals (like Leopard Seal), Whales (like Fin, Humpback), Krill, various birds",
+      q16: "No permanent residents; primarily scientists and support staff (plus tourists)",
+      q17: "Around 1,000 (winter) to 5,000 (summer) people"
+    };
+
+    // Total number of questions in the quiz
+    const totalQuestions = 17;
+
+    // Function executed when the "Submit Quiz" button is clicked
+    function submitQuiz() { // Renamed function
+      const form = document.getElementById('quizForm'); // Get form element
       const errorDiv = document.getElementById('error');
-      resultDiv.innerText = ''; // Clear previous results
-      errorDiv.innerText = '';  // Clear previous errors
+      const resultDiv = document.getElementById('result');
+      const feedbackDiv = document.getElementById('feedback');
 
-      const formData = new FormData(form);
-      const totalQuestions = 17; // Correct number of questions for THIS quiz
+      // --- Reset displays on each submission ---
+      errorDiv.style.display = 'none'; // Hide error message
+      errorDiv.innerHTML = ''; // Clear previous error text
+      resultDiv.innerHTML = ''; // Clear previous result text
+      feedbackDiv.innerHTML = ''; // Clear previous feedback text
 
-      // Check if all questions are answered using unique names
-      let answeredQuestions = 0;
-      const questionNames = new Set(); 
+      // --- Check if all questions are answered ---
+      let unanswered = []; // Array to store the numbers of unanswered questions
+      // Loop from 1 to totalQuestions
       for (let i = 1; i <= totalQuestions; i++) {
-          if (formData.has(`q${i}`)) {
-              questionNames.add(`q${i}`);
-          }
-      }
-      answeredQuestions = questionNames.size;
-
-      if (answeredQuestions < totalQuestions) {
-        errorDiv.innerText = `⚠️ Please answer all ${totalQuestions} questions before submitting. You have answered ${answeredQuestions}.`;
-        // Scroll to the error message for visibility
-        errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        return;
+        // Check if there is NO checked radio button for the question name q{i}
+        if (!document.querySelector(`input[name="q${i}"]:checked`)) {
+          unanswered.push(i); // Add the question number to the unanswered list
+        }
       }
 
-      // Calculate score based on answered questions
-      let score = 0;
-      for (const questionName of questionNames) {
-          const selectedValue = formData.get(questionName);
-          // Ensure value is parsed as integer before adding
-          score += parseInt(selectedValue) || 0; 
+      // If there are any unanswered questions
+      if (unanswered.length > 0) {
+        // Construct and display the error message
+        errorDiv.innerHTML = `⚠️ Please answer all questions. Missing answers for questions: ${unanswered.join(', ')}`;
+        errorDiv.style.display = 'block'; // Make the error message visible
+        errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the error message
+        return; // Stop the function execution
       }
 
-      resultDiv.innerText = `✅ Your Score: ${score} / ${totalQuestions}`;
-      // Scroll to the result message for visibility
-      resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // --- Calculate score and collect feedback ---
+      let score = 0; // Initialize score
+      let wrongAnswersFeedback = []; // Array to store info about incorrect answers
+
+      // Loop through each question again
+      for (let i = 1; i <= totalQuestions; i++) {
+        const questionName = `q${i}`; // e.g., "q1", "q2"
+        // Find the radio button that is checked for this question
+        const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+
+        // Check if the selected option's value is "1" (indicating correct)
+        if (selectedOption && selectedOption.value === "1") {
+          score++; // Increment score if correct
+        } else if (selectedOption) { // If an option was selected but it was wrong (value != "1")
+          // Find the parent '.question' div for the current radio button
+          const questionDiv = selectedOption.closest('.question');
+          // Find the question text (<p> tag) within that div
+          const questionTextElement = questionDiv ? questionDiv.querySelector('p') : null;
+          const questionText = questionTextElement ? questionTextElement.textContent : `Question ${i} text not found`; // Fallback text
+
+          // Add details about the incorrect answer to the feedback array
+          wrongAnswersFeedback.push({
+            number: i, // Question number
+            text: questionText.trim(), // The text of the question
+            correct: correctAnswers[questionName] || "Correct answer not defined" // The correct answer text from the object
+          });
+        }
+      }
+
+      // --- Display results ---
+      // Show the final score. Color the score green if >= 9 (example threshold), red otherwise.
+      // Adjust the threshold (9) as needed.
+      resultDiv.innerHTML = `Your Score: <span style="color:${score >= 9 ? '#2e7d32' : '#d32f2f'}">${score} / ${totalQuestions}</span>`;
+      resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the results
+
+      // --- Display feedback for wrong answers ---
+      // Check if there were any incorrect answers
+      if (wrongAnswersFeedback.length > 0) {
+        // Start the feedback section with a heading
+        feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+        // Loop through each item in the wrongAnswersFeedback array
+        wrongAnswersFeedback.forEach(item => {
+          // Append the HTML for each feedback item
+          feedbackDiv.innerHTML += `
+            <div class="feedback-item">
+              <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+              <p class="correct-answer">Correct answer: ${item.correct}</p>
+            </div>
+          `;
+        });
+      } else {
+        // If all answers were correct, display a success message
+        feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+      }
     }
   </script>
 </body>
