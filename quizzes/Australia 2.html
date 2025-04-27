@@ -3,31 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <title>Australia General Knowledge Quiz</title>
-  <link rel="stylesheet" href="../css/style.css">
   <style>
-    .incorrect-feedback {
-      color: #d32f2f;
-      margin: 10px 0;
-      padding: 10px;
-      background-color: #ffebee;
-      border-left: 4px solid #d32f2f;
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .quiz-container {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .question {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: white;
+      border-radius: 5px;
+    }
+    .options label {
+      display: block;
+      margin: 8px 0;
+      cursor: pointer;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
       border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    #error {
+      color: #d32f2f;
+      padding: 10px;
+      margin: 10px 0;
+      background: #ffebee;
+      border-left: 4px solid #d32f2f;
+      display: none;
+    }
+    #result {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin: 15px 0;
+      padding: 10px;
+      background: #e8f5e9;
+      border-left: 4px solid #2e7d32;
+    }
+    .incorrect-feedback {
+      margin: 15px 0;
+      padding: 15px;
+      background: #ffebee;
+      border-left: 4px solid #d32f2f;
     }
     .correct-answer {
       color: #2e7d32;
       font-weight: bold;
-      margin-top: 5px;
+      margin-top: 8px;
     }
-    #feedback {
-      margin-top: 20px;
-      padding: 15px;
-      background-color: #f5f5f5;
-      border-radius: 5px;
-    }
-    .feedback-title {
-      font-size: 1.2em;
-      margin-bottom: 10px;
-      color: #d32f2f;
+    .navigation-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: #1976d2;
     }
   </style>
 </head>
@@ -37,88 +81,77 @@
   <div class="quiz-container">
     <h1>🇦🇺 Australia General Knowledge Quiz</h1>
     <form id="quizForm">
-      <div id="error" style="color:red;"></div>
-      <div id="result" style="font-weight:bold; font-size:1.2em; margin:15px 0;"></div>
+      <div id="error"></div>
+      <div id="result"></div>
       <div id="feedback"></div>
 
-      <!-- Section A: General Characteristics -->
+      <!-- Questions 1-17 -->
       <div class="question">
         <p>1. What makes Australia unique in terms of its geographical and political identity?</p>
         <div class="options">
-          <label><input type="radio" name="q1" value="0"> It is part of a group of several countries on one continent.</label><br>
-          <label><input type="radio" name="q1" value="1"> It is the world's only continent that is also a country.</label><br>
-          <label><input type="radio" name="q1" value="0"> It is the largest island nation in terms of population.</label><br>
+          <label><input type="radio" name="q1" value="0"> It is part of a group of several countries on one continent.</label>
+          <label><input type="radio" name="q1" value="1"> It is the world's only continent that is also a country.</label>
+          <label><input type="radio" name="q1" value="0"> It is the largest island nation in terms of population.</label>
           <label><input type="radio" name="q1" value="0"> It is divided into several independent regions.</label>
         </div>
       </div>
 
-      <div class="question">
-        <p>2. Why is Australia often called an "island continent"?</p>
-        <div class="options">
-          <label><input type="radio" name="q2" value="1"> Because it is entirely surrounded by water.</label><br>
-          <label><input type="radio" name="q2" value="0"> Because it has many large lakes instead of seas.</label><br>
-          <label><input type="radio" name="q2" value="0"> Because it borders another large continent on one side.</label><br>
-          <label><input type="radio" name="q2" value="0"> Because it is connected to Antarctica by an isthmus.</label>
-        </div>
-      </div>
-
-      <!-- [...] (Include all other questions following the same pattern) -->
+      <!-- [...] Include all other questions here in the same format -->
 
       <div class="question">
         <p>17. Which of the following is a consequence of Australia's geographical isolation?</p>
         <div class="options">
-          <label><input type="radio" name="q17" value="0"> It shares most of its flora and fauna directly with European countries.</label><br>
-          <label><input type="radio" name="q17" value="1"> Its biodiversity is highly unique, with many species found nowhere else in the world.</label><br>
-          <label><input type="radio" name="q17" value="0"> It has very little endemic wildlife due to constant migration from nearby continents.</label><br>
+          <label><input type="radio" name="q17" value="0"> It shares most of its flora and fauna directly with European countries.</label>
+          <label><input type="radio" name="q17" value="1"> Its biodiversity is highly unique, with many species found nowhere else in the world.</label>
+          <label><input type="radio" name="q17" value="0"> It has very little endemic wildlife due to constant migration from nearby continents.</label>
           <label><input type="radio" name="q17" value="0"> Its cultural development closely mirrors that of mainland Asia.</label>
         </div>
       </div>
 
-      <button type="button" onclick="validateAndSubmit()">Submit Quiz</button>
+      <button type="button" id="submitBtn">Submit Quiz</button>
     </form>
   </div>
 
   <script>
-    // Correct answers reference
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('submitBtn').addEventListener('click', validateAndSubmit);
+    });
+
     const correctAnswers = {
-      q1: "It is the world's only continent that is also a country.",
-      q2: "Because it is entirely surrounded by water.",
-      q3: "Land Down Under",
-      q4: "Sydney Opera House and the Great Barrier Reef",
-      q5: "Australia – 7,688,287 km²",
-      q6: "Australia > Maharashtra > Mumbai",
-      q7: "Captain James Cook mapped the eastern coast and named it 'New South Wales'",
-      q8: "Captain Willem Janszoon",
-      q9: "1901",
-      q10: "10°S to 44°S; 113°E to 154°E",
-      q11: "North: Timor Sea, Arafura Sea, Gulf of Carpentaria, Coral Sea; East: Pacific Ocean; West: Indian Ocean; South: Southern Ocean",
-      q12: "6 states and 2 major territories",
-      q13: "Darwin – 0.11 to 0.33 million",
-      q14: "Australia is the only continent without an active volcano.",
-      q15: "It comes from the Latin word 'Australis' meaning 'of the south' or 'southern.'",
-      q16: "The population is mainly concentrated in parts of the eastern and southeastern coasts, with two-thirds of the continent being a desert.",
-      q17: "Its biodiversity is highly unique, with many species found nowhere else in the world."
+      q1: "1. It is the world's only continent that is also a country.",
+      q2: "2. Because it is entirely surrounded by water.",
+      q3: "3. Land Down Under",
+      q4: "4. Sydney Opera House and the Great Barrier Reef",
+      q5: "5. Australia – 7,688,287 km²",
+      q6: "6. Australia > Maharashtra > Mumbai",
+      q7: "7. Captain James Cook mapped the eastern coast and named it 'New South Wales'",
+      q8: "8. Captain Willem Janszoon",
+      q9: "9. 1901",
+      q10: "10. 10°S to 44°S; 113°E to 154°E",
+      q11: "11. North: Timor Sea, Arafura Sea, Gulf of Carpentaria, Coral Sea; East: Pacific Ocean; West: Indian Ocean; South: Southern Ocean",
+      q12: "12. 6 states and 2 major territories",
+      q13: "13. Darwin – 0.11 to 0.33 million",
+      q14: "14. Australia is the only continent without an active volcano.",
+      q15: "15. It comes from the Latin word 'Australis' meaning 'of the south' or 'southern.'",
+      q16: "16. The population is mainly concentrated in parts of the eastern and southeastern coasts, with two-thirds of the continent being a desert.",
+      q17: "17. Its biodiversity is highly unique, with many species found nowhere else in the world."
     };
 
     function validateAndSubmit() {
-      const form = document.getElementById('quizForm');
       const errorDiv = document.getElementById('error');
-      errorDiv.innerHTML = '';
+      errorDiv.style.display = 'none';
       
       // Check if all questions are answered
-      let allAnswered = true;
-      const unansweredQuestions = [];
-      
+      let unanswered = [];
       for (let i = 1; i <= 17; i++) {
-        const questionName = `q${i}`;
-        if (!document.querySelector(`input[name="${questionName}"]:checked`)) {
-          allAnswered = false;
-          unansweredQuestions.push(i);
+        if (!document.querySelector(`input[name="q${i}"]:checked`)) {
+          unanswered.push(i);
         }
       }
       
-      if (!allAnswered) {
-        errorDiv.innerHTML = `⚠️ Please answer all questions. Missing answers for questions: ${unansweredQuestions.join(', ')}`;
+      if (unanswered.length > 0) {
+        errorDiv.innerHTML = `Please answer all questions. Missing answers for questions: ${unanswered.join(', ')}`;
+        errorDiv.style.display = 'block';
         errorDiv.scrollIntoView({ behavior: 'smooth' });
         return;
       }
@@ -127,16 +160,14 @@
     }
 
     function calculateScore() {
-      const form = document.getElementById('quizForm');
       const resultDiv = document.getElementById('result');
       const feedbackDiv = document.getElementById('feedback');
       
-      const formData = new FormData(form);
-      const totalQuestions = 17;
       let score = 0;
       let wrongAnswers = [];
+      const totalQuestions = 17;
 
-      // Check answers and collect wrong ones
+      // Check each question
       for (let i = 1; i <= totalQuestions; i++) {
         const questionName = `q${i}`;
         const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
@@ -144,35 +175,32 @@
         if (selectedOption.value === "1") {
           score++;
         } else {
-          const questionText = document.querySelector(`input[name="${questionName}"]:checked`)
-            .parentNode.parentNode.previousElementSibling.textContent;
+          const questionText = document.querySelector(`p:has(+ .options input[name="${questionName}"])`).textContent;
           wrongAnswers.push({
-            questionNumber: i,
-            questionText: questionText.trim(),
-            correctAnswer: correctAnswers[questionName]
+            number: i,
+            text: questionText.trim(),
+            correct: correctAnswers[questionName]
           });
         }
       }
 
-      // Display score
-      resultDiv.innerHTML = `Your Score: <span style="color:${score >= totalQuestions/2 ? 'green' : 'red'}">${score} / ${totalQuestions}</span>`;
+      // Display results
+      resultDiv.innerHTML = `Your Score: <span style="color:${score >= totalQuestions/2 ? 'green' : 'red'}">${score}/${totalQuestions}</span>`;
       
       // Display feedback for wrong answers
       if (wrongAnswers.length > 0) {
-        let feedbackHTML = '<div class="feedback-title">Questions answered incorrectly:</div>';
-        
+        let feedbackHTML = '<h3>Incorrect Answers:</h3>';
         wrongAnswers.forEach(item => {
           feedbackHTML += `
             <div class="incorrect-feedback">
-              <p><strong>Question ${item.questionNumber}:</strong> ${item.questionText}</p>
-              <p class="correct-answer">✓ Correct answer: ${item.correctAnswer}</p>
+              <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+              <p class="correct-answer">${item.correct}</p>
             </div>
           `;
         });
-        
         feedbackDiv.innerHTML = feedbackHTML;
       } else {
-        feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold;">Perfect! You answered all questions correctly!</div>';
+        feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold;">Perfect! All answers correct!</div>';
       }
 
       // Scroll to results
