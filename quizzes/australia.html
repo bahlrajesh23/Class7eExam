@@ -3,7 +3,126 @@
 <head>
   <meta charset="UTF-8">
   <title>Australia Geography Quiz</title>
-  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* General body styling */
+    body {
+      font-family: Arial, sans-serif; /* Standard font */
+      max-width: 800px; /* Limit content width for readability */
+      margin: 20px auto; /* Center the content with margin */
+      padding: 20px; /* Padding around the content */
+      background-color: #f0f4f8; /* Light background for the page */
+    }
+    /* Container for the quiz elements */
+    .quiz-container {
+      background: #ffffff; /* White background for the quiz area */
+      padding: 25px; /* Padding inside the container */
+      border-radius: 8px; /* Rounded corners */
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Subtle shadow */
+    }
+     /* Link back style */
+    .navigation-link {
+        display: block;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #1a73e8;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .navigation-link:hover {
+        text-decoration: underline;
+    }
+    /* Styling for each question block */
+    .question {
+      margin-bottom: 25px; /* Space below each question */
+      padding: 20px; /* Padding inside question block */
+      background: #f9f9f9; /* Slightly off-white background for questions */
+      border-radius: 5px; /* Rounded corners */
+      border-left: 5px solid #1e88e5; /* Accent border on the left */
+    }
+    /* Question text styling */
+    .question p {
+        font-weight: bold; /* Make question text bold */
+        margin-bottom: 10px; /* Space below question text */
+        color: #333; /* Darker text color */
+    }
+    /* Styling for radio button options */
+    .options label {
+      display: block; /* Each option on a new line */
+      margin: 10px 0 10px 5px; /* Spacing around options */
+      padding: 8px; /* Padding inside label */
+      border-radius: 4px; /* Rounded corners for label */
+      cursor: pointer; /* Indicate it's clickable */
+      transition: background-color 0.2s ease-in-out; /* Smooth background transition on hover */
+    }
+    .options label:hover {
+        background-color: #e3f2fd; /* Light blue background on hover */
+    }
+    /* Spacing for radio button itself */
+    .options input[type="radio"] {
+        margin-right: 8px; /* Space between radio button and text */
+    }
+    /* Submit button styling */
+    button {
+      background: #4CAF50; /* Green background */
+      color: white; /* White text */
+      border: none; /* No border */
+      padding: 12px 25px; /* Padding inside button */
+      border-radius: 4px; /* Rounded corners */
+      cursor: pointer; /* Pointer cursor on hover */
+      font-size: 16px; /* Font size */
+      margin-top: 20px; /* Space above the button */
+      display: block; /* Make it a block element */
+      margin-left: auto; /* Center button (along with margin-right: auto) */
+      margin-right: auto;
+      transition: background-color 0.3s ease; /* Smooth transition */
+    }
+    button:hover {
+      background: #45a049; /* Darker green on hover */
+    }
+    /* Error message styling */
+    #error {
+      color: #d32f2f; /* Red text color */
+      padding: 12px; /* Padding */
+      background: #ffebee; /* Light red background */
+      border-left: 4px solid #d32f2f; /* Red accent border */
+      margin: 15px 0; /* Margin top and bottom */
+      border-radius: 4px; /* Rounded corners */
+      display: none; /* Hidden by default */
+    }
+    /* Result display styling */
+    #result {
+      font-weight: bold; /* Bold text */
+      font-size: 1.2em; /* Larger font size */
+      margin: 20px 0; /* Margin top and bottom */
+      padding: 15px; /* Padding */
+      background: #e8f5e9; /* Light green background */
+      border-left: 4px solid #2e7d32; /* Green accent border */
+      border-radius: 4px; /* Rounded corners */
+      text-align: center; /* Center the text */
+    }
+    /* Container for all feedback items */
+     #feedback {
+        margin-top: 20px; /* Add space above the feedback section */
+     }
+    #feedback h3 {
+        margin-bottom: 15px; /* Space below the feedback heading */
+        color: #c62828; /* Reddish color for the heading */
+    }
+    /* Styling for individual feedback items (wrong answers) */
+    .feedback-item {
+      margin: 15px 0; /* Margin top and bottom */
+      padding: 15px; /* Padding */
+      background: #fff3e0; /* Light orange background */
+      border-left: 4px solid #ef6c00; /* Orange accent border */
+      border-radius: 4px; /* Rounded corners */
+    }
+    /* Styling for the correct answer text within feedback */
+    .correct-answer {
+      color: #2e7d32; /* Green text color for correct answer */
+      font-weight: bold; /* Bold text */
+      margin-top: 8px; /* Space above the correct answer text */
+    }
+  </style>
 </head>
 <body>
   <a href="../index.html" class="navigation-link">⬅️ Back to Quiz List</a>
@@ -13,13 +132,11 @@
     <form id="quizForm">
       <div id="error"></div>
       <div id="result"></div>
-
-      <div class="question">
+      <div id="feedback"></div> <div class="question">
         <p>1. What is the name of the vast limestone plateau located to the south of the deserts and north of the Great Australian Bight?</p>
         <div class="options">
           <label><input type="radio" name="q1" value="0"> Great Sandy Desert</label>
-          <label><input type="radio" name="q1" value="1"> Nullarbor Plain</label>
-          <label><input type="radio" name="q1" value="0"> Great Victoria Desert</label>
+          <label><input type="radio" name="q1" value="1"> Nullarbor Plain</label> <label><input type="radio" name="q1" value="0"> Great Victoria Desert</label>
           <label><input type="radio" name="q1" value="0"> Simpson Desert</label>
         </div>
       </div>
@@ -28,8 +145,7 @@
         <p>2. What is the meaning of the word 'Nullarbor'?</p>
         <div class="options">
           <label><input type="radio" name="q2" value="0"> 'nullus' meaning 'tree' and 'arbor' meaning 'no'</label>
-          <label><input type="radio" name="q2" value="1"> 'nullus' meaning 'no' and 'arbor' meaning 'tree'</label>
-          <label><input type="radio" name="q2" value="0"> 'nullus' meaning 'desert' and 'arbor' meaning 'plain'</label>
+          <label><input type="radio" name="q2" value="1"> 'nullus' meaning 'no' and 'arbor' meaning 'tree'</label> <label><input type="radio" name="q2" value="0"> 'nullus' meaning 'desert' and 'arbor' meaning 'plain'</label>
           <label><input type="radio" name="q2" value="0"> 'nullus' meaning 'plain' and 'arbor' meaning 'desert'</label>
         </div>
       </div>
@@ -38,8 +154,7 @@
         <p>3. In which direction does the Nullarbor Plain slope?</p>
         <div class="options">
           <label><input type="radio" name="q3" value="0"> North</label>
-          <label><input type="radio" name="q3" value="1"> South</label>
-          <label><input type="radio" name="q3" value="0"> East</label>
+          <label><input type="radio" name="q3" value="1"> South</label> <label><input type="radio" name="q3" value="0"> East</label>
           <label><input type="radio" name="q3" value="0"> West</label>
         </div>
       </div>
@@ -48,8 +163,7 @@
         <p>4. What is the Nullarbor Plain characterized as?</p>
         <div class="options">
           <label><input type="radio" name="q4" value="0"> A vast mountain range</label>
-          <label><input type="radio" name="q4" value="1"> A flat treeless expanse</label>
-          <label><input type="radio" name="q4" value="0"> A dense forest</label>
+          <label><input type="radio" name="q4" value="1"> A flat treeless expanse</label> <label><input type="radio" name="q4" value="0"> A dense forest</label>
           <label><input type="radio" name="q4" value="0"> A coastal region</label>
         </div>
       </div>
@@ -57,8 +171,7 @@
       <div class="question">
         <p>5. Where is the Nullarbor Plain located in relation to the Great Australian Bight?</p>
         <div class="options">
-          <label><input type="radio" name="q5" value="1"> To the north</label>
-          <label><input type="radio" name="q5" value="0"> To the south</label>
+          <label><input type="radio" name="q5" value="1"> To the north</label> <label><input type="radio" name="q5" value="0"> To the south</label>
           <label><input type="radio" name="q5" value="0"> To the east</label>
           <label><input type="radio" name="q5" value="0"> To the west</label>
         </div>
@@ -68,8 +181,7 @@
         <p>6. What notable feature does the Nullarbor Plain have in terms of railway?</p>
         <div class="options">
           <label><input type="radio" name="q6" value="0"> The world's shortest straight stretch of railway</label>
-          <label><input type="radio" name="q6" value="1"> The world's longest straight stretch of railway</label>
-          <label><input type="radio" name="q6" value="0"> The world's busiest railway station</label>
+          <label><input type="radio" name="q6" value="1"> The world's longest straight stretch of railway</label> <label><input type="radio" name="q6" value="0"> The world's busiest railway station</label>
           <label><input type="radio" name="q6" value="0"> The world's oldest railway</label>
         </div>
       </div>
@@ -78,8 +190,7 @@
         <p>7. What has formed in the Nullarbor Plain due to water flowing through limestone rocks?</p>
         <div class="options">
           <label><input type="radio" name="q7" value="0"> High mountains</label>
-          <label><input type="radio" name="q7" value="1"> Deep underground caverns</label>
-          <label><input type="radio" name="q7" value="0"> Drilling institutions of stalactites and stalagmites</label>
+          <label><input type="radio" name="q7" value="1"> Deep underground caverns</label> <label><input type="radio" name="q7" value="0"> Drilling institutions of stalactites and stalagmites</label>
           <label><input type="radio" name="q7" value="0"> Wide open deserts</label>
         </div>
       </div>
@@ -88,8 +199,7 @@
         <p>8. Where can some of the best examples of formations created by water flowing through limestone rocks be seen?</p>
         <div class="options">
           <label><input type="radio" name="q8" value="0"> In the Murray Darling Cave</label>
-          <label><input type="radio" name="q8" value="1"> In the Nullarbor Cave</label>
-          <label><input type="radio" name="q8" value="0"> In the Great Australian Bight</label>
+          <label><input type="radio" name="q8" value="1"> In the Nullarbor Cave</label> <label><input type="radio" name="q8" value="0"> In the Great Australian Bight</label>
           <label><input type="radio" name="q8" value="0"> In the Simpson Desert</label>
         </div>
       </div>
@@ -97,8 +207,7 @@
       <div class="question">
         <p>9. What does the Nullarbor Plain form along the Great Australian Bight?</p>
         <div class="options">
-          <label><input type="radio" name="q9" value="1"> Steep cliffs</label>
-          <label><input type="radio" name="q9" value="0"> Gentle slopes</label>
+          <label><input type="radio" name="q9" value="1"> Steep cliffs</label> <label><input type="radio" name="q9" value="0"> Gentle slopes</label>
           <label><input type="radio" name="q9" value="0"> Sandy beaches</label>
           <label><input type="radio" name="q9" value="0"> Rocky shores</label>
         </div>
@@ -109,16 +218,14 @@
         <div class="options">
           <label><input type="radio" name="q10" value="0"> A tight mountain range</label>
           <label><input type="radio" name="q10" value="0"> A tight forest</label>
-          <label><input type="radio" name="q10" value="1"> A tight bay</label>
-          <label><input type="radio" name="q10" value="0"> A tight desert</label>
+          <label><input type="radio" name="q10" value="1"> A tight bay</label> <label><input type="radio" name="q10" value="0"> A tight desert</label>
         </div>
       </div>
 
       <div class="question">
         <p>11. What is the main topic of the document shown in the image?</p>
         <div class="options">
-          <label><input type="radio" name="q11" value="1"> Stalactites and stalagmites in limestone caves</label>
-          <label><input type="radio" name="q11" value="0"> Australian wildlife</label>
+          <label><input type="radio" name="q11" value="1"> Stalactites and stalagmites in limestone caves</label> <label><input type="radio" name="q11" value="0"> Australian wildlife</label>
           <label><input type="radio" name="q11" value="0"> Coastal geography</label>
           <label><input type="radio" name="q11" value="0"> Desert ecosystems</label>
         </div>
@@ -127,8 +234,7 @@
       <div class="question">
         <p>12. How are stalactites formed according to the text?</p>
         <div class="options">
-          <label><input type="radio" name="q12" value="1"> Water drips into caves, dissolving calcite and depositing it on cave roofs</label>
-          <label><input type="radio" name="q12" value="0"> Volcanic activity creates rock formations</label>
+          <label><input type="radio" name="q12" value="1"> Water drips into caves, dissolving calcite and depositing it on cave roofs</label> <label><input type="radio" name="q12" value="0"> Volcanic activity creates rock formations</label>
           <label><input type="radio" name="q12" value="0"> Wind erosion shapes the rock</label>
           <label><input type="radio" name="q12" value="0"> Ocean waves carve out formations</label>
         </div>
@@ -137,8 +243,7 @@
       <div class="question">
         <p>13. What happens when stalactites and stalagmites meet?</p>
         <div class="options">
-          <label><input type="radio" name="q13" value="1"> They form pillars or columns</label>
-          <label><input type="radio" name="q13" value="0"> They collapse</label>
+          <label><input type="radio" name="q13" value="1"> They form pillars or columns</label> <label><input type="radio" name="q13" value="0"> They collapse</label>
           <label><input type="radio" name="q13" value="0"> They stop growing</label>
           <label><input type="radio" name="q13" value="0"> They change color</label>
         </div>
@@ -147,8 +252,7 @@
       <div class="question">
         <p>14. What is the difference between stalactites and stalagmites?</p>
         <div class="options">
-          <label><input type="radio" name="q14" value="1"> Stalactites hang from cave roofs while stalagmites rise from floors</label>
-          <label><input type="radio" name="q14" value="0"> Stalactites are wider than stalagmites</label>
+          <label><input type="radio" name="q14" value="1"> Stalactites hang from cave roofs while stalagmites rise from floors</label> <label><input type="radio" name="q14" value="0"> Stalactites are wider than stalagmites</label>
           <label><input type="radio" name="q14" value="0"> Stalagmites grow faster than stalactites</label>
           <label><input type="radio" name="q14" value="0"> Stalactites are only found in limestone caves</label>
         </div>
@@ -157,8 +261,7 @@
       <div class="question">
         <p>15. What is the significance of calcite in the formation of stalactites and stalagmites?</p>
         <div class="options">
-          <label><input type="radio" name="q15" value="1"> It's dissolved by water and deposited to form these structures</label>
-          <label><input type="radio" name="q15" value="0"> It makes the formations colorful</label>
+          <label><input type="radio" name="q15" value="1"> It's dissolved by water and deposited to form these structures</label> <label><input type="radio" name="q15" value="0"> It makes the formations colorful</label>
           <label><input type="radio" name="q15" value="0"> It speeds up their growth</label>
           <label><input type="radio" name="q15" value="0"> It prevents them from collapsing</label>
         </div>
@@ -167,8 +270,7 @@
       <div class="question">
         <p>16. How do stalagmites appear according to the description?</p>
         <div class="options">
-          <label><input type="radio" name="q16" value="1"> Like heaps of molten wax</label>
-          <label><input type="radio" name="q16" value="0"> Like sharp needles</label>
+          <label><input type="radio" name="q16" value="1"> Like heaps of molten wax</label> <label><input type="radio" name="q16" value="0"> Like sharp needles</label>
           <label><input type="radio" name="q16" value="0"> Like flat discs</label>
           <label><input type="radio" name="q16" value="0"> Like smooth columns</label>
         </div>
@@ -177,56 +279,128 @@
       <div class="question">
         <p>17. What educational institutions are associated with the document?</p>
         <div class="options">
-          <label><input type="radio" name="q17" value="1"> Chatrabhuj Narsee School and Cambridge International Education</label>
-          <label><input type="radio" name="q17" value="0"> University of Sydney and Australian National University</label>
+          <label><input type="radio" name="q17" value="1"> Chatrabhuj Narsee School and Cambridge International Education</label> <label><input type="radio" name="q17" value="0"> University of Sydney and Australian National University</label>
           <label><input type="radio" name="q17" value="0"> UNESCO and National Geographic</label>
           <label><input type="radio" name="q17" value="0"> Harvard University and MIT</label>
         </div>
       </div>
 
-      <button type="button" onclick="calculateScore()">Submit Quiz</button>
+      <button type="button" onclick="submitQuiz()">Submit Quiz</button>
     </form>
   </div>
 
   <script>
-    function calculateScore() {
-      const form = document.getElementById('quizForm');
-      const resultDiv = document.getElementById('result');
+    // Object storing the correct answer TEXT for each question.
+    // Keys (q1, q2, ...) MUST match the 'name' attribute of the radio buttons.
+    const correctAnswers = {
+      q1: "Nullarbor Plain",
+      q2: "'nullus' meaning 'no' and 'arbor' meaning 'tree'",
+      q3: "South",
+      q4: "A flat treeless expanse",
+      q5: "To the north",
+      q6: "The world's longest straight stretch of railway",
+      q7: "Deep underground caverns",
+      q8: "In the Nullarbor Cave",
+      q9: "Steep cliffs",
+      q10: "A tight bay",
+      q11: "Stalactites and stalagmites in limestone caves",
+      q12: "Water drips into caves, dissolving calcite and depositing it on cave roofs",
+      q13: "They form pillars or columns",
+      q14: "Stalactites hang from cave roofs while stalagmites rise from floors",
+      q15: "It's dissolved by water and deposited to form these structures",
+      q16: "Like heaps of molten wax",
+      q17: "Chatrabhuj Narsee School and Cambridge International Education"
+    };
+
+    // Total number of questions in the quiz
+    const totalQuestions = 17;
+
+    // Function executed when the "Submit Quiz" button is clicked
+    function submitQuiz() { // Renamed function
+      const form = document.getElementById('quizForm'); // Get form element
       const errorDiv = document.getElementById('error');
-      resultDiv.innerText = ''; // Clear previous results
-      errorDiv.innerText = '';  // Clear previous errors
+      const resultDiv = document.getElementById('result');
+      const feedbackDiv = document.getElementById('feedback');
 
-      const formData = new FormData(form);
-      const totalQuestions = 17; // Correct number of questions for THIS quiz
+      // --- Reset displays on each submission ---
+      errorDiv.style.display = 'none'; // Hide error message
+      errorDiv.innerHTML = ''; // Clear previous error text
+      resultDiv.innerHTML = ''; // Clear previous result text
+      feedbackDiv.innerHTML = ''; // Clear previous feedback text
 
-      // Check if all questions are answered using unique names
-      let answeredQuestions = 0;
-      const questionNames = new Set(); 
+      // --- Check if all questions are answered ---
+      let unanswered = []; // Array to store the numbers of unanswered questions
+      // Loop from 1 to totalQuestions
       for (let i = 1; i <= totalQuestions; i++) {
-          if (formData.has(`q${i}`)) {
-              questionNames.add(`q${i}`);
-          }
-      }
-      answeredQuestions = questionNames.size;
-
-      if (answeredQuestions < totalQuestions) {
-        errorDiv.innerText = `⚠️ Please answer all ${totalQuestions} questions before submitting. You have answered ${answeredQuestions}.`;
-        // Scroll to the error message for visibility
-        errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        return;
+        // Check if there is NO checked radio button for the question name q{i}
+        if (!document.querySelector(`input[name="q${i}"]:checked`)) {
+          unanswered.push(i); // Add the question number to the unanswered list
+        }
       }
 
-      // Calculate score based on answered questions
-      let score = 0;
-      for (const questionName of questionNames) {
-          const selectedValue = formData.get(questionName);
-          // Ensure value is parsed as integer before adding
-          score += parseInt(selectedValue) || 0; 
+      // If there are any unanswered questions
+      if (unanswered.length > 0) {
+        // Construct and display the error message
+        errorDiv.innerHTML = `⚠️ Please answer all questions. Missing answers for questions: ${unanswered.join(', ')}`;
+        errorDiv.style.display = 'block'; // Make the error message visible
+        errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the error message
+        return; // Stop the function execution
       }
 
-      resultDiv.innerText = `✅ Your Score: ${score} / ${totalQuestions}`;
-      // Scroll to the result message for visibility
-      resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // --- Calculate score and collect feedback ---
+      let score = 0; // Initialize score
+      let wrongAnswersFeedback = []; // Array to store info about incorrect answers
+
+      // Loop through each question again
+      for (let i = 1; i <= totalQuestions; i++) {
+        const questionName = `q${i}`; // e.g., "q1", "q2"
+        // Find the radio button that is checked for this question
+        const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+
+        // Check if the selected option's value is "1" (indicating correct)
+        if (selectedOption && selectedOption.value === "1") {
+          score++; // Increment score if correct
+        } else if (selectedOption) { // If an option was selected but it was wrong (value != "1")
+          // Find the parent '.question' div for the current radio button
+          const questionDiv = selectedOption.closest('.question');
+          // Find the question text (<p> tag) within that div
+          const questionTextElement = questionDiv ? questionDiv.querySelector('p') : null;
+          const questionText = questionTextElement ? questionTextElement.textContent : `Question ${i} text not found`; // Fallback text
+
+          // Add details about the incorrect answer to the feedback array
+          wrongAnswersFeedback.push({
+            number: i, // Question number
+            text: questionText.trim(), // The text of the question
+            correct: correctAnswers[questionName] || "Correct answer not defined" // The correct answer text from the object
+          });
+        }
+      }
+
+      // --- Display results ---
+      // Show the final score. Color the score green if >= 9 (example threshold), red otherwise.
+      // You might want to adjust the threshold (9) based on your passing criteria.
+      resultDiv.innerHTML = `Your Score: <span style="color:${score >= 9 ? '#2e7d32' : '#d32f2f'}">${score} / ${totalQuestions}</span>`;
+      resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the results
+
+      // --- Display feedback for wrong answers ---
+      // Check if there were any incorrect answers
+      if (wrongAnswersFeedback.length > 0) {
+        // Start the feedback section with a heading
+        feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+        // Loop through each item in the wrongAnswersFeedback array
+        wrongAnswersFeedback.forEach(item => {
+          // Append the HTML for each feedback item
+          feedbackDiv.innerHTML += `
+            <div class="feedback-item">
+              <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+              <p class="correct-answer">Correct answer: ${item.correct}</p>
+            </div>
+          `;
+        });
+      } else {
+        // If all answers were correct, display a success message
+        feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+      }
     }
   </script>
 </body>
