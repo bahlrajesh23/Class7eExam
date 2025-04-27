@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Australia General Knowledge Quiz</title>
+  <title>Australia Quiz</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      line-height: 1.6;
       max-width: 800px;
       margin: 0 auto;
       padding: 20px;
@@ -15,7 +14,6 @@
       background: #f9f9f9;
       padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     .question {
       margin-bottom: 20px;
@@ -26,7 +24,6 @@
     .options label {
       display: block;
       margin: 8px 0;
-      cursor: pointer;
     }
     button {
       background: #4CAF50;
@@ -36,16 +33,14 @@
       border-radius: 4px;
       cursor: pointer;
       font-size: 16px;
-    }
-    button:hover {
-      background: #45a049;
+      margin-top: 20px;
     }
     #error {
       color: #d32f2f;
       padding: 10px;
-      margin: 10px 0;
       background: #ffebee;
       border-left: 4px solid #d32f2f;
+      margin: 10px 0;
       display: none;
     }
     #result {
@@ -56,7 +51,7 @@
       background: #e8f5e9;
       border-left: 4px solid #2e7d32;
     }
-    .incorrect-feedback {
+    .feedback-item {
       margin: 15px 0;
       padding: 15px;
       background: #ffebee;
@@ -65,27 +60,19 @@
     .correct-answer {
       color: #2e7d32;
       font-weight: bold;
-      margin-top: 8px;
-    }
-    .navigation-link {
-      display: inline-block;
-      margin-bottom: 20px;
-      text-decoration: none;
-      color: #1976d2;
+      margin-top: 5px;
     }
   </style>
 </head>
 <body>
-  <a href="../index.html" class="navigation-link">⬅️ Back to Quiz List</a>
-
   <div class="quiz-container">
-    <h1>🇦🇺 Australia General Knowledge Quiz</h1>
-    <form id="quizForm">
-      <div id="error"></div>
-      <div id="result"></div>
-      <div id="feedback"></div>
+    <h1>🇦🇺 Australia Quiz</h1>
+    <div id="error"></div>
+    <div id="result"></div>
+    <div id="feedback"></div>
 
-      <!-- Questions 1-17 -->
+    <form id="quizForm">
+      <!-- Question 1 -->
       <div class="question">
         <p>1. What makes Australia unique in terms of its geographical and political identity?</p>
         <div class="options">
@@ -96,8 +83,20 @@
         </div>
       </div>
 
-      <!-- [...] Include all other questions here in the same format -->
+      <!-- Question 2 -->
+      <div class="question">
+        <p>2. Why is Australia often called an "island continent"?</p>
+        <div class="options">
+          <label><input type="radio" name="q2" value="1"> Because it is entirely surrounded by water.</label>
+          <label><input type="radio" name="q2" value="0"> Because it has many large lakes instead of seas.</label>
+          <label><input type="radio" name="q2" value="0"> Because it borders another large continent on one side.</label>
+          <label><input type="radio" name="q2" value="0"> Because it is connected to Antarctica by an isthmus.</label>
+        </div>
+      </div>
 
+      <!-- Add questions 3-16 here following the same pattern -->
+
+      <!-- Question 17 -->
       <div class="question">
         <p>17. Which of the following is a consequence of Australia's geographical isolation?</p>
         <div class="options">
@@ -108,39 +107,41 @@
         </div>
       </div>
 
-      <button type="button" id="submitBtn">Submit Quiz</button>
+      <button type="button" onclick="submitQuiz()">Submit Quiz</button>
     </form>
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('submitBtn').addEventListener('click', validateAndSubmit);
-    });
-
     const correctAnswers = {
-      q1: "1. It is the world's only continent that is also a country.",
-      q2: "2. Because it is entirely surrounded by water.",
-      q3: "3. Land Down Under",
-      q4: "4. Sydney Opera House and the Great Barrier Reef",
-      q5: "5. Australia – 7,688,287 km²",
-      q6: "6. Australia > Maharashtra > Mumbai",
-      q7: "7. Captain James Cook mapped the eastern coast and named it 'New South Wales'",
-      q8: "8. Captain Willem Janszoon",
-      q9: "9. 1901",
-      q10: "10. 10°S to 44°S; 113°E to 154°E",
-      q11: "11. North: Timor Sea, Arafura Sea, Gulf of Carpentaria, Coral Sea; East: Pacific Ocean; West: Indian Ocean; South: Southern Ocean",
-      q12: "12. 6 states and 2 major territories",
-      q13: "13. Darwin – 0.11 to 0.33 million",
-      q14: "14. Australia is the only continent without an active volcano.",
-      q15: "15. It comes from the Latin word 'Australis' meaning 'of the south' or 'southern.'",
-      q16: "16. The population is mainly concentrated in parts of the eastern and southeastern coasts, with two-thirds of the continent being a desert.",
-      q17: "17. Its biodiversity is highly unique, with many species found nowhere else in the world."
+      q1: "It is the world's only continent that is also a country.",
+      q2: "Because it is entirely surrounded by water.",
+      q3: "Land Down Under",
+      q4: "Sydney Opera House and the Great Barrier Reef",
+      q5: "Australia – 7,688,287 km²",
+      q6: "Australia > Maharashtra > Mumbai",
+      q7: "Captain James Cook mapped the eastern coast and named it 'New South Wales'",
+      q8: "Captain Willem Janszoon",
+      q9: "1901",
+      q10: "10°S to 44°S; 113°E to 154°E",
+      q11: "North: Timor Sea, Arafura Sea, Gulf of Carpentaria, Coral Sea; East: Pacific Ocean; West: Indian Ocean; South: Southern Ocean",
+      q12: "6 states and 2 major territories",
+      q13: "Darwin – 0.11 to 0.33 million",
+      q14: "Australia is the only continent without an active volcano.",
+      q15: "It comes from the Latin word 'Australis' meaning 'of the south' or 'southern.'",
+      q16: "The population is mainly concentrated in parts of the eastern and southeastern coasts, with two-thirds of the continent being a desert.",
+      q17: "Its biodiversity is highly unique, with many species found nowhere else in the world."
     };
 
-    function validateAndSubmit() {
+    function submitQuiz() {
       const errorDiv = document.getElementById('error');
-      errorDiv.style.display = 'none';
+      const resultDiv = document.getElementById('result');
+      const feedbackDiv = document.getElementById('feedback');
       
+      // Reset displays
+      errorDiv.style.display = 'none';
+      resultDiv.innerHTML = '';
+      feedbackDiv.innerHTML = '';
+
       // Check if all questions are answered
       let unanswered = [];
       for (let i = 1; i <= 17; i++) {
@@ -148,34 +149,26 @@
           unanswered.push(i);
         }
       }
-      
+
       if (unanswered.length > 0) {
         errorDiv.innerHTML = `Please answer all questions. Missing answers for questions: ${unanswered.join(', ')}`;
         errorDiv.style.display = 'block';
-        errorDiv.scrollIntoView({ behavior: 'smooth' });
         return;
       }
-      
-      calculateScore();
-    }
 
-    function calculateScore() {
-      const resultDiv = document.getElementById('result');
-      const feedbackDiv = document.getElementById('feedback');
-      
+      // Calculate score
       let score = 0;
       let wrongAnswers = [];
-      const totalQuestions = 17;
 
-      // Check each question
-      for (let i = 1; i <= totalQuestions; i++) {
+      for (let i = 1; i <= 17; i++) {
         const questionName = `q${i}`;
         const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
         
         if (selectedOption.value === "1") {
           score++;
         } else {
-          const questionText = document.querySelector(`p:has(+ .options input[name="${questionName}"])`).textContent;
+          const questionText = document.querySelector(`input[name="${questionName}"]:checked`)
+            .closest('.question').querySelector('p').textContent;
           wrongAnswers.push({
             number: i,
             text: questionText.trim(),
@@ -185,26 +178,22 @@
       }
 
       // Display results
-      resultDiv.innerHTML = `Your Score: <span style="color:${score >= totalQuestions/2 ? 'green' : 'red'}">${score}/${totalQuestions}</span>`;
+      resultDiv.innerHTML = `Your Score: <span style="color:${score >= 9 ? 'green' : 'red'}">${score}/17</span>`;
       
       // Display feedback for wrong answers
       if (wrongAnswers.length > 0) {
-        let feedbackHTML = '<h3>Incorrect Answers:</h3>';
+        feedbackDiv.innerHTML = '<h3>Incorrect Answers:</h3>';
         wrongAnswers.forEach(item => {
-          feedbackHTML += `
-            <div class="incorrect-feedback">
+          feedbackDiv.innerHTML += `
+            <div class="feedback-item">
               <p><strong>Question ${item.number}:</strong> ${item.text}</p>
-              <p class="correct-answer">${item.correct}</p>
+              <p class="correct-answer">Correct answer: ${item.correct}</p>
             </div>
           `;
         });
-        feedbackDiv.innerHTML = feedbackHTML;
       } else {
         feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold;">Perfect! All answers correct!</div>';
       }
-
-      // Scroll to results
-      resultDiv.scrollIntoView({ behavior: 'smooth' });
     }
   </script>
 </body>
