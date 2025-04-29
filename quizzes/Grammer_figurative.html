@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Figurative Language Quiz</title>
+  <style>
+    /* General body styling */
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f0f4f8;
+    }
+    /* Container for the quiz elements */
+    .quiz-container {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    /* Styling for each question block */
+    .question {
+      margin-bottom: 25px;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 5px;
+      border-left: 5px solid #1e88e5;
+    }
+    /* Question text styling */
+    .question p {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    /* Styling for radio button options */
+    .options label {
+      display: block;
+      margin: 10px 0 10px 5px;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+    .options label:hover {
+        background-color: #e3f2fd;
+    }
+    /* Spacing for radio button itself */
+    .options input[type="radio"] {
+        margin-right: 8px;
+    }
+    /* Submit button styling */
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    /* Error message styling */
+    #error {
+      color: #d32f2f;
+      padding: 12px;
+      background: #ffebee;
+      border-left: 4px solid #d32f2f;
+      margin: 15px 0;
+      border-radius: 4px;
+      display: none;
+    }
+    /* Result display styling */
+    #result {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin: 20px 0;
+      padding: 15px;
+      background: #e8f5e9;
+      border-left: 4px solid #2e7d32;
+      border-radius: 4px;
+      text-align: center;
+    }
+    /* Container for all feedback items */
+    #feedback h3 {
+        margin-bottom: 15px;
+        color: #c62828;
+    }
+    /* Styling for individual feedback items (wrong answers) */
+    .feedback-item {
+      margin: 15px 0;
+      padding: 15px;
+      background: #fff3e0;
+      border-left: 4px solid #ef6c00;
+      border-radius: 4px;
+    }
+    /* Styling for the correct answer text within feedback */
+    .correct-answer {
+      color: #2e7d32;
+      font-weight: bold;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>🎭 Figurative Language Quiz</h1>
+    <div id="error"></div>
+    <div id="result"></div>
+    <div id="feedback"></div>
+
+    <form id="quizForm">
+      <div class="question">
+        <p>1. Identify the figurative language: "Time is a thief."</p>
+        <div class="options">
+          <label><input type="radio" name="q1" value="0"> Simile</label>
+          <label><input type="radio" name="q1" value="1"> Metaphor</label>
+          <label><input type="radio" name="q1" value="0"> Hyperbole</label>
+          <label><input type="radio" name="q1" value="0"> Personification</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>2. What does "as brave as a lion" mean?</p>
+        <div class="options">
+          <label><input type="radio" name="q2" value="0"> Someone is very strong</label>
+          <label><input type="radio" name="q2" value="1"> Someone is very brave</label>
+          <label><input type="radio" name="q2" value="0"> Someone is very fast</label>
+          <label><input type="radio" name="q2" value="0"> Someone is very loud</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>3. Explain the hyperbole: "I've told you a million times!"</p>
+        <div class="options">
+          <label><input type="radio" name="q3" value="0"> It's a literal count of repetitions</label>
+          <label><input type="radio" name="q3" value="1"> It's an exaggeration to stress repetition</label>
+          <label><input type="radio" name="q3" value="0"> It's a comparison between two things</label>
+          <label><input type="radio" name="q3" value="0"> It's giving human traits to numbers</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>4. What figure of speech is: 'The wind whispered through the trees.'?</p>
+        <div class="options">
+          <label><input type="radio" name="q4" value="0"> Metaphor</label>
+          <label><input type="radio" name="q4" value="1"> Personification</label>
+          <label><input type="radio" name="q4" value="0"> Simile</label>
+          <label><input type="radio" name="q4" value="0"> Hyperbole</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>5. Find the simile: 'She danced like a leaf in the wind.'</p>
+        <div class="options">
+          <label><input type="radio" name="q5" value="0"> She danced</label>
+          <label><input type="radio" name="q5" value="0"> in the wind</label>
+          <label><input type="radio" name="q5" value="1"> like a leaf</label>
+          <label><input type="radio" name="q5" value="0"> The whole sentence is a simile</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>6. What does 'raining cats and dogs' mean?</p>
+        <div class="options">
+          <label><input type="radio" name="q6" value="0"> Animals are falling from the sky</label>
+          <label><input type="radio" name="q6" value="1"> Raining heavily</label>
+          <label><input type="radio" name="q6" value="0"> A light drizzle</label>
+          <label><input type="radio" name="q6" value="0"> No rain at all</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>7. What is personified in: 'The sun smiled at us.'?</p>
+        <div class="options">
+          <label><input type="radio" name="q7" value="0"> The sky</label>
+          <label><input type="radio" name="q7" value="1"> The sun</label>
+          <label><input type="radio" name="q7" value="0"> The people</label>
+          <label><input type="radio" name="q7" value="0"> The weather</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>8. Identify the metaphor: 'His words were a dagger to her heart.'</p>
+        <div class="options">
+          <label><input type="radio" name="q8" value="0"> His words</label>
+          <label><input type="radio" name="q8" value="0"> to her heart</label>
+          <label><input type="radio" name="q8" value="1"> were a dagger</label>
+          <label><input type="radio" name="q8" value="0"> The whole sentence is a metaphor</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>9. Explain the meaning: 'He was a rock during the crisis.'</p>
+        <div class="options">
+          <label><input type="radio" name="q9" value="0"> He was very still</label>
+          <label><input type="radio" name="q9" value="1"> He was strong and supportive</label>
+          <label><input type="radio" name="q9" value="0"> He was very heavy</label>
+          <label><input type="radio" name="q9" value="0"> He was made of stone</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>10. What figure of speech exaggerates something?</p>
+        <div class="options">
+          <label><input type="radio" name="q10" value="0"> Simile</label>
+          <label><input type="radio" name="q10" value="0"> Metaphor</label>
+          <label><input type="radio" name="q10" value="1"> Hyperbole</label>
+          <label><input type="radio" name="q10" value="0"> Personification</label>
+        </div>
+      </div>
+
+      <!-- Additional 10 questions -->
+      <div class="question">
+        <p>11. What figure of speech is: 'The stars danced playfully in the moonlit sky.'?</p>
+        <div class="options">
+          <label><input type="radio" name="q11" value="0"> Metaphor</label>
+          <label><input type="radio" name="q11" value="1"> Personification</label>
+          <label><input type="radio" name="q11" value="0"> Simile</label>
+          <label><input type="radio" name="q11" value="0"> Hyperbole</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>12. Identify the simile: 'Her laughter was music to his ears.'</p>
+        <div class="options">
+          <label><input type="radio" name="q12" value="0"> Her laughter</label>
+          <label><input type="radio" name="q12" value="0"> to his ears</label>
+          <label><input type="radio" name="q12" value="0"> was music</label>
+          <label><input type="radio" name="q12" value="1"> There is no simile in this sentence</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>13. What does the idiom 'break a leg' mean?</p>
+        <div class="options">
+          <label><input type="radio" name="q13" value="0"> To get injured</label>
+          <label><input type="radio" name="q13" value="1"> Good luck</label>
+          <label><input type="radio" name="q13" value="0"> To run fast</label>
+          <label><input type="radio" name="q13" value="0"> To dance well</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>14. What figure of speech is: 'I'm so hungry I could eat a horse!'?</p>
+        <div class="options">
+          <label><input type="radio" name="q14" value="0"> Personification</label>
+          <label><input type="radio" name="q14" value="0"> Metaphor</label>
+          <label><input type="radio" name="q14" value="1"> Hyperbole</label>
+          <label><input type="radio" name="q14" value="0"> Simile</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>15. What is being compared in the metaphor: 'The classroom was a zoo.'?</p>
+        <div class="options">
+          <label><input type="radio" name="q15" value="0"> Animals to students</label>
+          <label><input type="radio" name="q15" value="1"> Classroom to a chaotic place</label>
+          <label><input type="radio" name="q15" value="0"> Teacher to a zookeeper</label>
+          <label><input type="radio" name="q15" value="0"> Books to animal cages</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>16. What does the idiom 'hit the books' mean?</p>
+        <div class="options">
+          <label><input type="radio" name="q16" value="0"> To damage books</label>
+          <label><input type="radio" name="q16" value="1"> To study hard</label>
+          <label><input type="radio" name="q16" value="0"> To organize a library</label>
+          <label><input type="radio" name="q16" value="0"> To throw books</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>17. Identify the personification: 'The flowers begged for water.'</p>
+        <div class="options">
+          <label><input type="radio" name="q17" value="0"> The flowers</label>
+          <label><input type="radio" name="q17" value="1"> begged for water</label>
+          <label><input type="radio" name="q17" value="0"> The whole sentence</label>
+          <label><input type="radio" name="q17" value="0"> There is no personification</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>18. What figure of speech is: 'Her eyes were sparkling diamonds.'?</p>
+        <div class="options">
+          <label><input type="radio" name="q18" value="1"> Metaphor</label>
+          <label><input type="radio" name="q18" value="0"> Simile</label>
+          <label><input type="radio" name="q18" value="0"> Hyperbole</label>
+          <label><input type="radio" name="q18" value="0"> Personification</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>19. What does the idiom 'under the weather' mean?</p>
+        <div class="options">
+          <label><input type="radio" name="q19" value="0"> Caught in rain</label>
+          <label><input type="radio" name="q19" value="1"> Feeling ill</label>
+          <label><input type="radio" name="q19" value="0"> Happy and cheerful</label>
+          <label><input type="radio" name="q19" value="0"> Protected from storms</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>20. Identify the hyperbole: 'This bag weighs a ton!'</p>
+        <div class="options">
+          <label><input type="radio" name="q20" value="0"> This bag</label>
+          <label><input type="radio" name="q20" value="0"> weighs</label>
+          <label><input type="radio" name="q20" value="1"> a ton</label>
+          <label><input type="radio" name="q20" value="0"> The whole sentence</label>
+        </div>
+      </div>
+
+      <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+    </form>
+  </div>
+
+  <script>
+    // Object storing the correct answer TEXT for each question.
+    const correctAnswers = {
+      q1: "Metaphor",
+      q2: "Someone is very brave",
+      q3: "It's an exaggeration to stress repetition",
+      q4: "Personification",
+      q5: "like a leaf",
+      q6: "Raining heavily",
+      q7: "The sun",
+      q8: "were a dagger",
+      q9: "He was strong and supportive",
+      q10: "Hyperbole",
+      q11: "Personification",
+      q12: "There is no simile in this sentence",
+      q13: "Good luck",
+      q14: "Hyperbole",
+      q15: "Classroom to a chaotic place",
+      q16: "To study hard",
+      q17: "begged for water",
+      q18: "Metaphor",
+      q19: "Feeling ill",
+      q20: "a ton"
+    };
+
+    // Total number of questions in the quiz
+    const totalQuestions = 20;
+
+    // Function executed when the "Submit Quiz" button is clicked
+    function submitQuiz() {
+      const errorDiv = document.getElementById('error');
+      const resultDiv = document.getElementById('result');
+      const feedbackDiv = document.getElementById('feedback');
+
+      // --- Reset displays on each submission ---
+      errorDiv.style.display = 'none';
+      errorDiv.innerHTML = '';
+      resultDiv.innerHTML = '';
+      feedbackDiv.innerHTML = '';
+
+      // --- Check if all questions are answered ---
+      let unanswered = [];
+      for (let i = 1; i <= totalQuestions; i++) {
+        if (!document.querySelector(`input[name="q${i}"]:checked`)) {
+          unanswered.push(i);
+        }
+      }
+
+      if (unanswered.length > 0) {
+        errorDiv.innerHTML = `⚠️ Please answer all questions. Missing answers for questions: ${unanswered.join(', ')}`;
+        errorDiv.style.display = 'block';
+        errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      // --- Calculate score and collect feedback ---
+      let score = 0;
+      let wrongAnswersFeedback = [];
+
+      for (let i = 1; i <= totalQuestions; i++) {
+        const questionName = `q${i}`;
+        const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+
+        if (selectedOption && selectedOption.value === "1") {
+          score++;
+        } else if (selectedOption) {
+          const questionDiv = selectedOption.closest('.question');
+          const questionTextElement = questionDiv ? questionDiv.querySelector('p') : null;
+          const questionText = questionTextElement ? questionTextElement.textContent : `Question ${i} text not found`;
+
+          wrongAnswersFeedback.push({
+            number: i,
+            text: questionText.trim(),
+            correct: correctAnswers[questionName] || "Correct answer not defined"
+          });
+        }
+      }
+
+      // --- Display results ---
+      resultDiv.innerHTML = `Your Score: <span style="color:${score >= totalQuestions * 0.7 ? '#2e7d32' : '#d32f2f'}">${score} / ${totalQuestions}</span>`;
+      resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // --- Display feedback for wrong answers ---
+      if (wrongAnswersFeedback.length > 0) {
+        feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+        wrongAnswersFeedback.forEach(item => {
+          feedbackDiv.innerHTML += `
+            <div class="feedback-item">
+              <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+              <p class="correct-answer">Correct answer: ${item.correct}</p>
+            </div>
+          `;
+        });
+      } else {
+        feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+      }
+    }
+  </script>
+</body>
+</html>
