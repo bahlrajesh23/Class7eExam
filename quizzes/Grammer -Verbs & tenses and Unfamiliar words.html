@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Verbs/Tenses & Vocabulary Quiz</title>
+  <style>
+    /* General body styling */
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f0f4f8;
+    }
+    /* Container for the quiz elements */
+    .quiz-container {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    /* Styling for each question block */
+    .question {
+      margin-bottom: 25px;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 5px;
+      border-left: 5px solid #1e88e5;
+    }
+    /* Question text styling */
+    .question p {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    /* Styling for radio button options */
+    .options label {
+      display: block;
+      margin: 10px 0 10px 5px;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+    .options label:hover {
+        background-color: #e3f2fd;
+    }
+    /* Spacing for radio button itself */
+    .options input[type="radio"] {
+        margin-right: 8px;
+    }
+    /* Submit button styling */
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    /* Error message styling */
+    #error {
+      color: #d32f2f;
+      padding: 12px;
+      background: #ffebee;
+      border-left: 4px solid #d32f2f;
+      margin: 15px 0;
+      border-radius: 4px;
+      display: none;
+    }
+    /* Result display styling */
+    #result {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin: 20px 0;
+      padding: 15px;
+      background: #e8f5e9;
+      border-left: 4px solid #2e7d32;
+      border-radius: 4px;
+      text-align: center;
+    }
+    /* Container for all feedback items */
+    #feedback h3 {
+        margin-bottom: 15px;
+        color: #c62828;
+    }
+    /* Styling for individual feedback items (wrong answers) */
+    .feedback-item {
+      margin: 15px 0;
+      padding: 15px;
+      background: #fff3e0;
+      border-left: 4px solid #ef6c00;
+      border-radius: 4px;
+    }
+    /* Styling for the correct answer text within feedback */
+    .correct-answer {
+      color: #2e7d32;
+      font-weight: bold;
+      margin-top: 8px;
+    }
+    .section-title {
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>📚 Verbs/Tenses & Vocabulary Quiz</h1>
+    <div id="error"></div>
+    <div id="result"></div>
+    <div id="feedback"></div>
+
+    <form id="quizForm">
+      <h2 class="section-title">Verbs and Tenses</h2>
+      
+      <div class="question">
+        <p>1. Choose the correct past tense: She (go) to the market yesterday.</p>
+        <div class="options">
+          <label><input type="radio" name="q1" value="0"> She goes to the market yesterday.</label>
+          <label><input type="radio" name="q1" value="1"> She went to the market yesterday.</label>
+          <label><input type="radio" name="q1" value="0"> She will go to the market yesterday.</label>
+          <label><input type="radio" name="q1" value="0"> She has gone to the market yesterday.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>2. Identify the tense: "He is playing football."</p>
+        <div class="options">
+          <label><input type="radio" name="q2" value="0"> Present simple tense</label>
+          <label><input type="radio" name="q2" value="1"> Present continuous tense</label>
+          <label><input type="radio" name="q2" value="0"> Past continuous tense</label>
+          <label><input type="radio" name="q2" value="0"> Future continuous tense</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>3. Fill in the blank with future tense: I _____ (visit) my grandma tomorrow.</p>
+        <div class="options">
+          <label><input type="radio" name="q3" value="0"> I visited my grandma tomorrow.</label>
+          <label><input type="radio" name="q3" value="0"> I am visiting my grandma tomorrow.</label>
+          <label><input type="radio" name="q3" value="1"> I will visit my grandma tomorrow.</label>
+          <label><input type="radio" name="q3" value="0"> I have visited my grandma tomorrow.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>4. Convert to past perfect: They eat their lunch.</p>
+        <div class="options">
+          <label><input type="radio" name="q4" value="0"> They ate their lunch.</label>
+          <label><input type="radio" name="q4" value="1"> They had eaten their lunch.</label>
+          <label><input type="radio" name="q4" value="0"> They were eating their lunch.</label>
+          <label><input type="radio" name="q4" value="0"> They have eaten their lunch.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>5. Which verb is in the past tense? (run, walked, jump)</p>
+        <div class="options">
+          <label><input type="radio" name="q5" value="0"> run</label>
+          <label><input type="radio" name="q5" value="1"> walked</label>
+          <label><input type="radio" name="q5" value="0"> jump</label>
+          <label><input type="radio" name="q5" value="0"> All of them</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>6. Rewrite in present perfect: She finishes her work.</p>
+        <div class="options">
+          <label><input type="radio" name="q6" value="0"> She finished her work.</label>
+          <label><input type="radio" name="q6" value="1"> She has finished her work.</label>
+          <label><input type="radio" name="q6" value="0"> She is finishing her work.</label>
+          <label><input type="radio" name="q6" value="0"> She will finish her work.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>7. What is the base form of 'drank'?</p>
+        <div class="options">
+          <label><input type="radio" name="q7" value="0"> drunk</label>
+          <label><input type="radio" name="q7" value="1"> drink</label>
+          <label><input type="radio" name="q7" value="0"> drinking</label>
+          <label><input type="radio" name="q7" value="0"> drank</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>8. Which sentence is in future tense? (She sings. / She will sing.)</p>
+        <div class="options">
+          <label><input type="radio" name="q8" value="0"> She sings.</label>
+          <label><input type="radio" name="q8" value="1"> She will sing.</label>
+          <label><input type="radio" name="q8" value="0"> Both</label>
+          <label><input type="radio" name="q8" value="0"> Neither</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>9. Choose the correct verb: He ____ (go/goes) to school every day.</p>
+        <div class="options">
+          <label><input type="radio" name="q9" value="0"> go</label>
+          <label><input type="radio" name="q9" value="1"> goes</label>
+          <label><input type="radio" name="q9" value="0"> going</label>
+          <label><input type="radio" name="q9" value="0"> gone</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>10. Identify the tense: They had been playing.</p>
+        <div class="options">
+          <label><input type="radio" name="q10" value="0"> Past continuous tense</label>
+          <label><input type="radio" name="q10" value="1"> Past perfect continuous tense</label>
+          <label><input type="radio" name="q10" value="0"> Present perfect continuous tense</label>
+          <label><input type="radio" name="q10" value="0"> Future perfect continuous tense</label>
+        </div>
+      </div>
+
+      <!-- Additional 10 questions for Verbs/Tenses -->
+      <div class="question">
+        <p>11. Which sentence uses the present perfect tense correctly?</p>
+        <div class="options">
+          <label><input type="radio" name="q11" value="0"> I see that movie last week.</label>
+          <label><input type="radio" name="q11" value="1"> I have seen that movie three times.</label>
+          <label><input type="radio" name="q11" value="0"> I am seeing that movie tomorrow.</label>
+          <label><input type="radio" name="q11" value="0"> I saw that movie already.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>12. Convert to future continuous: She writes a letter.</p>
+        <div class="options">
+          <label><input type="radio" name="q12" value="0"> She wrote a letter.</label>
+          <label><input type="radio" name="q12" value="0"> She will write a letter.</label>
+          <label><input type="radio" name="q12" value="1"> She will be writing a letter.</label>
+          <label><input type="radio" name="q12" value="0"> She has written a letter.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>13. What is the past participle of 'swim'?</p>
+        <div class="options">
+          <label><input type="radio" name="q13" value="0"> swimmed</label>
+          <label><input type="radio" name="q13" value="0"> swam</label>
+          <label><input type="radio" name="q13" value="1"> swum</label>
+          <label><input type="radio" name="q13" value="0"> swimming</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>14. Identify the tense: "By next year, I will have graduated."</p>
+        <div class="options">
+          <label><input type="radio" name="q14" value="0"> Future simple</label>
+          <label><input type="radio" name="q14" value="1"> Future perfect</label>
+          <label><input type="radio" name="q14" value="0"> Future continuous</label>
+          <label><input type="radio" name="q14" value="0"> Present perfect</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>15. Which sentence is in the passive voice?</p>
+        <div class="options">
+          <label><input type="radio" name="q15" value="0"> The cat chased the mouse.</label>
+          <label><input type="radio" name="q15" value="1"> The mouse was chased by the cat.</label>
+          <label><input type="radio" name="q15" value="0"> The cat is chasing the mouse.</label>
+          <label><input type="radio" name="q15" value="0"> The cat will chase the mouse.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>16. Choose the correct past perfect continuous form: They (wait) for hours when the bus finally arrived.</p>
+        <div class="options">
+          <label><input type="radio" name="q16" value="0"> waited</label>
+          <label><input type="radio" name="q16" value="0"> were waiting</label>
+          <label><input type="radio" name="q16" value="1"> had been waiting</label>
+          <label><input type="radio" name="q16" value="0"> have waited</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>17. What is the present participle of 'lie' (to recline)?</p>
+        <div class="options">
+          <label><input type="radio" name="q17" value="0"> lied</label>
+          <label><input type="radio" name="q17" value="1"> lying</label>
+          <label><input type="radio" name="q17" value="0"> lay</label>
+          <label><input type="radio" name="q17" value="0"> lain</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>18. Which sentence uses the subjunctive mood correctly?</p>
+        <div class="options">
+          <label><input type="radio" name="q18" value="0"> If I was rich, I would travel the world.</label>
+          <label><input type="radio" name="q18" value="1"> If I were rich, I would travel the world.</label>
+          <label><input type="radio" name="q18" value="0"> If I am rich, I will travel the world.</label>
+          <label><input type="radio" name="q18" value="0"> If I had been rich, I traveled the world.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>19. Convert to reported speech: She said, "I am going to the market."</p>
+        <div class="options">
+          <label><input type="radio" name="q19" value="0"> She said she is going to the market.</label>
+          <label><input type="radio" name="q19" value="1"> She said she was going to the market.</label>
+          <label><input type="radio" name="q19" value="0"> She said she goes to the market.</label>
+          <label><input type="radio" name="q19" value="0"> She said she will go to the market.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>20. Which verb is irregular?</p>
+        <div class="options">
+          <label><input type="radio" name="q20" value="0"> walk</label>
+          <label><input type="radio" name="q20" value="0"> talk</label>
+          <label><input type="radio" name="q20" value="1"> sing</label>
+          <label><input type="radio" name="q20" value="0"> jump</label>
+        </div>
+      </div>
+
+      <h2 class="section-title">Meanings of Unfamiliar Words</h2>
+
+      <div class="question">
+        <p>21. What does the word 'gleamed' most likely mean in this sentence: "The floor gleamed after cleaning"?</p>
+        <div class="options">
+          <label><input type="radio" name="q21" value="0"> Was dirty</label>
+          <label><input type="radio" name="q21" value="1"> Shone or sparkled</label>
+          <label><input type="radio" name="q21" value="0"> Was wet</label>
+          <label><input type="radio" name="q21" value="0"> Made noise</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>22. Use a dictionary to find the meaning of "reluctant."</p>
+        <div class="options">
+          <label><input type="radio" name="q22" value="0"> Eager or enthusiastic</label>
+          <label><input type="radio" name="q22" value="1"> Unwilling or hesitant</label>
+          <label><input type="radio" name="q22" value="0"> Angry or upset</label>
+          <label><input type="radio" name="q22" value="0"> Happy or joyful</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>23. Guess the meaning from context: "She trudged through the snow, exhausted."</p>
+        <div class="options">
+          <label><input type="radio" name="q23" value="0"> Ran quickly</label>
+          <label><input type="radio" name="q23" value="1"> Walked slowly and with effort</label>
+          <label><input type="radio" name="q23" value="0"> Danced gracefully</label>
+          <label><input type="radio" name="q23" value="0"> Jumped happily</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>24. What does 'generous' mean?</p>
+        <div class="options">
+          <label><input type="radio" name="q24" value="0"> Mean or stingy</label>
+          <label><input type="radio" name="q24" value="1"> Willing to give or share freely</label>
+          <label><input type="radio" name="q24" value="0"> Angry or upset</label>
+          <label><input type="radio" name="q24" value="0"> Quiet or shy</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>25. Find a synonym for 'happy'.</p>
+        <div class="options">
+          <label><input type="radio" name="q25" value="0"> Sad</label>
+          <label><input type="radio" name="q25" value="1"> Joyful</label>
+          <label><input type="radio" name="q25" value="0"> Angry</label>
+          <label><input type="radio" name="q25" value="0"> Tired</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>26. What does 'murmur' mean in this sentence: "He spoke in a low murmur."</p>
+        <div class="options">
+          <label><input type="radio" name="q26" value="0"> Loud shout</label>
+          <label><input type="radio" name="q26" value="1"> Soft and low sound</label>
+          <label><input type="radio" name="q26" value="0"> Musical tone</label>
+          <label><input type="radio" name="q26" value="0"> Angry voice</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>27. Use the word 'ancient' in a sentence.</p>
+        <div class="options">
+          <label><input type="radio" name="q27" value="0"> The ancient computer was made last year.</label>
+          <label><input type="radio" name="q27" value="1"> The ancient castle stood tall.</label>
+          <label><input type="radio" name="q27" value="0"> The ancient baby just learned to walk.</label>
+          <label><input type="radio" name="q27" value="0"> The ancient news was just reported.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>28. What is the opposite of 'victory'?</p>
+        <div class="options">
+          <label><input type="radio" name="q28" value="0"> Success</label>
+          <label><input type="radio" name="q28" value="1"> Defeat</label>
+          <label><input type="radio" name="q28" value="0"> Celebration</label>
+          <label><input type="radio" name="q28" value="0"> Achievement</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>29. Choose the correct meaning: "Cautiously" (bravely, carefully, quickly)</p>
+        <div class="options">
+          <label><input type="radio" name="q29" value="0"> bravely</label>
+          <label><input type="radio" name="q29" value="1"> carefully</label>
+          <label><input type="radio" name="q29" value="0"> quickly</label>
+          <label><input type="radio" name="q29" value="0"> all of these</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>30. Which word means 'feeling tired'? (energetic, exhausted, joyful)</p>
+        <div class="options">
+          <label><input type="radio" name="q30" value="0"> energetic</label>
+          <label><input type="radio" name="q30" value="1"> exhausted</label>
+          <label><input type="radio" name="q30" value="0"> joyful</label>
+          <label><input type="radio" name="q30" value="0"> none of these</label>
+        </div>
+      </div>
+
+      <!-- Additional 10 questions for Unfamiliar Words -->
+      <div class="question">
+        <p>31. What does 'abundant' mean?</p>
+        <div class="options">
+          <label><input type="radio" name="q31" value="0"> Very little</label>
+          <label><input type="radio" name="q31" value="1"> More than enough</label>
+          <label><input type="radio" name="q31" value="0"> Exactly the right amount</label>
+          <label><input type="radio" name="q31" value="0"> None at all</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>32. What is the meaning of 'diligent'?</p>
+        <div class="options">
+          <label><input type="radio" name="q32" value="0"> Lazy</label>
+          <label><input type="radio" name="q32" value="1"> Hard-working</label>
+          <label><input type="radio" name="q32" value="0"> Angry</label>
+          <label><input type="radio" name="q32" value="0"> Careless</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>33. What does 'fragile' mean?</p>
+        <div class="options">
+          <label><input type="radio" name="q33" value="0"> Strong</label>
+          <label><input type="radio" name="q33" value="1"> Easily broken</label>
+          <label><input type="radio" name="q33" value="0"> Heavy</label>
+          <label><input type="radio" name="q33" value="0"> Flexible</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>34. What is a synonym for 'enormous'?</p>
+        <div class="options">
+          <label><input type="radio" name="q34" value="0"> Small</label>
+          <label><input type="radio" name="q34" value="1"> Huge</label>
+          <label><input type="radio" name="q34" value="0"> Average</label>
+          <label><input type="radio" name="q34" value="0"> Tiny</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>35. What does 'vanish' mean?</p>
+        <div class="options">
+          <label><input type="radio" name="q35" value="0"> Appear</label>
+          <label><input type="radio" name="q35" value="1"> Disappear</label>
+          <label><input type="radio" name="q35" value="0"> Grow</label>
+          <label><input type="radio" name="q35" value="0"> Shrink</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>36. What is the meaning of 'grateful'?</p>
+        <div class="options">
+          <label><input type="radio" name="q36" value="0"> Angry</label>
+          <label><input type="radio" name="q36" value="1"> Thankful</label>
+          <label><input type="radio" name="q36" value="0"> Sad</label>
+          <label><input type="radio" name="q36" value="0"> Jealous</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>37. What does 'observe' mean?</p>
+        <div class="options">
+          <label><input type="radio" name="q37" value="0"> Ignore</label>
+          <label><input type="radio" name="q37" value="1"> Watch carefully</label>
+          <label><input type="radio" name="q37" value="0"> Forget</label>
+          <label><input type="radio" name="q37" value="0"> Destroy</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>38. What is the opposite of 'arrive'?</p>
+        <div class="options">
+          <label><input type="radio" name="q38" value="0"> Come</label>
+          <label><input type="radio" name="q38" value="1"> Depart</label>
+          <label><input type="radio" name="q38" value="0"> Stay</label>
+          <label><input type="radio" name="q38" value="0"> Wait</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>39. What does 'whisper' mean?</p>
+        <div class="options">
+          <label><input type="radio" name="q39" value="0"> Shout loudly</label>
+          <label><input type="radio" name="q39" value="1"> Speak very softly</label>
+          <label><input type="radio" name="q39" value="0"> Sing a song</label>
+          <label><input type="radio" name="q39" value="0"> Laugh heartily</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>40. What is the meaning of 'anxious'?</p>
+        <div class="options">
+          <label><input type="radio" name="q40" value="0"> Happy and carefree</label>
+          <label><input type="radio" name="q40" value="1"> Worried or nervous</label>
+          <label><input type="radio" name="q40" value="0"> Angry and upset</label>
+          <label><input type="radio" name="q40" value="0"> Sleepy and tired</label>
+        </div>
+      </div>
+
+      <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+    </form>
+  </div>
+
+  <script>
+    // Object storing the correct answer TEXT for each question.
+    const correctAnswers = {
+      q1: "She went to the market yesterday.",
+      q2: "Present continuous tense",
+      q3: "I will visit my grandma tomorrow.",
+      q4: "They had eaten their lunch.",
+      q5: "walked",
+      q6: "She has finished her work.",
+      q7: "drink",
+      q8: "She will sing.",
+      q9: "goes",
+      q10: "Past perfect continuous tense",
+      q11: "I have seen that movie three times.",
+      q12: "She will be writing a letter.",
+      q13: "swum",
+      q14: "Future perfect",
+      q15: "The mouse was chased by the cat.",
+      q16: "had been waiting",
+      q17: "lying",
+      q18: "If I were rich, I would travel the world.",
+      q19: "She said she was going to the market.",
+      q20: "sing",
+      q21: "Shone or sparkled",
+      q22: "Unwilling or hesitant",
+      q23: "Walked slowly and with effort",
+      q24: "Willing to give or share freely",
+      q25: "Joyful",
+      q26: "Soft and low sound",
+      q27: "The ancient castle stood tall.",
+      q28: "Defeat",
+      q29: "carefully",
+      q30: "exhausted",
+      q31: "More than enough",
+      q32: "Hard-working",
+      q33: "Easily broken",
+      q34: "Huge",
+      q35: "Disappear",
+      q36: "Thankful",
+      q37: "Watch carefully",
+      q38: "Depart",
+      q39: "Speak very softly",
+      q40: "Worried or nervous"
+    };
+
+    // Total number of questions in the quiz
+    const totalQuestions = 40;
+
+    // Function executed when the "Submit Quiz" button is clicked
+    function submitQuiz() {
+      const errorDiv = document.getElementById('error');
+      const resultDiv = document.getElementById('result');
+      const feedbackDiv = document.getElementById('feedback');
+
+      // --- Reset displays on each submission ---
+      errorDiv.style.display = 'none';
+      errorDiv.innerHTML = '';
+      resultDiv.innerHTML = '';
+      feedbackDiv.innerHTML = '';
+
+      // --- Check if all questions are answered ---
+      let unanswered = [];
+      for (let i = 1; i <= totalQuestions; i++) {
+        if (!document.querySelector(`input[name="q${i}"]:checked`)) {
+          unanswered.push(i);
+        }
+      }
+
+      if (unanswered.length > 0) {
+        errorDiv.innerHTML = `⚠️ Please answer all questions. Missing answers for questions: ${unanswered.join(', ')}`;
+        errorDiv.style.display = 'block';
+        errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      // --- Calculate score and collect feedback ---
+      let score = 0;
+      let wrongAnswersFeedback = [];
+
+      for (let i = 1; i <= totalQuestions; i++) {
+        const questionName = `q${i}`;
+        const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+
+        if (selectedOption && selectedOption.value === "1") {
+          score++;
+        } else if (selectedOption) {
+          const questionDiv = selectedOption.closest('.question');
+          const questionTextElement = questionDiv ? questionDiv.querySelector('p') : null;
+          const questionText = questionTextElement ? questionTextElement.textContent : `Question ${i} text not found`;
+
+          wrongAnswersFeedback.push({
+            number: i,
+            text: questionText.trim(),
+            correct: correctAnswers[questionName] || "Correct answer not defined"
+          });
+        }
+      }
+
+      // --- Display results ---
+      resultDiv.innerHTML = `Your Score: <span style="color:${score >= totalQuestions * 0.7 ? '#2e7d32' : '#d32f2f'}">${score} / ${totalQuestions}</span>`;
+      resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // --- Display feedback for wrong answers ---
+      if (wrongAnswersFeedback.length > 0) {
+        feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+        wrongAnswersFeedback.forEach(item => {
+          feedbackDiv.innerHTML += `
+            <div class="feedback-item">
+              <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+              <p class="correct-answer">Correct answer: ${item.correct}</p>
+            </div>
+          `;
+        });
+      } else {
+        feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+      }
+    }
+  </script>
+</body>
+</html>
