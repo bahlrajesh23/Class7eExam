@@ -341,4 +341,104 @@
             q10: "Soil erosion",
             q11: "Planting trees",
             q12: "Deforestation",
-            q13: "To plant trees in rows to hold
+            q13: "To plant trees in rows to hold the soil in place",
+            q14: "By practicing terrace farming.",
+            q15: "Ploughing across the slopes following the natural contours.",
+            q16: "Shelter belts",
+            q17: "It helps to maintain soil fertility and prevent nutrient depletion."
+        };
+
+        // Total number of questions in the quiz
+        const totalQuestions = 17;
+
+        // Function executed when the "Submit Quiz" button is clicked
+        function submitQuiz() {
+            const form = document.getElementById('quizForm'); // Get form element
+            const errorDiv = document.getElementById('error');
+            const resultDiv = document.getElementById('result');
+            const feedbackDiv = document.getElementById('feedback');
+
+            // --- Reset displays on each submission ---
+            errorDiv.style.display = 'none'; // Hide error message
+            errorDiv.innerHTML = ''; // Clear previous error text
+            resultDiv.innerHTML = ''; // Clear previous result text
+            feedbackDiv.innerHTML = ''; // Clear previous feedback text
+
+            // --- Check if all questions are answered ---
+            let unanswered = []; // Array to store the numbers of unanswered questions
+            // Loop from 1 to totalQuestions
+            for (let i = 1; i <= totalQuestions; i++) {
+                // Check if there is NO checked radio button for the question name q{i}
+                if (!document.querySelector(`input[name="q${i}"]:checked`)) {
+                    unanswered.push(i); // Add the question number to the unanswered list
+                }
+            }
+
+            // If there are any unanswered questions
+            if (unanswered.length > 0) {
+                // Construct and display the error message
+                errorDiv.innerHTML = `⚠️ Please answer all ${totalQuestions} questions. Missing answers for questions: ${unanswered.join(', ')}`;
+                errorDiv.style.display = 'block'; // Make the error message visible
+                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the error message
+                return; // Stop the function execution
+            }
+
+            // --- Calculate score and collect feedback ---
+            let score = 0; // Initialize score
+            let wrongAnswersFeedback = []; // Array to store info about incorrect answers
+
+            // Loop through each question again
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`; // e.g., "q1", "q2"
+                // Find the radio button that is checked for this question
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+
+                // Check if the selected option's value is "1" (indicating correct)
+                if (selectedOption && selectedOption.value === "1") {
+                    score++; // Increment score if correct
+                } else if (selectedOption) { // If an option was selected but it was wrong (value != "1")
+                    // Find the parent '.question' div for the current radio button
+                    const questionDiv = selectedOption.closest('.question');
+                    // Find the question text (<p> tag) within that div
+                    const questionTextElement = questionDiv ? questionDiv.querySelector('p') : null;
+                    const questionText = questionTextElement ? questionTextElement.textContent : `Question ${i} text not found`; // Fallback text
+
+                    // Add details about the incorrect answer to the feedback array
+                    wrongAnswersFeedback.push({
+                        number: i, // Question number
+                        text: questionText.trim(), // The text of the question
+                        correct: correctAnswers[questionName] || "Correct answer not defined" // The correct answer text from the object
+                    });
+                }
+            }
+
+            // --- Display results ---
+            // Show the final score. Color the score green if >= 12 (approx 70%), red otherwise.
+            // Adjust the threshold (12) as needed.
+            resultDiv.innerHTML = `Your Score: <span style="color:${score >= 12 ? '#2e7d32' : '#d32f2f'}">${score} / ${totalQuestions}</span>`;
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the results
+
+            // --- Display feedback for wrong answers ---
+            // Check if there were any incorrect answers
+            if (wrongAnswersFeedback.length > 0) {
+                // Start the feedback section with a heading
+                feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+                // Loop through each item in the wrongAnswersFeedback array
+                wrongAnswersFeedback.forEach(item => {
+                    // Append the HTML for each feedback item
+                    feedbackDiv.innerHTML += `
+                        <div class="feedback-item">
+                            <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+                            <p class="correct-answer">Correct answer: ${item.correct}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                // If all answers were correct, display a success message
+                feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+            }
+        }
+    </script>
+</body>
+
+</html>
