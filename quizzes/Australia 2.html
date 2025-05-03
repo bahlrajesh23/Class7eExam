@@ -1,385 +1,495 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Australia Quiz</title>
-  <style>
-    /* General body styling */
-    body {
-      font-family: Arial, sans-serif; /* Standard font */
-      max-width: 800px; /* Limit content width for readability */
-      margin: 20px auto; /* Center the content with margin */
-      padding: 20px; /* Padding around the content */
-      background-color: #f0f4f8; /* Light background for the page */
-    }
-    /* Container for the quiz elements */
-    .quiz-container {
-      background: #ffffff; /* White background for the quiz area */
-      padding: 25px; /* Padding inside the container */
-      border-radius: 8px; /* Rounded corners */
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Subtle shadow */
-    }
-    /* Styling for each question block */
-    .question {
-      margin-bottom: 25px; /* Space below each question */
-      padding: 20px; /* Padding inside question block */
-      background: #f9f9f9; /* Slightly off-white background for questions */
-      border-radius: 5px; /* Rounded corners */
-      border-left: 5px solid #1e88e5; /* Accent border on the left */
-    }
-    /* Question text styling */
-    .question p {
-        font-weight: bold; /* Make question text bold */
-        margin-bottom: 10px; /* Space below question text */
-        color: #333; /* Darker text color */
-    }
-    /* Styling for radio button options */
-    .options label {
-      display: block; /* Each option on a new line */
-      margin: 10px 0 10px 5px; /* Spacing around options */
-      padding: 8px; /* Padding inside label */
-      border-radius: 4px; /* Rounded corners for label */
-      cursor: pointer; /* Indicate it's clickable */
-      transition: background-color 0.2s ease-in-out; /* Smooth background transition on hover */
-    }
-    .options label:hover {
-        background-color: #e3f2fd; /* Light blue background on hover */
-    }
-    /* Spacing for radio button itself */
-    .options input[type="radio"] {
-        margin-right: 8px; /* Space between radio button and text */
-    }
-    /* Submit button styling */
-    button {
-      background: #4CAF50; /* Green background */
-      color: white; /* White text */
-      border: none; /* No border */
-      padding: 12px 25px; /* Padding inside button */
-      border-radius: 4px; /* Rounded corners */
-      cursor: pointer; /* Pointer cursor on hover */
-      font-size: 16px; /* Font size */
-      margin-top: 20px; /* Space above the button */
-      display: block; /* Make it a block element */
-      margin-left: auto; /* Center button (along with margin-right: auto) */
-      margin-right: auto;
-      transition: background-color 0.3s ease; /* Smooth transition */
-    }
-    button:hover {
-      background: #45a049; /* Darker green on hover */
-    }
-    /* Error message styling */
-    #error {
-      color: #d32f2f; /* Red text color */
-      padding: 12px; /* Padding */
-      background: #ffebee; /* Light red background */
-      border-left: 4px solid #d32f2f; /* Red accent border */
-      margin: 15px 0; /* Margin top and bottom */
-      border-radius: 4px; /* Rounded corners */
-      display: none; /* Hidden by default */
-    }
-    /* Result display styling */
-    #result {
-      font-weight: bold; /* Bold text */
-      font-size: 1.2em; /* Larger font size */
-      margin: 20px 0; /* Margin top and bottom */
-      padding: 15px; /* Padding */
-      background: #e8f5e9; /* Light green background */
-      border-left: 4px solid #2e7d32; /* Green accent border */
-      border-radius: 4px; /* Rounded corners */
-      text-align: center; /* Center the text */
-    }
-    /* Container for all feedback items */
-    #feedback h3 {
-        margin-bottom: 15px; /* Space below the feedback heading */
-        color: #c62828; /* Reddish color for the heading */
-    }
-    /* Styling for individual feedback items (wrong answers) */
-    .feedback-item {
-      margin: 15px 0; /* Margin top and bottom */
-      padding: 15px; /* Padding */
-      background: #fff3e0; /* Light orange background */
-      border-left: 4px solid #ef6c00; /* Orange accent border */
-      border-radius: 4px; /* Rounded corners */
-    }
-    /* Styling for the correct answer text within feedback */
-    .correct-answer {
-      color: #2e7d32; /* Green text color for correct answer */
-      font-weight: bold; /* Bold text */
-      margin-top: 8px; /* Space above the correct answer text */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Uluru and Great Artesian Basin Quizzes</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+
+        /* Container for the quiz elements */
+        .quiz-container {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Link back style */
+        .navigation-link {
+            display: block;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navigation-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Styling for each question block */
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            border-left: 5px solid #1e88e5;
+        }
+
+        /* Question text styling */
+        .question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Styling for radio button options */
+        .options label {
+            display: block;
+            margin: 10px 0 10px 5px;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .options label:hover {
+            background-color: #e3f2fd;
+        }
+
+        /* Spacing for radio button itself */
+        .options input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        /* Submit button styling */
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        /* Error message styling */
+        #error {
+            color: #d32f2f;
+            padding: 12px;
+            background: #ffebee;
+            border-left: 4px solid #d32f2f;
+            margin: 15px 0;
+            border-radius: 4px;
+            display: none;
+        }
+
+        /* Result display styling */
+        #result {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 15px;
+            background: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Container for all feedback items */
+        #feedback {
+            margin-top: 20px;
+        }
+
+        #feedback h3 {
+            margin-bottom: 15px;
+            color: #c62828;
+        }
+
+        /* Styling for individual feedback items (wrong answers) */
+        .feedback-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: #fff3e0;
+            border-left: 4px solid #ef6c00;
+            border-radius: 4px;
+        }
+
+        /* Styling for the correct answer text within feedback */
+        .correct-answer {
+            color: #2e7d32;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="quiz-container">
-    <h1>🇦🇺 Australia Quiz</h1>
-    <div id="error"></div>
-    <div id="result"></div>
-    <div id="feedback"></div>
+    <a href="../index.html" class="navigation-link">⬅️ Back to Quiz List</a>
 
-    <form id="quizForm">
-      <div class="question">
-        <p>1. What makes Australia unique in terms of its geographical and political identity?</p>
-        <div class="options">
-          <label><input type="radio" name="q1" value="0"> It is part of a group of several countries on one continent.</label>
-          <label><input type="radio" name="q1" value="1"> It is the world's only continent that is also a country.</label> <label><input type="radio" name="q1" value="0"> It is the largest island nation in terms of population.</label>
-          <label><input type="radio" name="q1" value="0"> It is divided into several independent regions.</label>
-        </div>
-      </div>
+    <div class="quiz-container">
+        <h1><span role="img" aria-label="Uluru">🪨</span> Uluru / Ayers Rock Quiz</h1>
+        <form id="uluruQuizForm">
+            <div id="error"></div>
+            <div id="result"></div>
+            <div id="feedback"></div>
 
-      <div class="question">
-        <p>2. Why is Australia often called an "island continent"?</p>
-        <div class="options">
-          <label><input type="radio" name="q2" value="1"> Because it is entirely surrounded by water.</label> <label><input type="radio" name="q2" value="0"> Because it has many large lakes instead of seas.</label>
-          <label><input type="radio" name="q2" value="0"> Because it borders another large continent on one side.</label>
-          <label><input type="radio" name="q2" value="0"> Because it is connected to Antarctica by an isthmus.</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <p>3. What is a common nickname for Australia?</p>
-        <div class="options">
-          <label><input type="radio" name="q3" value="0"> The Great White North</label>
-          <label><input type="radio" name="q3" value="1"> Land Down Under</label> <label><input type="radio" name="q3" value="0"> The Emerald Isle</label>
-          <label><input type="radio" name="q3" value="0"> The Land of the Rising Sun</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <p>4. Which famous landmarks are in Australia?</p>
-        <div class="options">
-          <label><input type="radio" name="q4" value="0"> Eiffel Tower and Colosseum</label>
-          <label><input type="radio" name="q4" value="0"> Statue of Liberty and Mount Rushmore</label>
-          <label><input type="radio" name="q4" value="1"> Sydney Opera House and the Great Barrier Reef</label> <label><input type="radio" name="q4" value="0"> Machu Picchu and Christ the Redeemer</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <p>5. What is the approximate area of Australia?</p>
-        <div class="options">
-          <label><input type="radio" name="q5" value="0"> 5 million km²</label>
-          <label><input type="radio" name="q5" value="1"> Australia – 7,688,287 km²</label> <label><input type="radio" name="q5" value="0"> 10 million km²</label>
-          <label><input type="radio" name="q5" value="0"> 1 million km²</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <p>6. How does Australia's area compare to Maharashtra and Mumbai?</p>
-        <div class="options">
-          <label><input type="radio" name="q6" value="0"> Mumbai > Maharashtra > Australia</label>
-          <label><input type="radio" name="q6" value="0"> Maharashtra > Australia > Mumbai</label>
-          <label><input type="radio" name="q6" value="1"> Australia > Maharashtra > Mumbai</label> <label><input type="radio" name="q6" value="0"> Australia > Mumbai > Maharashtra</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <p>7. Who claimed the eastern coast of Australia for Great Britain?</p>
-        <div class="options">
-          <label><input type="radio" name="q7" value="0"> Ferdinand Magellan</label>
-          <label><input type="radio" name="q7" value="1"> Captain James Cook mapped the eastern coast and named it 'New South Wales'</label> <label><input type="radio" name="q7" value="0"> Christopher Columbus</label>
-          <label><input type="radio" name="q7" value="0"> Abel Tasman</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <p>8. Which European explorer is credited with the first recorded landing on Australia?</p>
-        <div class="options">
-          <label><input type="radio" name="q8" value="0"> Captain James Cook</label>
-          <label><input type="radio" name="q8" value="0"> Dirk Hartog</label>
-          <label><input type="radio" name="q8" value="1"> Captain Willem Janszoon</label> <label><input type="radio" name="q8" value="0"> Luis Váez de Torres</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <p>9. In what year did the colonies of Australia federate to become the Commonwealth of Australia?</p>
-        <div class="options">
-          <label><input type="radio" name="q9" value="0"> 1888</label>
-          <label><input type="radio" name="q9" value="1"> 1901</label> <label><input type="radio" name="q9" value="0"> 1925</label>
-          <label><input type="radio" name="q9" value="0"> 1788</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <p>10. What are the approximate latitude and longitude ranges of mainland Australia?</p>
-        <div class="options">
-          <label><input type="radio" name="q10" value="0"> 20°N to 50°N; 100°W to 130°W</label>
-          <label><input type="radio" name="q10" value="1"> 10°S to 44°S; 113°E to 154°E</label> <label><input type="radio" name="q10" value="0"> 0° to 30°S; 90°E to 120°E</label>
-          <label><input type="radio" name="q10" value="0"> 30°S to 60°S; 140°E to 170°E</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <p>11. Which bodies of water surround Australia?</p>
-        <div class="options">
-          <label><input type="radio" name="q11" value="0"> Atlantic Ocean, Arctic Ocean</label>
-          <label><input type="radio" name="q11" value="0"> Mediterranean Sea, Black Sea</label>
-          <label><input type="radio" name="q11" value="1"> North: Timor Sea, Arafura Sea, Gulf of Carpentaria, Coral Sea; East: Pacific Ocean; West: Indian Ocean; South: Southern Ocean</label> <label><input type="radio" name="q11" value="0"> Caribbean Sea, Gulf of Mexico</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <p>12. How is Australia politically divided?</p>
-        <div class="options">
-          <label><input type="radio" name="q12" value="0"> 10 provinces</label>
-          <label><input type="radio" name="q12" value="1"> 6 states and 2 major territories</label> <label><input type="radio" name="q12" value="0"> 50 states</label>
-          <label><input type="radio" name="q12" value="0"> 8 regions</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <p>13. Which Australian capital city has the smallest population range listed?</p>
-        <div class="options">
-          <label><input type="radio" name="q13" value="0"> Sydney – 4 to 5 million</label>
-          <label><input type="radio" name="q13" value="0"> Melbourne – 4 to 5 million</label>
-          <label><input type="radio" name="q13" value="1"> Darwin – 0.11 to 0.33 million</label> <label><input type="radio" name="q13" value="0"> Brisbane – 2 to 3 million</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <p>14. What geological feature is notably absent from the Australian continent?</p>
-        <div class="options">
-          <label><input type="radio" name="q14" value="0"> Large mountain ranges</label>
-          <label><input type="radio" name="q14" value="0"> Extensive river systems</label>
-          <label><input type="radio" name="q14" value="1"> Australia is the only continent without an active volcano.</label> <label><input type="radio" name="q14" value="0"> Significant desert areas</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <p>15. Where does the name 'Australia' come from?</p>
-        <div class="options">
-          <label><input type="radio" name="q15" value="0"> Named after an early explorer, Aus Tralia</label>
-          <label><input type="radio" name="q15" value="1"> It comes from the Latin word 'Australis' meaning 'of the south' or 'southern.'</label> <label><input type="radio" name="q15" value="0"> An indigenous word meaning 'Great Island'</label>
-          <label><input type="radio" name="q15" value="0"> A combination of 'Austria' and 'Alia'</label>
-        </div>
-      </div>
-
-       <div class="question">
-        <p>16. How is Australia's population distributed?</p>
-        <div class="options">
-          <label><input type="radio" name="q16" value="0"> Evenly spread across the entire continent.</label>
-          <label><input type="radio" name="q16" value="0"> Mostly concentrated in the central desert regions.</label>
-          <label><input type="radio" name="q16" value="1"> The population is mainly concentrated in parts of the eastern and southeastern coasts, with two-thirds of the continent being a desert.</label> <label><input type="radio" name="q16" value="0"> Primarily living on the west coast.</label>
-        </div>
-      </div>
-
-     
-
-      <button type="button" onclick="submitQuiz()">Submit Quiz</button>
-    </form>
-  </div>
-
-  <script>
-    // Object storing the correct answer TEXT for each question.
-    // Keys (q1, q2, ...) MUST match the 'name' attribute of the radio buttons for each question.
-    const correctAnswers = {
-      q1: "It is the world's only continent that is also a country.",
-      q2: "Because it is entirely surrounded by water.",
-      q3: "Land Down Under", // Placeholder - Update with your actual answer
-      q4: "Sydney Opera House and the Great Barrier Reef", // Placeholder - Update
-      q5: "Australia – 7,688,287 km²", // Placeholder - Update
-      q6: "Australia > Maharashtra > Mumbai", // Placeholder - Update
-      q7: "Captain James Cook mapped the eastern coast and named it 'New South Wales'", // Placeholder - Update
-      q8: "Captain Willem Janszoon", // Placeholder - Update
-      q9: "1901", // Placeholder - Update
-      q10: "10°S to 44°S; 113°E to 154°E", // Placeholder - Update
-      q11: "North: Timor Sea, Arafura Sea, Gulf of Carpentaria, Coral Sea; East: Pacific Ocean; West: Indian Ocean; South: Southern Ocean", // Placeholder - Update
-      q12: "6 states and 2 major territories", // Placeholder - Update
-      q13: "Darwin – 0.11 to 0.33 million", // Placeholder - Update
-      q14: "Australia is the only continent without an active volcano.", // Placeholder - Update
-      q15: "It comes from the Latin word 'Australis' meaning 'of the south' or 'southern.'", // Placeholder - Update
-      q16: "The population is mainly concentrated in parts of the eastern and southeastern coasts, with two-thirds of the continent being a desert.", // Placeholder - Update
-      
-    };
-
-    // Total number of questions in the quiz
-    const totalQuestions = 16;
-
-    // Function executed when the "Submit Quiz" button is clicked
-    function submitQuiz() {
-      const errorDiv = document.getElementById('error');
-      const resultDiv = document.getElementById('result');
-      const feedbackDiv = document.getElementById('feedback');
-
-      // --- Reset displays on each submission ---
-      errorDiv.style.display = 'none'; // Hide error message
-      errorDiv.innerHTML = ''; // Clear previous error text
-      resultDiv.innerHTML = ''; // Clear previous result text
-      feedbackDiv.innerHTML = ''; // Clear previous feedback text
-
-      // --- Check if all questions are answered ---
-      let unanswered = []; // Array to store the numbers of unanswered questions
-      // Loop from 1 to totalQuestions
-      for (let i = 1; i <= totalQuestions; i++) {
-        // Check if there is NO checked radio button for the question name q{i}
-        if (!document.querySelector(`input[name="q${i}"]:checked`)) {
-          unanswered.push(i); // Add the question number to the unanswered list
-        }
-      }
-
-      // If there are any unanswered questions
-      if (unanswered.length > 0) {
-        // Construct and display the error message
-        errorDiv.innerHTML = `⚠️ Please answer all questions. Missing answers for questions: ${unanswered.join(', ')}`;
-        errorDiv.style.display = 'block'; // Make the error message visible
-        errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the error message
-        return; // Stop the function execution
-      }
-
-      // --- Calculate score and collect feedback ---
-      let score = 0; // Initialize score
-      let wrongAnswersFeedback = []; // Array to store info about incorrect answers
-
-      // Loop through each question again
-      for (let i = 1; i <= totalQuestions; i++) {
-        const questionName = `q${i}`; // e.g., "q1", "q2"
-        // Find the radio button that is checked for this question
-        const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
-
-        // Check if the selected option's value is "1" (indicating correct)
-        if (selectedOption && selectedOption.value === "1") {
-          score++; // Increment score if correct
-        } else if (selectedOption) { // If an option was selected but it was wrong (value != "1")
-          // Find the parent '.question' div for the current radio button
-          const questionDiv = selectedOption.closest('.question');
-          // Find the question text (<p> tag) within that div
-          const questionTextElement = questionDiv ? questionDiv.querySelector('p') : null;
-          const questionText = questionTextElement ? questionTextElement.textContent : `Question ${i} text not found`; // Fallback text
-
-          // Add details about the incorrect answer to the feedback array
-          wrongAnswersFeedback.push({
-            number: i, // Question number
-            text: questionText.trim(), // The text of the question
-            correct: correctAnswers[questionName] || "Correct answer not defined" // The correct answer text from the object
-          });
-        }
-        // Note: The case where selectedOption is null shouldn't happen due to the initial check,
-        // but the check `if (selectedOption)` adds robustness.
-      }
-
-      // --- Display results ---
-      // Show the final score. Color the score green if >= 9, red otherwise.
-      resultDiv.innerHTML = `Your Score: <span style="color:${score >= 9 ? '#2e7d32' : '#d32f2f'}">${score} / ${totalQuestions}</span>`;
-      resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the results
-
-      // --- Display feedback for wrong answers ---
-      // Check if there were any incorrect answers
-      if (wrongAnswersFeedback.length > 0) {
-        // Start the feedback section with a heading
-        feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
-        // Loop through each item in the wrongAnswersFeedback array
-        wrongAnswersFeedback.forEach(item => {
-          // Append the HTML for each feedback item
-          feedbackDiv.innerHTML += `
-            <div class="feedback-item">
-              <p><strong>Question ${item.number}:</strong> ${item.text}</p>
-              <p class="correct-answer">Correct answer: ${item.correct}</p>
+            <div class="question">
+                <p>1. What is Uluru also known as?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="0"> A) The Red Dome</label>
+                    <label><input type="radio" name="q1" value="1"> B) Ayers Rock</label>
+                    <label><input type="radio" name="q1" value="0"> C) King's Rock</label>
+                    <label><input type="radio" name="q1" value="0"> D) Mount Olga</label>
+                </div>
             </div>
-          `;
-        });
-      } else {
-        // If all answers were correct, display a success message
-        feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
-      }
-    }
-  </script>
+
+            <div class="question">
+                <p>2. Where is Uluru located?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="1"> A) Northern Territory</label>
+                    <label><input type="radio" name="q2" value="0"> B) Queensland</label>
+                    <label><input type="radio" name="q2" value="0"> C) South Australia</label>
+                    <label><input type="radio" name="q2" value="0"> D) Western Australia</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>3. What type of rock formation is Uluru?</p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="0"> A) Limestone</label>
+                    <label><input type="radio" name="q3" value="0"> B) Granite</label>
+                    <label><input type="radio" name="q3" value="1"> C) Sandstone</label>
+                    <label><input type="radio" name="q3" value="0"> D) Basalt</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>4. Uluru is sacred to which group of people?</p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="0"> A) Torres Strait Islanders</label>
+                    <label><input type="radio" name="q4" value="0"> B) Maori</label>
+                    <label><input type="radio" name="q4" value="1"> C) Anangu Aboriginal people</label>
+                    <label><input type="radio" name="q4" value="0"> D) Inuit</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>5. Which national park is Uluru part of?</p>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="0"> A) Kakadu National Park</label>
+                    <label><input type="radio" name="q5" value="1"> B) Uluru-Kata Tjuta National Park</label>
+                    <label><input type="radio" name="q5" value="0"> C) Great Sandy National Park</label>
+                    <label><input type="radio" name="q5" value="0"> D) Ayers National Park</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>6. What causes Uluru to appear to change color throughout the day?</p>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="0"> A) Weather conditions</label>
+                    <label><input type="radio" name="q6" value="0"> B) Changes in temperature</label>
+                    <label><input type="radio" name="q6" value="1"> C) Reflection of sunlight</label>
+                    <label><input type="radio" name="q6" value="0"> D) Rock movement</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>7. How high does Uluru rise above the surrounding plain?</p>
+                <div class="options">
+                    <label><input type="radio" name="q7" value="0"> A) About 100 meters</label>
+                    <label><input type="radio" name="q7" value="0"> B) About 150 meters</label>
+                    <label><input type="radio" name="q7" value="1"> C) About 348 meters</label>
+                    <label><input type="radio" name="q7" value="0"> D) About 600 meters</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>8. Why is climbing Uluru discouraged?</p>
+                <div class="options">
+                    <label><input type="radio" name="q8" value="0"> A) It's too steep</label>
+                    <label><input type="radio" name="q8" value="0"> B) It's legally forbidden</label>
+                    <label><input type="radio" name="q8" value="1"> C) It's sacred and disrespectful to Aboriginal beliefs</label>
+                    <label><input type="radio" name="q8" value="0"> D) It’s unsafe due to snakes</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>9. Which nearby rock formation is often visited alongside Uluru?</p>
+                <div class="options">
+                    <label><input type="radio" name="q9" value="0"> A) The Bungle Bungles</label>
+                    <label><input type="radio" name="q9" value="1"> B) Kata Tjuta (The Olgas)</label>
+                    <label><input type="radio" name="q9" value="0"> C) King's Canyon</label>
+                    <label><input type="radio" name="q9" value="0"> D) Mount Isa</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>10. What color is Uluru most famous for?</p>
+                <div class="options">
+                    <label><input type="radio" name="q10" value="0"> A) Blue</label>
+                    <label><input type="radio" name="q10" value="0"> B) Grey</label>
+                    <label><input type="radio" name="q10" value="0"> C) Golden</label>
+                    <label><input type="radio" name="q10" value="1"> D) Red</label>
+                </div>
+            </div>
+
+            <button type="button" onclick="submitUluruQuiz()">Submit Quiz</button>
+        </form>
+    </div>
+
+    <div class="quiz-container">
+        <h1><span role="img" aria-label="Great Artesian Basin">💧</span> The Great Artesian Basin Quiz</h1>
+        <form id="artesianBasinQuizForm">
+            <div id="error"></div>
+            <div id="result"></div>
+            <div id="feedback"></div>
+
+            <div class="question">
+                <p>1. What is the Great Artesian Basin?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="0"> A) A desert plain</label>
+                    <label><input type="radio" name="q1" value="0"> B) A large mountain range</label>
+                    <label><input type="radio" name="q1" value="1"> C) An underground water reservoir</label>
+                    <label><input type="radio" name="q1" value="0"> D) A coral reef system</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>2. Which part of Australia does the Great Artesian Basin mostly cover?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="0"> A) Only Queensland</label>
+                    <label><input type="radio" name="q2" value="0"> B) Northern Territory and WA</label>
+                    <label><input type="radio" name="q2" value="1"> C) Central and eastern Australia</label>
+                    <label><input type="radio" name="q2" value="0"> D) Southern coastline</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>3. Why is the Great Artesian Basin important?</p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="0"> A) It holds gold reserves</label>
+                    <label><input type="radio" name="q3" value="1"> B) It supports agriculture and outback communities</label>
+                    <label><input type="radio" name="q3" value="0"> C) It’s a tourist destination</label>
+                    <label><input type="radio" name="q3" value="0"> D) It prevents flooding</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>4. How is water extracted from the Great Artesian Basin?</p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="0"> A) By wind power</label>
+                    <label><input type="radio" name="q4" value="1"> B) By natural springs and bore wells</label>
+                    <label><input type="radio" name="q4" value="0"> C) By desalination</label>
+                    <label><input type="radio" name="q4" value="0"> D) By dams</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>5. What makes artesian water rise to the surface without pumping?</p>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="0"> A) Magnetic pressure</label>
+                    <label><input type="radio" name="q5" value="0"> B) Gravitational pull</label>
+                    <label><input type="radio" name="q5" value="1"> C) Pressure from overlying layers</label>
+                    <label><input type="radio" name="q5" value="0"> D) Solar heating</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>6. When was the Great Artesian Basin discovered by Europeans?</p>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="0"> A) Early 1700s</label>
+                    <label><input type="radio" name="q6" value="0"> B) 1850s</label>
+                    <label><input type="radio" name="q6" value="1"> C) 1878</label>
+                    <label><input type="radio" name="q6" value="0"> D) 1901</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>7. What is one major issue affecting the Great Artesian Basin?</p>
+                <div class="options">
+                    <label><input type="radio" name="q7" value="0"> A) Overgrazing</label>
+                    <label><input type="radio" name="q7" value="1"> B) Water wastage from uncontrolled bores</label>
+                    <label><input type="radio" name="q7" value="0"> C) Salinity from the ocean</label>
+                    <label><input type="radio" name="q7" value="0"> D) Hurricanes</label>
+                </div>
+            </div>
+
+            <button type="button" onclick="submitArtesianBasinQuiz()">Submit Quiz</button>
+        </form>
+    </div>
+
+    <script>
+        // --- Uluru Quiz Data and Functions ---
+        const uluruCorrectAnswers = {
+            q1: "B) Ayers Rock",
+            q2: "A) Northern Territory",
+            q3: "C) Sandstone",
+            q4: "C) Anangu Aboriginal people",
+            q5: "B) Uluru-Kata Tjuta National Park",
+            q6: "C) Reflection of sunlight",
+            q7: "C) About 348 meters",
+            q8: "C) It's sacred and disrespectful to Aboriginal beliefs",
+            q9: "B) Kata Tjuta (The Olgas)",
+            q10: "D) Red"
+        };
+        const uluruTotalQuestions = 10;
+
+        function submitUluruQuiz() {
+            const form = document.getElementById('uluruQuizForm');
+            const errorDiv = document.getElementById('error');
+            const resultDiv = document.getElementById('result');
+            const feedbackDiv = document.getElementById('feedback');
+
+            errorDiv.style.display = 'none';
+            errorDiv.innerHTML = '';
+            resultDiv.innerHTML = '';
+            feedbackDiv.innerHTML = '';
+
+            let unanswered = [];
+            for (let i = 1; i <= uluruTotalQuestions; i++) {
+                if (!document.querySelector(`input[name="q${i}"]:checked`)) {
+                    unanswered.push(i);
+                }
+            }
+
+            if (unanswered.length > 0) {
+                errorDiv.innerHTML = `⚠️ Please answer all ${uluruTotalQuestions} questions. Missing answers for questions: ${unanswered.join(', ')}`;
+                errorDiv.style.display = 'block';
+                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            let score = 0;
+            let wrongAnswersFeedback = [];
+            for (let i = 1; i <= uluruTotalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                if (selectedOption && selectedOption.value === "1") {
+                    score++;
+                } else if (selectedOption) {
+                    const questionDiv = selectedOption.closest('.question');
+                    const questionTextElement = questionDiv ? questionDiv.querySelector('p') : null;
+                    const questionText = questionTextElement ? questionTextElement.textContent : `Question ${i} text not found`;
+                    wrongAnswersFeedback.push({
+                        number: i,
+                        text: questionText.trim(),
+                        correct: uluruCorrectAnswers[questionName] || "Correct answer not defined"
+                    });
+                }
+            }
+
+            resultDiv.innerHTML = `Your Score: <span style="color:${score >= 7 ? '#2e7d32' : '#d32f2f'}">${score} / ${uluruTotalQuestions}</span>`;
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            if (wrongAnswersFeedback.length > 0) {
+                feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+                wrongAnswersFeedback.forEach(item => {
+                    feedbackDiv.innerHTML += `
+                        <div class="feedback-item">
+                            <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+                            <p class="correct-answer">Correct answer: ${item.correct}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+            }
+        }
+
+        // --- Great Artesian Basin Quiz Data and Functions ---
+        const artesianBasinCorrectAnswers = {
+            q1: "C) An underground water reservoir",
+            q2: "C) Central and eastern Australia",
+            q3: "B) It supports agriculture and outback communities",
+            q4: "B) By natural springs and bore wells",
+            q5: "C) Pressure from overlying layers",
+            q6: "C) 1878",
+            q7: "B) Water wastage from uncontrolled bores"
+        };
+        const artesianBasinTotalQuestions = 7;
+
+        function submitArtesianBasinQuiz() {
+            const form = document.getElementById('artesianBasinQuizForm');
+            const errorDiv = document.getElementById('error');
+            const resultDiv = document.getElementById('result');
+            const feedbackDiv = document.getElementById('feedback');
+
+            errorDiv.style.display = 'none';
+            errorDiv.innerHTML = '';
+            resultDiv.innerHTML = '';
+            feedbackDiv.innerHTML = '';
+
+            let unanswered = [];
+            for (let i = 1; i <= artesianBasinTotalQuestions; i++) {
+                if (!document.querySelector(`input[name="q${i}"]:checked`)) {
+                    unanswered.push(i);
+                }
+            }
+
+            if (unanswered.length > 0) {
+                errorDiv.innerHTML = `⚠️ Please answer all ${artesianBasinTotalQuestions} questions. Missing answers for questions: ${unanswered.join(', ')}`;
+                errorDiv.style.display = 'block';
+                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            let score = 0;
+            let wrongAnswersFeedback = [];
+            for (let i = 1; i <= artesianBasinTotalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                if (selectedOption && selectedOption.value === "1") {
+                    score++;
+                } else if (selectedOption) {
+                    const questionDiv = selectedOption.closest('.question');
+                    const questionTextElement = questionDiv ? questionDiv.querySelector('p') : null;
+                    const questionText = questionTextElement ? questionTextElement.textContent : `Question ${i} text not found`;
+                    wrongAnswersFeedback.push({
+                        number: i,
+                        text: questionText.trim(),
+                        correct: artesianBasinCorrectAnswers[questionName] || "Correct answer not defined"
+                    });
+                }
+            }
+
+            resultDiv.innerHTML = `Your Score: <span style="color:${score >= 5 ? '#2e7d32' : '#d32f2f'}">${score} / ${artesianBasinTotalQuestions}</span>`;
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            if (wrongAnswersFeedback.length > 0) {
+                feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+                wrongAnswersFeedback.forEach(item => {
+                    feedbackDiv.innerHTML += `
+                        <div class="feedback-item">
+                            <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+                            <p class="correct-answer">Correct answer: ${item.correct}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+            }
+        }
+    </script>
 </body>
+
 </html>
