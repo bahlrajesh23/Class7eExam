@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Weathering and Soil Conservation Quiz</title>
+  <style>
+    /* General body styling */
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f0f4f8;
+    }
+
+    /* Container for the quiz elements */
+    .quiz-container {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Link back style */
+    .navigation-link {
+      display: block;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .navigation-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Styling for each question block */
+    .question {
+      margin-bottom: 25px;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 5px;
+      border-left: 5px solid #1e88e5;
+    }
+
+    /* Question text styling */
+    .question p {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    /* Styling for radio button options */
+    .options label {
+      display: block;
+      margin: 10px 0 10px 5px;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .options label:hover {
+      background-color: #e3f2fd;
+    }
+
+    /* Spacing for radio button itself */
+    .options input[type="radio"] {
+      margin-right: 8px;
+    }
+
+    /* Submit button styling */
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    /* Error message styling */
+    #error {
+      color: #d32f2f;
+      padding: 12px;
+      background: #ffebee;
+      border-left: 4px solid #d32f2f;
+      margin: 15px 0;
+      border-radius: 4px;
+      display: none;
+    }
+
+    /* Result display styling */
+    #result {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin: 20px 0;
+      padding: 15px;
+      background: #e8f5e9;
+      border-left: 4px solid #2e7d32;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    /* Container for all feedback items */
+    #feedback {
+      margin-top: 20px;
+    }
+
+    #feedback h3 {
+      margin-bottom: 15px;
+      color: #c62828;
+    }
+
+    /* Styling for individual feedback items (wrong answers) */
+    .feedback-item {
+      margin: 15px 0;
+      padding: 15px;
+      background: #fff3e0;
+      border-left: 4px solid #ef6c00;
+      border-radius: 4px;
+    }
+
+    /* Styling for the correct answer text within feedback */
+    .correct-answer {
+      color: #2e7d32;
+      font-weight: bold;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="quiz-container">
+    <h1><span role="img" aria-label="soil">🌱</span> Weathering and Soil Conservation Quiz</h1>
+    <form id="quizForm">
+      <div id="error"></div>
+      <div id="result"></div>
+      <div id="feedback"></div>
+
+      <div class="question">
+        <p>1. What is the main difference between physical and chemical weathering?</p>
+        <div class="options">
+          <label><input type="radio" name="q1" value="0"> Physical weathering involves a change in chemical composition, while chemical weathering does not.</label>
+          <label><input type="radio" name="q1" value="1"> Physical weathering involves a change in physical state, while chemical weathering involves a change in chemical composition.</label>
+          <label><input type="radio" name="q1" value="0"> Physical weathering occurs in hot climates, while chemical weathering occurs in cold climates.</label>
+          <label><input type="radio" name="q1" value="0"> Physical weathering is faster than chemical weathering.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>2. Which type of weathering is characterized by the breakdown of rocks into smaller fragments without changing their chemical composition?</p>
+        <div class="options">
+          <label><input type="radio" name="q2" value="0"> Chemical weathering</label>
+          <label><input type="radio" name="q2" value="1"> Physical weathering</label>
+          <label><input type="radio" name="q2" value="0"> Biological weathering</label>
+          <label><input type="radio" name="q2" value="0"> Mechanical weathering</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>3. What is granular disintegration?</p>
+        <div class="options">
+          <label><input type="radio" name="q3" value="0"> The process of rocks being broken down into smaller fragments due to chemical reactions.</label>
+          <label><input type="radio" name="q3" value="1"> The process of rocks being broken down into smaller fragments due to temperature fluctuations.</label>
+          <label><input type="radio" name="q3" value="0"> The process of rocks being broken down into smaller fragments due to biological activity.</label>
+          <label><input type="radio" name="q3" value="0"> The process of rocks being broken down into smaller fragments due to erosion.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>4. What is exfoliation?</p>
+        <div class="options">
+          <label><input type="radio" name="q4" value="0"> The process of rocks being broken down into smaller fragments due to chemical reactions.</label>
+          <label><input type="radio" name="q4" value="1"> The process of rocks being broken down into smaller fragments due to temperature fluctuations.</label>
+          <label><input type="radio" name="q4" value="0"> The process of rocks being broken down into smaller fragments due to biological activity.</label>
+          <label><input type="radio" name="q4" value="0"> The process of rocks being broken down into smaller fragments due to erosion.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>5. What is the process of rocks cracking and breaking due to frost action?</p>
+        <div class="options">
+          <label><input type="radio" name="q5" value="0"> Oxidation</label>
+          <label><input type="radio" name="q5" value="0"> Hydrolysis</label>
+          <label><input type="radio" name="q5" value="1"> Freeze-thaw weathering</label>
+          <label><input type="radio" name="q5" value="0"> Carbonation</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>6. What is the chemical process where rocks react with water, leading to their decomposition?</p>
+        <div class="options">
+          <label><input type="radio" name="q6" value="0"> Oxidation</label>
+          <label><input type="radio" name="q6" value="1"> Hydrolysis</label>
+          <label><input type="radio" name="q6" value="0"> Freeze-thaw weathering</label>
+          <label><input type="radio" name="q6" value="0"> Carbonation</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>7. What is the chemical process involving the reaction of rocks with oxygen?</p>
+        <div class="options">
+          <label><input type="radio" name="q7" value="1"> Oxidation</label>
+          <label><input type="radio" name="q7" value="0"> Hydrolysis</label>
+          <label><input type="radio" name="q7" value="0"> Freeze-thaw weathering</label>
+          <label><input type="radio" name="q7" value="0"> Carbonation</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>8. Which gas is involved in the chemical process of carbonation?</p>
+        <div class="options">
+          <label><input type="radio" name="q8" value="0"> Oxygen</label>
+          <label><input type="radio" name="q8" value="1"> Carbon dioxide</label>
+          <label><input type="radio" name="q8" value="0"> Nitrogen</label>
+          <label><input type="radio" name="q8" value="0"> Hydrogen</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>9. What is the role of lichens in weathering?</p>
+        <div class="options">
+          <label><input type="radio" name="q9" value="0"> They prevent weathering.</label>
+          <label><input type="radio" name="q9" value="1"> They produce acids that break down rocks.</label>
+          <label><input type="radio" name="q9" value="0"> They have no effect on weathering.</label>
+          <label><input type="radio" name="q9" value="0"> They make rocks stronger.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>10. What is the process of the removal of the top layer of soil by natural agents?</p>
+        <div class="options">
+          <label><input type="radio" name="q10" value="1"> Soil erosion</label>
+          <label><input type="radio" name="q10" value="0"> Soil formation</label>
+          <label><input type="radio" name="q10" value="0"> Weathering</label>
+          <label><input type="radio" name="q10" value="0"> Deposition</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>11. Which of the following is NOT a natural agent of soil erosion?</p>
+        <div class="options">
+          <label><input type="radio" name="q11" value="0"> Wind</label>
+          <label><input type="radio" name="q11" value="0"> Water</label>
+          <label><input type="radio" name="q11" value="0"> Ice</label>
+          <label><input type="radio" name="q11" value="1"> Planting trees</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>12. What human activity leads to soil erosion?</p>
+        <div class="options">
+          <label><input type="radio" name="q12" value="0"> Afforestation</label>
+          <label><input type="radio" name="q12" value="1"> Deforestation</label>
+          <label><input type="radio" name="q12" value="0"> Crop rotation</label>
+          <label><input type="radio" name="q12" value="0"> Contour ploughing</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>13. What is the purpose of afforestation?</p>
+        <div class="options">
+          <label><input type="radio" name="q13" value="0"> To remove trees from an area</label>
+          <label><input type="radio" name="q13" value="1"> To plant trees in rows to hold the soil in place</label>
+          <label><input type="radio" name="q13" value="0"> To increase soil erosion</label>
+          <label><input type="radio" name="q13" value="0"> To decrease soil fertility</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>14. How can soil conservation be achieved on hill slopes?</p>
+        <div class="options">
+          <label><input type="radio" name="q14" value="0"> By constructing buildings without terracing</label>
+          <label><input type="radio" name="q14" value="1"> By terracing hill slopes to prevent soil erosion</label>
+          <label><input type="radio" name="q14" value="0"> By leaving soil areas bare</label>
+          <label><input type="radio" name="q14" value="0"> By removing tree cover</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>15. What is the benefit of crop rotation?</p>
+        <div class="options">
+          <label><input type="radio" name="q15" value="0"> It depletes soil fertility.</label>
+          <label><input type="radio" name="q15" value="1"> It replenishes soil fertility.</label>
+          <label><input type="radio" name="q15" value="0"> It has no effect on soil fertility.</label>
+          <label><input type="radio" name="q15" value="0"> It increases soil erosion.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>16. What should be done to mining sites after mining is complete?</p>
+        <div class="options">
+          <label><input type="radio" name="q16" value="0"> Leave them as is.</label>
+          <label><input type="radio" name="q16" value="1"> Reclaim them by watering and planting grass.</label>
+          <label><input type="radio" name="q16" value="0"> Continue mining in the same area.</label>
+          <label><input type="radio" name="q16" value="0"> Use them for construction.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>17. What is contour ploughing?</p>
+        <div class="options">
+          <label><input type="radio" name="q17" value="0"> Planting crops up and down a hill slope</label>
+          <label><input type="radio" name="q17" value="1"> Planting crops along the same height to check the flow of water</label>
+          <label><input type="radio" name="q17" value="0"> Removing trees from a hill slope</label>
+          <label><input type="radio" name="q17" value="0"> Constructing buildings on a hill slope</label>
+        </div>
+      </div>
+
+
+      <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+    </form>
+  </div>
+
+  <script>
+    // Object storing the correct answer TEXT for each question.
+    const correctAnswers = {
+      q1: "Physical weathering involves a change in physical state, while chemical weathering involves a change in chemical composition.",
+      q2: "Physical weathering",
+      q3: "The process of rocks being broken down into smaller fragments due to temperature fluctuations.",
+      q4: "The process of rocks being broken down into smaller fragments due to temperature fluctuations.",
+      q5: "Freeze-thaw weathering",
+      q6: "Hydrolysis",
+      q7: "Oxidation",
+      q8: "Carbon dioxide",
+      q9: "They produce acids that break down rocks.",
+      q10: "Soil erosion",
+      q11: "Planting trees",
+      q12: "Deforestation",
+      q13: "To plant trees in rows to hold the soil in place",
+      q14: "By terracing hill slopes to prevent soil erosion",
+      q15: "It replenishes soil fertility.",
+      q16: "Reclaim them by watering and planting grass.",
+      q17: "Planting crops along the same height to check the flow of water"
+    };
+
+    // Total number of questions in the quiz
