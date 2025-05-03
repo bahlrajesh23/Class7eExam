@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Khilji Dynasty Quiz</title>
+  <style>
+    /* General body styling */
+    body {
+      font-family: Arial, sans-serif; /* Standard font */
+      max-width: 800px; /* Limit content width for readability */
+      margin: 20px auto; /* Center the content with margin */
+      padding: 20px; /* Padding around the content */
+      background-color: #f0f4f8; /* Light background for the page */
+    }
+    /* Container for the quiz elements */
+    .quiz-container {
+      background: #ffffff; /* White background for the quiz area */
+      padding: 25px; /* Padding inside the container */
+      border-radius: 8px; /* Rounded corners */
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Subtle shadow */
+    }
+     /* Link back style */
+    .navigation-link {
+        display: block;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #1a73e8;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .navigation-link:hover {
+        text-decoration: underline;
+    }
+    /* Styling for each question block */
+    .question {
+      margin-bottom: 25px; /* Space below each question */
+      padding: 20px; /* Padding inside question block */
+      background: #f9f9f9; /* Slightly off-white background for questions */
+      border-radius: 5px; /* Rounded corners */
+      border-left: 5px solid #1e88e5; /* Accent border on the left */
+    }
+    /* Question text styling */
+    .question p {
+        font-weight: bold; /* Make question text bold */
+        margin-bottom: 10px; /* Space below question text */
+        color: #333; /* Darker text color */
+    }
+    /* Styling for radio button options */
+    .options label {
+      display: block; /* Each option on a new line */
+      margin: 10px 0 10px 5px; /* Spacing around options */
+      padding: 8px; /* Padding inside label */
+      border-radius: 4px; /* Rounded corners for label */
+      cursor: pointer; /* Indicate it's clickable */
+      transition: background-color 0.2s ease-in-out; /* Smooth background transition on hover */
+    }
+    .options label:hover {
+        background-color: #e3f2fd; /* Light blue background on hover */
+    }
+    /* Spacing for radio button itself */
+    .options input[type="radio"] {
+        margin-right: 8px; /* Space between radio button and text */
+    }
+    /* Submit button styling */
+    button {
+      background: #4CAF50; /* Green background */
+      color: white; /* White text */
+      border: none; /* No border */
+      padding: 12px 25px; /* Padding inside button */
+      border-radius: 4px; /* Rounded corners */
+      cursor: pointer; /* Pointer cursor on hover */
+      font-size: 16px; /* Font size */
+      margin-top: 20px; /* Space above the button */
+      display: block; /* Make it a block element */
+      margin-left: auto; /* Center button (along with margin-right: auto) */
+      margin-right: auto;
+      transition: background-color 0.3s ease; /* Smooth transition */
+    }
+    button:hover {
+      background: #45a049; /* Darker green on hover */
+    }
+    /* Error message styling */
+    #error {
+      color: #d32f2f; /* Red text color */
+      padding: 12px; /* Padding */
+      background: #ffebee; /* Light red background */
+      border-left: 4px solid #d32f2f; /* Red accent border */
+      margin: 15px 0; /* Margin top and bottom */
+      border-radius: 4px; /* Rounded corners */
+      display: none; /* Hidden by default */
+    }
+    /* Result display styling */
+    #result {
+      font-weight: bold; /* Bold text */
+      font-size: 1.2em; /* Larger font size */
+      margin: 20px 0; /* Margin top and bottom */
+      padding: 15px; /* Padding */
+      background: #e8f5e9; /* Light green background */
+      border-left: 4px solid #2e7d32; /* Green accent border */
+      border-radius: 4px; /* Rounded corners */
+      text-align: center; /* Center the text */
+    }
+    /* Container for all feedback items */
+     #feedback {
+        margin-top: 20px; /* Add space above the feedback section */
+     }
+    #feedback h3 {
+        margin-bottom: 15px; /* Space below the feedback heading */
+        color: #c62828; /* Reddish color for the heading */
+    }
+    /* Styling for individual feedback items (wrong answers) */
+    .feedback-item {
+      margin: 15px 0; /* Margin top and bottom */
+      padding: 15px; /* Padding */
+      background: #fff3e0; /* Light orange background */
+      border-left: 4px solid #ef6c00; /* Orange accent border */
+      border-radius: 4px; /* Rounded corners */
+    }
+    /* Styling for the correct answer text within feedback */
+    .correct-answer {
+      color: #2e7d32; /* Green text color for correct answer */
+      font-weight: bold; /* Bold text */
+      margin-top: 8px; /* Space above the correct answer text */
+    }
+  </style>
+</head>
+<body>
+  <a href="../index.html" class="navigation-link">⬅️ Back to Quiz List</a>
+
+  <div class="quiz-container">
+    <h1>⚔️ The Khilji Dynasty Quiz</h1>
+    <form id="quizForm">
+      <div id="error"></div>
+      <div id="result"></div>
+      <div id="feedback"></div> <div class="question">
+        <p>1. What was the original name of Jalal-ud-din Khilji?</p>
+        <div class="options">
+          <label><input type="radio" name="q1" value="0"> Ali Gurshasp</label>
+          <label><input type="radio" name="q1" value="1"> Malik Firuz</label> <label><input type="radio" name="q1" value="0"> Muizuddin</label>
+          <label><input type="radio" name="q1" value="0"> Shamsuddin Kayumars</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>2. Under which dynasty did Jalal-ud-din Khilji start his career as an officer?</p>
+        <div class="options">
+          <label><input type="radio" name="q2" value="0"> Tughluq Dynasty</label>
+          <label><input type="radio" name="q2" value="0"> Lodi Dynasty</label>
+          <label><input type="radio" name="q2" value="1"> Mamluk Dynasty</label> <label><input type="radio" name="q2" value="0"> Suri Dynasty</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>3. Who became the infant sultan after Sultan Muizuddin was paralyzed?</p>
+        <div class="options">
+          <label><input type="radio" name="q3" value="0"> Malik Firuz</label>
+          <label><input type="radio" name="q3" value="0"> Ala-ud-din Khilji</label>
+          <label><input type="radio" name="q3" value="1"> Shamsuddin Kayumars</label> <label><input type="radio" name="q3" value="0"> Ghiyasuddin Tughlaq</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>4. At what age did Jalal-ud-din Khilji come to power?</p>
+        <div class="options">
+          <label><input type="radio" name="q4" value="0"> 50 years</label>
+          <label><input type="radio" name="q4" value="0"> 60 years</label>
+          <label><input type="radio" name="q4" value="1"> 70 years</label> <label><input type="radio" name="q4" value="0"> 80 years</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>5. Who was Ali Gurshasp, appointed as a general by Jalal-ud-din Khilji?</p>
+        <div class="options">
+          <label><input type="radio" name="q5" value="0"> His brother</label>
+          <label><input type="radio" name="q5" value="1"> His nephew and son-in-law (Ala-ud-din Khilji)</label> <label><input type="radio" name="q5" value="0"> His father</label>
+          <label><input type="radio" name="q5" value="0"> An unrelated noble</label>
+        </div>
+      </div>
+
+       <div class="question">
+        <p>6. What kind of policy did Jalal-ud-din Khilji follow as a ruler?</p>
+        <div class="options">
+          <label><input type="radio" name="q6" value="1"> Peace policy, avoiding violence</label> <label><input type="radio" name="q6" value="0"> Aggressive expansionist policy</label>
+          <label><input type="radio" name="q6" value="0"> Strict religious policy</label>
+          <label><input type="radio" name="q6" value="0"> Economic reform policy</label>
+        </div>
+      </div>
+
+       <div class="question">
+        <p>7. How did Ala-ud-din Khilji gain the throne of Delhi?</p>
+        <div class="options">
+          <label><input type="radio" name="q7" value="0"> He inherited it peacefully</label>
+          <label><input type="radio" name="q7" value="0"> He won a battle against the nobles</label>
+          <label><input type="radio" name="q7" value="1"> He murdered his uncle Jalal-ud-din Khilji</label> <label><input type="radio" name="q7" value="0"> He was elected by the generals</label>
+        </div>
+      </div>
+
+       <div class="question">
+        <p>8. Ala-ud-din Khilji is known as the most powerful ruler of which dynasty?</p>
+        <div class="options">
+          <label><input type="radio" name="q8" value="0"> Mamluk Dynasty</label>
+          <label><input type="radio" name="q8" value="1"> Khilji Dynasty</label> <label><input type="radio" name="q8" value="0"> Tughluq Dynasty</label>
+          <label><input type="radio" name="q8" value="0"> Lodi Dynasty</label>
+        </div>
+      </div>
+
+       <div class="question">
+        <p>9. How did Ala-ud-din initially win the support of the nobles?</p>
+        <div class="options">
+          <label><input type="radio" name="q9" value="0"> By threatening them</label>
+          <label><input type="radio" name="q9" value="1"> By bribing them with rich gifts</label> <label><input type="radio" name="q9" value="0"> By appointing them to high positions</label>
+          <label><input type="radio" name="q9" value="0"> By marrying into their families</label>
+        </div>
+      </div>
+
+       <div class="question">
+        <p>10. What was Ala-ud-din Khilji's main objective in conquering the Deccan?</p>
+        <div class="options">
+          <label><input type="radio" name="q10" value="0"> To directly rule the entire region from Delhi</label>
+          <label><input type="radio" name="q10" value="0"> To spread his religion</label>
+          <label><input type="radio" name="q10" value="1"> To acquire wealth to maintain his army and administration</label> <label><input type="radio" name="q10" value="0"> To establish cultural centers</label>
+        </div>
+      </div>
+
+       <div class="question">
+        <p>11. What were the rulers of the Deccan required to do after being conquered by Ala-ud-din?</p>
+        <div class="options">
+          <label><input type="radio" name="q11" value="0"> Move their capitals to Delhi</label>
+          <label><input type="radio" name="q11" value="1"> Acknowledge his supremacy and pay annual tribute</label> <label><input type="radio" name="q11" value="0"> Convert to Islam</label>
+          <label><input type="radio" name="q11" value="0"> Disband their armies completely</label>
+        </div>
+      </div>
+
+       <div class="question">
+        <p>12. Who was placed in charge of the frontier province of Dilapur to defend against the Mongols?</p>
+        <div class="options">
+          <label><input type="radio" name="q12" value="0"> Malik Kafur</label>
+          <label><input type="radio" name="q12" value="0"> Jalal-ud-din Khilji</label>
+          <label><input type="radio" name="q12" value="1"> Ghiyasuddin Tughlaq</label> <label><input type="radio" name="q12" value="0"> Ala-ud-din Khilji himself</label>
+        </div>
+      </div>
+
+       <div class="question">
+        <p>13. Which measure did Ala-ud-din NOT take to control the nobility?</p>
+        <div class="options">
+          <label><input type="radio" name="q13" value="0"> Setting up an efficient spy system</label>
+          <label><input type="radio" name="q13" value="0"> Prohibiting wine consumption</label>
+          <label><input type="radio" name="q13" value="1"> Encouraging marriages between noble families without permission</label> <label><input type="radio" name="q13" value="0"> Revising the taxation system</label>
+        </div>
+      </div>
+
+       <div class="question">
+        <p>14. What was the name of the officer controlling each of the 3 markets set up in Delhi under Ala-ud-din's price control policy?</p>
+        <div class="options">
+          <label><input type="radio" name="q14" value="0"> Barid</label>
+          <label><input type="radio" name="q14" value="1"> Shahna-i-Mandi</label> <label><input type="radio" name="q14" value="0"> Kotwal</label>
+          <label><input type="radio" name="q14" value="0"> Muqaddam</label>
+        </div>
+      </div>
+
+       <div class="question">
+        <p>15. What was the severe punishment for cheating customers in weight under Ala-ud-din's market control?</p>
+        <div class="options">
+          <label><input type="radio" name="q15" value="0"> A heavy fine</label>
+          <label><input type="radio" name="q15" value="0"> Imprisonment</label>
+          <label><input type="radio" name="q15" value="1"> Cutting off flesh equivalent to the deficiency in weight</label> <label><input type="radio" name="q15" value="0"> Banishment from the city</label>
+        </div>
+      </div>
+
+       <div class="question">
+        <p>16. What were 'Dagh' and 'Chehra' in Ala-ud-din's military reforms?</p>
+        <div class="options">
+          <label><input type="radio" name="q16" value="0"> Types of taxes</label>
+          <label><input type="radio" name="q16" value="0"> Ranks of nobility</label>
+          <label><input type="radio" name="q16" value="1"> Branding of horses and descriptive rolls of soldiers</label> <label><input type="radio" name="q16" value="0"> Market control officers</label>
+        </div>
+      </div>
+
+       <div class="question">
+        <p>17. What change did Ala-ud-din make to the land revenue tax?</p>
+        <div class="options">
+          <label><input type="radio" name="q17" value="0"> Decreased it to one-fourth</label>
+          <label><input type="radio" name="q17" value="1"> Increased it from one-third to half of the harvest</label> <label><input type="radio" name="q17" value="0"> Abolished it completely</label>
+          <label><input type="radio" name="q17" value="0"> Kept it at one-third but collected it twice a year</label>
+        </div>
+      </div>
+
+       <div class="question">
+        <p>18. Who captured the throne after Ala-ud-din's death and founded the Tughluq Dynasty?</p>
+        <div class="options">
+          <label><input type="radio" name="q18" value="0"> Malik Kafur</label>
+          <label><input type="radio" name="q18" value="0"> Amir Khusrao</label>
+          <label><input type="radio" name="q18" value="1"> Ghazi Malik (Ghiyas-ud-din Tughluq)</label> <label><input type="radio" name="q18" value="0"> One of Ala-ud-din's sons</label>
+        </div>
+      </div>
+
+
+      <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+    </form>
+  </div>
+
+  <script>
+    // Object storing the correct answer TEXT for each question.
+    const correctAnswers = {
+      q1: "Malik Firuz",
+      q2: "Mamluk Dynasty",
+      q3: "Shamsuddin Kayumars",
+      q4: "70 years",
+      q5: "His nephew and son-in-law (Ala-ud-din Khilji)",
+      q6: "Peace policy, avoiding violence",
+      q7: "He murdered his uncle Jalal-ud-din Khilji",
+      q8: "Khilji Dynasty",
+      q9: "By bribing them with rich gifts",
+      q10: "To acquire wealth to maintain his army and administration",
+      q11: "Acknowledge his supremacy and pay annual tribute",
+      q12: "Ghiyasuddin Tughlaq",
+      q13: "Encouraging marriages between noble families without permission",
+      q14: "Shahna-i-Mandi",
+      q15: "Cutting off flesh equivalent to the deficiency in weight",
+      q16: "Branding of horses and descriptive rolls of soldiers",
+      q17: "Increased it from one-third to half of the harvest",
+      q18: "Ghazi Malik (Ghiyas-ud-din Tughluq)"
+    };
+
+    // Total number of questions in the quiz
+    const totalQuestions = 18;
+
+    // Function executed when the "Submit Quiz" button is clicked
+    function submitQuiz() {
+      const form = document.getElementById('quizForm'); // Get form element
+      const errorDiv = document.getElementById('error');
+      const resultDiv = document.getElementById('result');
+      const feedbackDiv = document.getElementById('feedback');
+
+      // --- Reset displays on each submission ---
+      errorDiv.style.display = 'none'; // Hide error message
+      errorDiv.innerHTML = ''; // Clear previous error text
+      resultDiv.innerHTML = ''; // Clear previous result text
+      feedbackDiv.innerHTML = ''; // Clear previous feedback text
+
+      // --- Check if all questions are answered ---
+      let unanswered = []; // Array to store the numbers of unanswered questions
+      // Loop from 1 to totalQuestions
+      for (let i = 1; i <= totalQuestions; i++) {
+        // Check if there is NO checked radio button for the question name q{i}
+        if (!document.querySelector(`input[name="q${i}"]:checked`)) {
+          unanswered.push(i); // Add the question number to the unanswered list
+        }
+      }
+
+      // If there are any unanswered questions
+      if (unanswered.length > 0) {
+        // Construct and display the error message
+        errorDiv.innerHTML = `⚠️ Please answer all ${totalQuestions} questions. Missing answers for questions: ${unanswered.join(', ')}`;
+        errorDiv.style.display = 'block'; // Make the error message visible
+        errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the error message
+        return; // Stop the function execution
+      }
+
+      // --- Calculate score and collect feedback ---
+      let score = 0; // Initialize score
+      let wrongAnswersFeedback = []; // Array to store info about incorrect answers
+
+      // Loop through each question again
+      for (let i = 1; i <= totalQuestions; i++) {
+        const questionName = `q${i}`; // e.g., "q1", "q2"
+        // Find the radio button that is checked for this question
+        const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+
+        // Check if the selected option's value is "1" (indicating correct)
+        if (selectedOption && selectedOption.value === "1") {
+          score++; // Increment score if correct
+        } else if (selectedOption) { // If an option was selected but it was wrong (value != "1")
+          // Find the parent '.question' div for the current radio button
+          const questionDiv = selectedOption.closest('.question');
+          // Find the question text (<p> tag) within that div
+          const questionTextElement = questionDiv ? questionDiv.querySelector('p') : null;
+          const questionText = questionTextElement ? questionTextElement.textContent : `Question ${i} text not found`; // Fallback text
+
+          // Add details about the incorrect answer to the feedback array
+          wrongAnswersFeedback.push({
+            number: i, // Question number
+            text: questionText.trim(), // The text of the question
+            correct: correctAnswers[questionName] || "Correct answer not defined" // The correct answer text from the object
+          });
+        }
+      }
+
+      // --- Display results ---
+      // Show the final score. Color the score green if >= 13 (approx 70%), red otherwise.
+      // Adjust the threshold (13) as needed.
+      resultDiv.innerHTML = `Your Score: <span style="color:${score >= 13 ? '#2e7d32' : '#d32f2f'}">${score} / ${totalQuestions}</span>`;
+      resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the results
+
+      // --- Display feedback for wrong answers ---
+      // Check if there were any incorrect answers
+      if (wrongAnswersFeedback.length > 0) {
+        // Start the feedback section with a heading
+        feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+        // Loop through each item in the wrongAnswersFeedback array
+        wrongAnswersFeedback.forEach(item => {
+          // Append the HTML for each feedback item
+          feedbackDiv.innerHTML += `
+            <div class="feedback-item">
+              <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+              <p class="correct-answer">Correct answer: ${item.correct}</p>
+            </div>
+          `;
+        });
+      } else {
+        // If all answers were correct, display a success message
+        feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+      }
+    }
+  </script>
+</body>
+</html>
