@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rocks and Geography Quiz</title>
+  <style>
+    /* General body styling */
+    body {
+      font-family: Arial, sans-serif; /* Standard font */
+      max-width: 800px; /* Limit content width for readability */
+      margin: 20px auto; /* Center the content with margin */
+      padding: 20px; /* Padding around the content */
+      background-color: #f0f4f8; /* Light background for the page */
+    }
+    /* Container for the quiz elements */
+    .quiz-container {
+      background: #ffffff; /* White background for the quiz area */
+      padding: 25px; /* Padding inside the container */
+      border-radius: 8px; /* Rounded corners */
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Subtle shadow */
+    }
+     /* Link back style */
+    .navigation-link {
+        display: block;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #1a73e8;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .navigation-link:hover {
+        text-decoration: underline;
+    }
+    /* Styling for each question block */
+    .question {
+      margin-bottom: 25px; /* Space below each question */
+      padding: 20px; /* Padding inside question block */
+      background: #f9f9f9; /* Slightly off-white background for questions */
+      border-radius: 5px; /* Rounded corners */
+      border-left: 5px solid #1e88e5; /* Accent border on the left */
+    }
+    /* Question text styling */
+    .question p {
+        font-weight: bold; /* Make question text bold */
+        margin-bottom: 10px; /* Space below question text */
+        color: #333; /* Darker text color */
+    }
+    /* Styling for radio button options */
+    .options label {
+      display: block; /* Each option on a new line */
+      margin: 10px 0 10px 5px; /* Spacing around options */
+      padding: 8px; /* Padding inside label */
+      border-radius: 4px; /* Rounded corners for label */
+      cursor: pointer; /* Indicate it's clickable */
+      transition: background-color 0.2s ease-in-out; /* Smooth background transition on hover */
+    }
+    .options label:hover {
+        background-color: #e3f2fd; /* Light blue background on hover */
+    }
+    /* Spacing for radio button itself */
+    .options input[type="radio"] {
+        margin-right: 8px; /* Space between radio button and text */
+    }
+    /* Submit button styling */
+    button {
+      background: #4CAF50; /* Green background */
+      color: white; /* White text */
+      border: none; /* No border */
+      padding: 12px 25px; /* Padding inside button */
+      border-radius: 4px; /* Rounded corners */
+      cursor: pointer; /* Pointer cursor on hover */
+      font-size: 16px; /* Font size */
+      margin-top: 20px; /* Space above the button */
+      display: block; /* Make it a block element */
+      margin-left: auto; /* Center button (along with margin-right: auto) */
+      margin-right: auto;
+      transition: background-color 0.3s ease; /* Smooth transition */
+    }
+    button:hover {
+      background: #45a049; /* Darker green on hover */
+    }
+    /* Error message styling */
+    #error {
+      color: #d32f2f; /* Red text color */
+      padding: 12px; /* Padding */
+      background: #ffebee; /* Light red background */
+      border-left: 4px solid #d32f2f; /* Red accent border */
+      margin: 15px 0; /* Margin top and bottom */
+      border-radius: 4px; /* Rounded corners */
+      display: none; /* Hidden by default */
+    }
+    /* Result display styling */
+    #result {
+      font-weight: bold; /* Bold text */
+      font-size: 1.2em; /* Larger font size */
+      margin: 20px 0; /* Margin top and bottom */
+      padding: 15px; /* Padding */
+      background: #e8f5e9; /* Light green background */
+      border-left: 4px solid #2e7d32; /* Green accent border */
+      border-radius: 4px; /* Rounded corners */
+      text-align: center; /* Center the text */
+    }
+    /* Container for all feedback items */
+     #feedback {
+        margin-top: 20px; /* Add space above the feedback section */
+     }
+    #feedback h3 {
+        margin-bottom: 15px; /* Space below the feedback heading */
+        color: #c62828; /* Reddish color for the heading */
+    }
+    /* Styling for individual feedback items (wrong answers) */
+    .feedback-item {
+      margin: 15px 0; /* Margin top and bottom */
+      padding: 15px; /* Padding */
+      background: #fff3e0; /* Light orange background */
+      border-left: 4px solid #ef6c00; /* Orange accent border */
+      border-radius: 4px; /* Rounded corners */
+    }
+    /* Styling for the correct answer text within feedback */
+    .correct-answer {
+      color: #2e7d32; /* Green text color for correct answer */
+      font-weight: bold; /* Bold text */
+      margin-top: 8px; /* Space above the correct answer text */
+    }
+  </style>
+</head>
+<body>
+  <a href="../index.html" class="navigation-link">⬅️ Back to Quiz List</a>
+
+  <div class="quiz-container">
+    <h1>⛰️ Rocks and Geography Quiz</h1>
+    <form id="quizForm">
+      <div id="error"></div>
+      <div id="result"></div>
+      <div id="feedback"></div> <div class="question">
+        <p>1. What is the hard layer covering the Earth's surface called?</p>
+        <div class="options">
+          <label><input type="radio" name="q1" value="1"> A) Crust</label> <label><input type="radio" name="q1" value="0"> B) Mantle</label>
+          <label><input type="radio" name="q1" value="0"> C) Core</label>
+          <label><input type="radio" name="q1" value="0"> D) Lithosphere</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>2. What are the three main types of rocks that make up the Earth's crust?</p>
+        <div class="options">
+          <label><input type="radio" name="q2" value="1"> A) Igneous, Sedimentary, and Metamorphic</label> <label><input type="radio" name="q2" value="0"> B) Granite, Basalt, and Sandstone</label>
+          <label><input type="radio" name="q2" value="0"> C) Mineral, Organic, and Inorganic</label>
+          <label><input type="radio" name="q2" value="0"> D) Primary, Secondary, and Tertiary</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>3. What is the process called when rocks are broken down into tiny particles due to weathering and erosion?</p>
+        <div class="options">
+          <label><input type="radio" name="q3" value="1"> A) Denudation</label> <label><input type="radio" name="q3" value="0"> B) Compaction</label>
+          <label><input type="radio" name="q3" value="0"> C) Deposition</label>
+          <label><input type="radio" name="q3" value="0"> D) Sedimentation</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>4. What type of rocks are formed when magma or lava cools and solidifies?</p>
+        <div class="options">
+          <label><input type="radio" name="q4" value="0"> A) Sedimentary Rocks</label>
+          <label><input type="radio" name="q4" value="0"> B) Metamorphic Rocks</label>
+          <label><input type="radio" name="q4" value="1"> C) Igneous Rocks</label> <label><input type="radio" name="q4" value="0"> D) Foliated Rocks</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>5. What are the two main types of igneous rocks based on formation location?</p> <div class="options">
+          <label><input type="radio" name="q5" value="1"> A) Intrusive and Extrusive</label> <label><input type="radio" name="q5" value="0"> B) Sedimentary and Metamorphic</label>
+          <label><input type="radio" name="q5" value="0"> C) Primary and Secondary</label>
+          <label><input type="radio" name="q5" value="0"> D) Organic and Inorganic</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>6. Why are intrusive igneous rocks usually crystalline (coarse-grained)?</p> <div class="options">
+          <label><input type="radio" name="q6" value="0"> A) Because they cool quickly on the surface</label>
+          <label><input type="radio" name="q6" value="0"> B) Because they are formed under high pressure</label>
+          <label><input type="radio" name="q6" value="1"> C) Because they take a longer time to solidify beneath the Earth's surface</label> <label><input type="radio" name="q6" value="0"> D) Because they are composed of minerals</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>7. What is the primary process that forms sedimentary rocks?</p>
+        <div class="options">
+          <label><input type="radio" name="q7" value="0"> a) Cooling of lava</label>
+          <label><input type="radio" name="q7" value="1"> b) Compaction and cementation of sediments</label> <label><input type="radio" name="q7" value="0"> c) Weathering of igneous rocks</label>
+          <label><input type="radio" name="q7" value="0"> d) Erosion of mountains</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>8. Which of the following is an example of an extrusive igneous rock?</p>
+        <div class="options">
+          <label><input type="radio" name="q8" value="0"> a) Granite</label>
+          <label><input type="radio" name="q8" value="1"> b) Basalt</label> <label><input type="radio" name="q8" value="0"> c) Sandstone</label>
+          <label><input type="radio" name="q8" value="0"> d) Limestone</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>9. What is the characteristic texture of extrusive igneous rocks like basalt?</p>
+        <div class="options">
+          <label><input type="radio" name="q9" value="0"> a) Coarse-grained</label>
+          <label><input type="radio" name="q9" value="1"> b) Fine-grained or glassy</label> <label><input type="radio" name="q9" value="0"> c) Layered</label>
+          <label><input type="radio" name="q9" value="0"> d) Crystalline</label> </div>
+      </div>
+
+      <div class="question">
+        <p>10. What is the main difference between sedimentary rocks and igneous rocks in terms of their formation?</p>
+        <div class="options">
+          <label><input type="radio" name="q10" value="0"> a) Sedimentary rocks are formed from molten lava, while igneous rocks are formed from sediments.</label>
+          <label><input type="radio" name="q10" value="1"> b) Sedimentary rocks are formed from sediments deposited by rivers, while igneous rocks are formed from the cooling of magma or lava.</label> <label><input type="radio" name="q10" value="0"> c) Sedimentary rocks are harder than igneous rocks.</label>
+          <label><input type="radio" name="q10" value="0"> d) Sedimentary rocks are formed in a shorter period than igneous rocks.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>11. Why are sedimentary rocks generally softer than igneous rocks?</p>
+        <div class="options">
+          <label><input type="radio" name="q11" value="0"> a) Because they are formed at higher temperatures</label>
+          <label><input type="radio" name="q11" value="0"> b) Because they are formed through the compaction and cementation of sediments</label> <label><input type="radio" name="q11" value="1"> c) Because they are more prone to weathering</label> <label><input type="radio" name="q11" value="0"> d) Because they have a coarser texture</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>12. What are the three types of sedimentary rocks based on their origin?</p>
+        <div class="options">
+          <label><input type="radio" name="q12" value="1"> A) Mechanical, Chemical, Organic</label> <label><input type="radio" name="q12" value="0"> B) Igneous, Sedimentary, Metamorphic</label>
+          <label><input type="radio" name="q12" value="0"> C) Thermal, Dynamic, Foliated</label>
+          <label><input type="radio" name="q12" value="0"> D) Sandstone, Rock Salt, Marble</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>13. How are mechanically formed sedimentary rocks created?</p>
+        <div class="options">
+          <label><input type="radio" name="q13" value="0"> A) Through the evaporation of water from solutions containing salt.</label>
+          <label><input type="radio" name="q13" value="1"> B) When sediments disintegrated from rocks get deposited and compacted over time.</label> <label><input type="radio" name="q13" value="0"> C) From the remains of dead and decayed plant and animal organisms.</label>
+          <label><input type="radio" name="q13" value="0"> D) Due to intense heat and pressure.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>14. What are the three main types of rocks mentioned in the passage?</p> <div class="options">
+          <label><input type="radio" name="q14" value="1"> A) Igneous, Sedimentary, Metamorphic</label> <label><input type="radio" name="q14" value="0"> B) Igneous, Sedimentary, Foliated</label>
+          <label><input type="radio" name="q14" value="0"> C) Sedimentary, Metamorphic, Stratified</label>
+          <label><input type="radio" name="q14" value="0"> D) Igneous, Metamorphic, Crystalline</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>15. According to the passage, how are igneous rocks formed?</p> <div class="options">
+          <label><input type="radio" name="q15" value="1"> A) Due to the cooling and solidification of hot molten magma</label> <label><input type="radio" name="q15" value="0"> B) Due to the application of extreme heat and pressure on pre-existing rocks</label>
+          <label><input type="radio" name="q15" value="0"> C) Due to the erosion and deposition of sediments</label>
+          <label><input type="radio" name="q15" value="0"> D) Due to the weathering of existing rocks</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>16. What is an example of a metamorphic rock formed from limestone?</p>
+        <div class="options">
+          <label><input type="radio" name="q16" value="1"> A) Marble</label> <label><input type="radio" name="q16" value="0"> B) Slate</label>
+          <label><input type="radio" name="q16" value="0"> C) Quartzite</label>
+          <label><input type="radio" name="q16" value="0"> D) Gneiss</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>17. What is the significance of the Ramappa Temple mentioned in the passage?</p>
+        <div class="options">
+          <label><input type="radio" name="q17" value="0"> A) It is a modern architectural marvel.</label>
+          <label><input type="radio" name="q17" value="1"> B) It is a UNESCO World Heritage Site.</label> <label><input type="radio" name="q17" value="0"> C) It is known for its use of soft stones.</label>
+          <label><input type="radio" name="q17" value="0"> D) It is located in a coastal area.</label>
+        </div>
+      </div>
+
+      <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+    </form>
+  </div>
+
+  <script>
+    // Object storing the correct answer TEXT for each question.
+    const correctAnswers = {
+      q1: "A) Crust",
+      q2: "A) Igneous, Sedimentary, and Metamorphic",
+      q3: "A) Denudation",
+      q4: "C) Igneous Rocks",
+      q5: "A) Intrusive and Extrusive",
+      q6: "C) Because they take a longer time to solidify beneath the Earth's surface",
+      q7: "b) Compaction and cementation of sediments",
+      q8: "b) Basalt",
+      q9: "b) Fine-grained or glassy",
+      q10: "b) Sedimentary rocks are formed from sediments deposited by rivers, while igneous rocks are formed from the cooling of magma or lava.",
+      q11: "c) Because they are more prone to weathering",
+      q12: "A) Mechanical, Chemical, Organic",
+      q13: "B) When sediments disintegrated from rocks get deposited and compacted over time.",
+      q14: "A) Igneous, Sedimentary, Metamorphic",
+      q15: "A) Due to the cooling and solidification of hot molten magma",
+      q16: "A) Marble",
+      q17: "B) It is a UNESCO World Heritage Site."
+    };
+
+    // Total number of questions in the quiz
+    const totalQuestions = 17;
+
+    // Function executed when the "Submit Quiz" button is clicked
+    function submitQuiz() {
+      const form = document.getElementById('quizForm'); // Get form element
+      const errorDiv = document.getElementById('error');
+      const resultDiv = document.getElementById('result');
+      const feedbackDiv = document.getElementById('feedback');
+
+      // --- Reset displays on each submission ---
+      errorDiv.style.display = 'none'; // Hide error message
+      errorDiv.innerHTML = ''; // Clear previous error text
+      resultDiv.innerHTML = ''; // Clear previous result text
+      feedbackDiv.innerHTML = ''; // Clear previous feedback text
+
+      // --- Check if all questions are answered ---
+      let unanswered = []; // Array to store the numbers of unanswered questions
+      // Loop from 1 to totalQuestions
+      for (let i = 1; i <= totalQuestions; i++) {
+        // Check if there is NO checked radio button for the question name q{i}
+        if (!document.querySelector(`input[name="q${i}"]:checked`)) {
+          unanswered.push(i); // Add the question number to the unanswered list
+        }
+      }
+
+      // If there are any unanswered questions
+      if (unanswered.length > 0) {
+        // Construct and display the error message
+        errorDiv.innerHTML = `⚠️ Please answer all ${totalQuestions} questions. Missing answers for questions: ${unanswered.join(', ')}`;
+        errorDiv.style.display = 'block'; // Make the error message visible
+        errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the error message
+        return; // Stop the function execution
+      }
+
+      // --- Calculate score and collect feedback ---
+      let score = 0; // Initialize score
+      let wrongAnswersFeedback = []; // Array to store info about incorrect answers
+
+      // Loop through each question again
+      for (let i = 1; i <= totalQuestions; i++) {
+        const questionName = `q${i}`; // e.g., "q1", "q2"
+        // Find the radio button that is checked for this question
+        const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+
+        // Check if the selected option's value is "1" (indicating correct)
+        if (selectedOption && selectedOption.value === "1") {
+          score++; // Increment score if correct
+        } else if (selectedOption) { // If an option was selected but it was wrong (value != "1")
+          // Find the parent '.question' div for the current radio button
+          const questionDiv = selectedOption.closest('.question');
+          // Find the question text (<p> tag) within that div
+          const questionTextElement = questionDiv ? questionDiv.querySelector('p') : null;
+          const questionText = questionTextElement ? questionTextElement.textContent : `Question ${i} text not found`; // Fallback text
+
+          // Add details about the incorrect answer to the feedback array
+          wrongAnswersFeedback.push({
+            number: i, // Question number
+            text: questionText.trim(), // The text of the question
+            correct: correctAnswers[questionName] || "Correct answer not defined" // The correct answer text from the object
+          });
+        }
+      }
+
+      // --- Display results ---
+      // Show the final score. Color the score green if >= 12 (approx 70%), red otherwise.
+      // Adjust the threshold (12) as needed.
+      resultDiv.innerHTML = `Your Score: <span style="color:${score >= 12 ? '#2e7d32' : '#d32f2f'}">${score} / ${totalQuestions}</span>`;
+      resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the results
+
+      // --- Display feedback for wrong answers ---
+      // Check if there were any incorrect answers
+      if (wrongAnswersFeedback.length > 0) {
+        // Start the feedback section with a heading
+        feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+        // Loop through each item in the wrongAnswersFeedback array
+        wrongAnswersFeedback.forEach(item => {
+          // Append the HTML for each feedback item
+          feedbackDiv.innerHTML += `
+            <div class="feedback-item">
+              <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+              <p class="correct-answer">Correct answer: ${item.correct}</p>
+            </div>
+          `;
+        });
+      } else {
+        // If all answers were correct, display a success message
+        feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+      }
+    }
+  </script>
+</body>
+</html>
