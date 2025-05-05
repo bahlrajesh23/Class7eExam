@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Turkish Invasions of India Questionnaire</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+
+        /* Container for the quiz elements */
+        .quiz-container {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Link back style */
+        .navigation-link {
+            display: block;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navigation-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Styling for each question block */
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            border-left: 5px solid #1e88e5;
+        }
+
+        /* Question text styling */
+        .question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Styling for radio button options */
+        .options label {
+            display: block;
+            margin: 10px 0 10px 5px;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .options label:hover {
+            background-color: #e3f2fd;
+        }
+
+        /* Spacing for radio button itself */
+        .options input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        /* Styling for text area */
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+            resize: none;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Submit button styling */
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        /* Error message styling */
+        #error {
+            color: #d32f2f;
+            padding: 12px;
+            background: #ffebee;
+            border-left: 4px solid #d32f2f;
+            margin: 15px 0;
+            border-radius: 4px;
+            display: none;
+        }
+
+        /* Result display styling */
+        #result {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 15px;
+            background: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Container for all feedback items */
+        #feedback {
+            margin-top: 20px;
+        }
+
+        #feedback h3 {
+            margin-bottom: 15px;
+            color: #c62828;
+        }
+
+        /* Styling for individual feedback items (wrong answers) */
+        .feedback-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: #fff3e0;
+            border-left: 4px solid #ef6c00;
+            border-radius: 4px;
+        }
+
+        /* Styling for the correct answer text within feedback */
+        .correct-answer {
+            color: #2e7d32;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        /* Style for map section */
+        #map-section {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        #map-section h4 {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #map-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #f0f0f0;
+            margin-bottom: 15px;
+            border: 2px dashed #aaa;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="navigation-link">⬅️ Back to Quiz List</a>
+    <div class="quiz-container">
+        <h1>Turkish Invasions of India Questionnaire</h1>
+        <form id="turkishInvasionsQuizForm">
+            <div id="error"></div>
+            <div id="result"></div>
+            <div id="feedback"></div>
+            <section>
+                <h2>Multiple Choice Questions</h2>
+                <div class="question">
+                    <p>1. Who led an army into India in 1001 CE?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="0"> A) Anandapala</label>
+                        <label><input type="radio" name="q1" value="0"> B) Jayapala</label>
+                        <label><input type="radio" name="q1" value="1"> C) Mahmud of Ghazni</label>
+                        <label><input type="radio" name="q1" value="0"> D) Ellenborough</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>2. What was the outcome of the battle between Mahmud's army and Jayapala's army near Peshawar?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="0"> A) Mahmud's army was defeated</label>
+                        <label><input type="radio" name="q2" value="0"> B) Jayapala's army was defeated, but he was not forced to pay tribute</label>
+                        <label><input type="radio" name="q2" value="1"> C) Jayapala's army was forced to pay tribute</label>
+                        <label><input type="radio" name="q2" value="0"> D) The battle ended in a stalemate</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>3. Who formed a confederacy against Mahmud after Jayapala's death?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q3" value="1"> A) Anandapala</label>
+                        <label><input type="radio" name="q3" value="0"> B) Mahmud of Ghazni</label>
+                        <label><input type="radio" name="q3" value="0"> C) Ellenborough</label>
+                        <label><input type="radio" name="q3" value="0"> D) None of the above</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>4. What was the result of the battle between Anandapala and Mahmud at Wai hind?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q4" value="0"> A) Anandapala emerged victorious</label>
+                        <label><input type="radio" name="q4" value="0"> B) Mahmud was defeated</label>
+                        <label><input type="radio" name="q4" value="1"> C) Mahmud won the battle</label>
+                        <label><input type="radio" name="q4" value="0"> D) The battle was inconclusive</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>5. In what year did Mahmud attack the Somnath Temple?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q5" value="0"> A) 1001 CE</label>
+                        <label><input type="radio" name="q5" value="0"> B) 1008-09 CE</label>
+                        <label><input type="radio" name="q5" value="0"> C) 1018 CE</label>
+                        <label><input type="radio" name="q5" value="1"> D) 1025 CE</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>6. What did the British Governor-General Ellenborough claim to have retrieved from Ghazni in 1842 CE?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q6" value="0"> A) The gates of the Red Fort</label>
+                        <label><input type="radio" name="q6" value="1"> B) The gates of the Somnath Temple</label>
+                        <label><input type="radio" name="q6" value="0"> C) The treasures of the Somnath Temple</label>
+                        <label><input type="radio" name="q6" value="0"> D) None of the above</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>7. When did Mahmud return home?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q7" value="0"> A) 1025 CE</label>
+                        <label><input type="radio" name="q7" value="1"> B) 1026 CE</label>
+                        <label><input type="radio" name="q7" value="0"> C) 1027 CE</label>
+                        <label><input type="radio" name="q7" value="0"> D) 1028 CE</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>8. What was Mahmud's intention regarding the Indian subcontinent?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q8" value="0"> A) Establish an empire</label>
+                        <label><input type="radio" name="q8" value="1"> B) Annex the Punjab as a base for attacking Indian territories</label>
+                        <label><input type="radio" name="q8" value="0"> C) Conquer the entire subcontinent</label>
+                        <label><input type="radio" name="q8" value="0"> D) Form an alliance with Indian kingdoms</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>9. Who translated many Sanskrit texts into Arabic?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q9" value="1"> A) Al-Biruni</label>
+                        <label><input type="radio" name="q9" value="0"> B) Muhammad Ghori</label>
+                        <label><input type="radio" name="q9" value="0"> C) Prithviraj Chauhan</label>
+                        <label><input type="radio" name="q9" value="0"> D) Jaichand of Kanauj</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>10. What was Muhammad Ghori's aim?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q10" value="0"> A) Expand Ghaznavid territories</label>
+                        <label><input type="radio" name="q10" value="0"> B) Conquer the entire Indian subcontinent</label>
+                        <label><input type="radio" name="q10" value="1"> C) Expand Ghorid territories</label>
+                        <label><input type="radio" name="q10" value="0"> D) Form an alliance with Indian kingdoms</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>11. In which year did Muhammad Ghori invade the territory of Prithviraj Chauhan of Ajmer?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q11" value="0"> A) 1190 CE</label>
+                        <label><input type="radio" name="q11" value="1"> B) 1191 CE</label>
+                        <label><input type="radio" name="q11" value="0"> C) 1192 CE</label>
+                        <label><input type="radio" name="q11" value="0"> D) 1193 CE</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>12. Who defeated Muhammad Ghori in the First Battle of Tarain?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q12" value="1"> A) Prithviraj Chauhan</label>
+                        <label><input type="radio" name="q12" value="0"> B) Jaichand of Kanauj</label>
+                        <label><input type="radio" name="q12" value="0"> C) Bhima II</label>
+                        <label><input type="radio" name="q12" value="0"> D) Muhammad Ghori</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>13. What was the outcome of the Second Battle of Tarain?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q13" value="0"> A) Prithviraj Chauhan defeated Muhammad Ghori</label>
+                        <label><input type="radio" name="q13" value="1"> B) Muhammad Ghori defeated Prithviraj Chauhan</label>
+                        <label><input type="radio" name="q13" value="0"> C) The battle was a draw</label>
+                        <label><input type="radio" name="q13" value="0"> D) The battle was cancelled</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>14. What region did Muhammad Ghori control within a year after the Second Battle of Tarain?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q14" value="1"> A) North Rajasthan and the northern part of the Ganga-Yamuna Doab</label>
+                        <label><input type="radio" name="q14" value="0"> B) South Rajasthan and the southern part of the Ganga-Yamuna Doab</label>
+                        <label><input type="radio" name="q14" value="0"> C) Entire Indian subcontinent</label>
+                        <label><input type="radio" name="q14" value="0"> D) Punjab only</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>15. What was the main consequence of Ghori's conquests in India?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q15" value="0"> A) Establishment of the Mughal Empire</label>
+                        <label><input type="radio" name="q15" value="1"> B) Establishment of the Delhi Sultanate</label>
+                        <label><input type="radio" name="q15" value="0"> C) Decline of the Indian subcontinent</label>
+                        <label><input type="radio" name="q15" value="0"> D) Rise of the Maratha Empire</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>16. Who was appointed as a general by Khalji?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q16" value="1"> A) Muhammad bin Bakhtiyar</label>
+                        <label><input type="radio" name="q16" value="0"> B) Qutbuddin Aibak</label>
+                        <label><input type="radio" name="q16" value="0"> C) Iltutmish</label>
+                        <label><input type="radio" name="q16" value="0"> D) Balban</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>17. What was the significance of the Second Battle of Tarain in Indian history?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q17" value="0"> A) It marked the beginning of the Mughal Empire</label>
+                        <label><input type="radio" name="q17" value="1"> B) It was a watershed moment in Indian history</label>
+                        <label><input type="radio" name="q17" value="0"> C) It led to the decline of the Delhi Sultanate</label>
+                        <label><input type="radio" name="q17" value="0"> D) It had no significant impact</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>18. Compare the impact of the Turkish invasions on India with the Norman Conquest of England. What was a common outcome?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q18" value="0"> A) Both led to the establishment of a new empire</label>
+                        <label><input type="radio" name="q18" value="1"> B) Both resulted in significant cultural changes</label>
+                        <label><input type="radio" name="q18" value="0"> C) Both had a minimal impact on the local population</label>
+                        <label><input type="radio" name="q18" value="0"> D) Both were unsuccessful</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>19. What were the reasons behind the Turkish success in India?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q19" value="0"> A) Political unity and strong administrative system</label>
+                        <label><input type="radio" name="q19" value="0"> B) Political division and weak administrative system</label>
+                        <label><input type="radio" name="q19" value="0"> C) Superior military tactics and strong economy</label>
+                        <label><input type="radio" name="q19" value="1"> D) All of the above (India was politically divided, Indian rulers were not united, Turkish horses were more swift and agile, and the prevailing administrative system weakened the king's position)</label>
+                    </div>
+                </div>
+            </section>
+            <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+        </form>
+    </div>
+    <script>
+        const correctAnswers = {
+            q1: "C) Mahmud of Ghazni",
+            q2: "C) Jayapala's army was forced to pay tribute",
+            q3: "A) Anandapala",
+            q4: "C) Mahmud won the battle",
+            q5: "D) 1025 CE",
+            q6: "B) The gates of the Somnath Temple",
+            q7: "B) 1026 CE",
+            q8: "B) Annex the Punjab as a base for attacking Indian territories",
+            q9: "A) Al-Biruni",
+            q10: "C) Expand Ghorid territories",
+            q11: "B) 1191 CE",
+            q12: "A) Prithviraj Chauhan",
+            q13: "B) Muhammad Ghori defeated Prithviraj Chauhan",
+            q14: "A) North Rajasthan and the northern part of the Ganga-Yamuna Doab",
+            q15: "B) Establishment of the Delhi Sultanate",
+            q16: "A) Muhammad bin Bakhtiyar",
+            q17: "B) It was a watershed moment in Indian history",
+            q18: "B) Both resulted in significant cultural changes",
+            q19: "D) All of the above (India was politically divided, Indian rulers were not united, Turkish horses were more swift and agile, and the prevailing administrative system weakened the king's position)"
+        };
+
+        const totalQuestions = 19;
+
+        function submitQuiz() {
+            const form = document.getElementById('turkishInvasionsQuizForm');
+            const errorDiv = document.getElementById('error');
+            const resultDiv = document.getElementById('result');
+            const feedbackDiv = document.getElementById('feedback');
+
+            errorDiv.style.display = 'none';
+            errorDiv.innerHTML = '';
+            resultDiv.innerHTML = '';
+            feedbackDiv.innerHTML = '';
+
+            let unanswered = [];
+            let score = 0;
+            let wrongAnswersFeedback = [];
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+
+                if (!selectedOption) {
+                    unanswered.push(i);
+                } else if (selectedOption.value === "1") {
+                    score++;
+                } else {
+                    const questionDiv = selectedOption.closest('.question');
+                    const questionTextElement = questionDiv ? questionDiv.querySelector('p') : `Question ${i}`;
+                    const questionText = questionDiv ? questionTextElement.textContent : `Question ${i} text not found`;
+                    wrongAnswersFeedback.push({
+                        number: i,
+                        text: questionText.trim(),
+                        correct: correctAnswers[questionName] || "Correct answer not defined"
+                    });
+                }
+            }
+
+            if (unanswered.length > 0) {
+                errorDiv.innerHTML = `⚠️ Please answer all questions. Missing answers for questions: ${unanswered.join(', ')}`;
+                errorDiv.style.display = 'block';
+                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            resultDiv.innerHTML = `Your Score: <span style="color:${score >= 15 ? '#2e7d32' : '#d32f2f'}">${score} / ${totalQuestions}</span>`;
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            if (wrongAnswersFeedback.length > 0) {
+                feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+                wrongAnswersFeedback.forEach(item => {
+                    feedbackDiv.innerHTML += `
+                        <div class="feedback-item">
+                            <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+                            <p class="correct-answer">Correct answer: ${item.correct}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+            }
+        }
+    </script>
+</body>
+</html>
