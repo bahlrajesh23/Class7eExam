@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shahnamah and Mahmud of Ghazni Questionnaire</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+
+        /* Container for the quiz elements */
+        .quiz-container {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Link back style */
+        .navigation-link {
+            display: block;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navigation-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Styling for each question block */
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            border-left: 5px solid #1e88e5;
+        }
+
+        /* Question text styling */
+        .question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Styling for radio button options */
+        .options label {
+            display: block;
+            margin: 10px 0 10px 5px;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .options label:hover {
+            background-color: #e3f2fd;
+        }
+
+        /* Spacing for radio button itself */
+        .options input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        /* Styling for text area */
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+            resize: none;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Submit button styling */
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        /* Error message styling */
+        #error {
+            color: #d32f2f;
+            padding: 12px;
+            background: #ffebee;
+            border-left: 4px solid #d32f2f;
+            margin: 15px 0;
+            border-radius: 4px;
+            display: none;
+        }
+
+        /* Result display styling */
+        #result {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 15px;
+            background: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Container for all feedback items */
+        #feedback {
+            margin-top: 20px;
+        }
+
+        #feedback h3 {
+            margin-bottom: 15px;
+            color: #c62828;
+        }
+
+        /* Styling for individual feedback items (wrong answers) */
+        .feedback-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: #fff3e0;
+            border-left: 4px solid #ef6c00;
+            border-radius: 4px;
+        }
+
+        /* Styling for the correct answer text within feedback */
+        .correct-answer {
+            color: #2e7d32;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        /* Style for map section */
+        #map-section {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        #map-section h4 {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #map-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #f0f0f0;
+            margin-bottom: 15px;
+            border: 2px dashed #aaa;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="navigation-link">⬅️ Back to Quiz List</a>
+    <div class="quiz-container">
+        <h1>Shahnamah and Mahmud of Ghazni Questionnaire</h1>
+        <form id="shahnamahQuizForm">
+            <div id="error"></div>
+            <div id="result"></div>
+            <div id="feedback"></div>
+            <section>
+                <h2>Multiple Choice Questions Based on the Image</h2>
+                <div class="question">
+                    <p>1. What is the Shahnamah a primary source of information about?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="A) Persian history from the mythical times to the mid-7th century"> A) Persian history from the mythical times to the mid-7th century</label>
+                        <label><input type="radio" name="q1" value="B) Indian history from the Gupta Empire to the Turkish invasions"> B) Indian history from the Gupta Empire to the Turkish invasions</label>
+                        <label><input type="radio" name="q1" value="C) The history of the Abbasid Empire"> C) The history of the Abbasid Empire</label>
+                        <label><input type="radio" name="q1" value="D) The history of the Turkish invasions"> D) The history of the Turkish invasions</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>2. Which parts of the Shahnamah inform historians about the facts of the period?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="A) Myths"> A) Myths</label>
+                        <label><input type="radio" name="q2" value="B) Legends"> B) Legends</label>
+                        <label><input type="radio" name="q2" value="C) History of rulers"> C) History of rulers</label>
+                        <label><input type="radio" name="q2" value="D) All of the above"> D) All of the above</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>3. What was the consequence of the Turkish incursions into India in the 10th century CE?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q3" value="A) Establishment of the Gupta Empire"> A) Establishment of the Gupta Empire</label>
+                        <label><input type="radio" name="q3" value="B) Decline of regional powers"> B) Decline of regional powers</label>
+                        <label><input type="radio" name="q3" value="C) Establishment of new dynasties in the country"> C) Establishment of new dynasties in the country</label>
+                        <label><input type="radio" name="q3" value="D) Strengthening of the Abbasid Caliphate"> D) Strengthening of the Abbasid Caliphate</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>4. Who rose to power in Kanauj after the disintegration of the Gupta Empire?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q4" value="A) Harsha"> A) Harsha</label>
+                        <label><input type="radio" name="q4" value="B) Yasovarman"> B) Yasovarman</label>
+                        <label><input type="radio" name="q4" value="C) Gaur"> C) Gaur</label>
+                        <label><input type="radio" name="q4" value="D) Magadha"> D) Magadha</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>5. What were the two main kingdoms established by the Turks?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q5" value="A) Ghazni and Ghor"> A) Ghazni and Ghor</label>
+                        <label><input type="radio" name="q5" value="B) Kanauj and Magadha"> B) Kanauj and Magadha</label>
+                        <label><input type="radio" name="q5" value="C) Delhi and Agra"> C) Delhi and Agra</label>
+                        <label><input type="radio" name="q5" value="D) None of the above"> D) None of the above</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>6. What was one of the causes of the Turkish conquest of India?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q6" value="A) The wealth of India"> A) The wealth of India</label>
+                        <label><input type="radio" name="q6" value="B) The decline of the Gupta Empire"> B) The decline of the Gupta Empire</label>
+                        <label><input type="radio" name="q6" value="C) The rise of regional powers"> C) The rise of regional powers</label>
+                        <label><input type="radio" name="q6" value="D) The strengthening of the Abbasid Caliphate"> D) The strengthening of the Abbasid Caliphate</label>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <h2>Multiple Choice Questions Based on the Image</h2>
+                <div class="question">
+                    <p>7. Who seized the region of Ghazni in Afghanistan in 977 CE?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q7" value="A) Mahmud of Ghazni"> A) Mahmud of Ghazni</label>
+                        <label><input type="radio" name="q7" value="B) Sabuktigin"> B) Sabuktigin</label>
+                        <label><input type="radio" name="q7" value="C) Jayapala"> C) Jayapala</label>
+                        <label><input type="radio" name="q7" value="D) None of the above"> D) None of the above</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>8. What was the outcome of Sabuktigin's conflict with Jayapala, the ruler of the Shahi dynasty of the Punjab, in c. 986 CE?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q8" value="A) Sabuktigin was defeated"> A) Sabuktigin was defeated</label>
+                        <label><input type="radio" name="q8" value="B) Sabuktigin successfully raided the Shahi kingdom"> B) Sabuktigin successfully raided the Shahi kingdom</label>
+                        <label><input type="radio" name="q8" value="C) Jayapala annexed Ghazni"> C) Jayapala annexed Ghazni</label>
+                        <label><input type="radio" name="q8" value="D) The conflict ended in a stalemate"> D) The conflict ended in a stalemate</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>9. Who ascended the throne of Ghazni after Sabuktigin's death in 997 CE?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q9" value="A) Jayapala"> A) Jayapala</label>
+                        <label><input type="radio" name="q9" value="B) Mahmud of Ghazni"> B) Mahmud of Ghazni</label>
+                        <label><input type="radio" name="q9" value="C) A younger son of Sabuktigin"> C) A younger son of Sabuktigin</label>
+                        <label><input type="radio" name="q9" value="D) A rival Turkish leader"> D) A rival Turkish leader</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>10. What was one of the reasons the Turkish rulers were attracted to India?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q10" value="A) India's cultural heritage"> A) India's cultural heritage</label>
+                        <label><input type="radio" name="q10" value="B) India's wealth"> B) India's wealth</label>
+                        <label><input type="radio" name="q10" value="C) India's geographical location"> C) India's geographical location</label>
+                        <label><input type="radio" name="q10" value="D) India's climate"> D) India's climate</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>11. What was the significance of the robe of honour given to Mahmud of Ghazni by the Caliph?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q11" value="A) It symbolized the Caliph's military support for Mahmud"> A) It symbolized the Caliph's military support for Mahmud</label>
+                        <label><input type="radio" name="q11" value="B) It represented the Caliph's recognition of Mahmud's authority"> B) It represented the Caliph's recognition of Mahmud's authority</label>
+                        <label><input type="radio" name="q11" value="C) It was a token of the Caliph's friendship with Mahmud"> C) It was a token of the Caliph's friendship with Mahmud</label>
+                        <label><input type="radio" name="q11" value="D) It was a ceremonial gift with no political significance"> D) It was a ceremonial gift with no political significance</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>12. In what year did Mahmud of Ghazni ascend to the throne?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q12" value="A) 999 CE"> A) 999 CE</label>
+                        <label><input type="radio" name="q12" value="B) 998 CE"> B) 998 CE</label>
+                        <label><input type="radio" name="q12" value="C) 1000 CE"> C) 1000 CE</label>
+                        <label><input type="radio" name="q12" value="D) 1001 CE"> D) 1001 CE</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>13. What regions did Mahmud's initial kingdom comprise?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q13" value="A) Modern Afghanistan and parts of Pakistan"> A) Modern Afghanistan and parts of Pakistan</label>
+                        <label><input type="radio" name="q13" value="B) Modern Afghanistan and the north-eastern region of modern Iran"> B) Modern Afghanistan and the north-eastern region of modern Iran</label>
+                        <label><input type="radio" name="q13" value="C) Modern India and parts of Iran"> C) Modern India and parts of Iran</label>
+                        <label><input type="radio" name="q13" value="D) Modern Pakistan and parts of India"> D) Modern Pakistan and parts of India</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>14. List three regions that Mahmud added to his empire through his conquests.</p>
+                    <div class="options">
+                        <label><input type="radio" name="q14" value="A) Kashmir, Punjab, and Iran"> A) Kashmir, Punjab, and Iran</label>
+                        <label><input type="radio" name="q14" value="B) India, Pakistan, and Bangladesh"> B) India, Pakistan, and Bangladesh</label>
+                        <label><input type="radio" name="q14" value="C) Afghanistan, Iran, and Iraq"> C) Afghanistan, Iran, and Iraq</label>
+                        <label><input type="radio" value="D) Turkey, Syria, and Egypt" name="q14"> D) Turkey, Syria, and Egypt</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>15. How many times did Mahmud attack India during his lifetime?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q15" value="A) 15 times"> A) 15 times</label>
+                        <label><input type="radio" name="q15" value="B) 17 times"> B) 17 times</label>
+                        <label><input type="radio" name="q15" value="C) 20 times"> C) 20 times</label>
+                        <label><input type="radio" name="q15" value="D) 25 times"> D) 25 times</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>16. What was the primary reason behind Mahmud's invasions of Indian temple towns?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q16" value="A) To spread Islam"> A) To spread Islam</label>
+                        <label><input type="radio" name="q16" value="B) To plunder their wealth"> B) To plunder their wealth</label>
+                        <label><input type="radio" name="q16" value="C) To establish trade relations"> C) To establish trade relations</label>
+                        <label><input type="radio" name="q16" value="D) To form alliances with local rulers"> D) To form alliances with local rulers</label>
+                    </div>
+                </div>
+            </section>
+            <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+        </form>
+    </div>
+    <script>
+        const correctAnswers = {
+            q1: "A) Persian history from the mythical times to the mid-7th century",
+            q2: "D) All of the above",
+            q3: "C) Establishment of new dynasties in the country",
+            q4: "B) Yasovarman",
+            q5: "A) Ghazni and Ghor",
+            q6: "A) The wealth of India",
+            q7: "B) Sabuktigin",
+            q8: "B) Sabuktigin successfully raided the Shahi kingdom",
+            q9: "B) Mahmud of Ghazni",
+            q10: "B) India's wealth",
+            q11: "B) It represented the Caliph's recognition of Mahmud's authority",
+            q12: "B) 998 CE",
+            q13: "B) Modern Afghanistan and the north-eastern region of modern Iran",
+            q14: "A) Kashmir, Punjab, and Iran",
+            q15: "B) 17 times",
+            q16: "B) To plunder their wealth"
+        };
+
+        const totalQuestions = 16;
+
+        function submitQuiz() {
+            const form = document.getElementById('shahnamahQuizForm');
+            const errorDiv = document.getElementById('error');
+            const resultDiv = document.getElementById('result');
+            const feedbackDiv = document.getElementById('feedback');
+
+            errorDiv.style.display = 'none';
+            errorDiv.innerHTML = '';
+            resultDiv.innerHTML = '';
+            feedbackDiv.innerHTML = '';
+
+            let unanswered = [];
+            let score = 0;
+            let wrongAnswersFeedback = [];
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+
+                if (!selectedOption) {
+                    unanswered.push(i);
+                } else if (selectedOption.value === correctAnswers[questionName]) {
+                    score++;
+                } else {
+                    const questionDiv = selectedOption.closest('.question');
+                    const questionTextElement = questionDiv ? questionDiv.querySelector('p') : `Question ${i}`;
+                    const questionText = questionDiv ? questionTextElement.textContent : `Question ${i} text not found`;
+                    wrongAnswersFeedback.push({
+                        number: i,
+                        text: questionText.trim(),
+                        correct: correctAnswers[questionName] || "Correct answer not defined"
+                    });
+                }
+            }
+
+            if (unanswered.length > 0) {
+                errorDiv.innerHTML = `⚠️ Please answer all questions. Missing answers for questions: ${unanswered.join(', ')}`;
+                errorDiv.style.display = 'block';
+                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            resultDiv.innerHTML = `Your Score: <span style="color:${score >= 12 ? '#2e7d32' : '#d32f2f'}">${score} / ${totalQuestions}</span>`;
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            if (wrongAnswersFeedback.length > 0) {
+                feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+                wrongAnswersFeedback.forEach(item => {
+                    feedbackDiv.innerHTML += `
+                        <div class="feedback-item">
+                            <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+                            <p class="correct-answer">Correct answer: ${item.correct}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+            }
+        }
+    </script>
+</body>
+</html>
