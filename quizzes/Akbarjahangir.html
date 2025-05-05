@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Akbar and Jahangir Questionnaire</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+
+        /* Container for the quiz elements */
+        .quiz-container {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Link back style */
+        .navigation-link {
+            display: block;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navigation-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Styling for each question block */
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            border-left: 5px solid #1e88e5;
+        }
+
+        /* Question text styling */
+        .question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Styling for radio button options */
+        .options label {
+            display: block;
+            margin: 10px 0 10px 5px;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .options label:hover {
+            background-color: #e3f2fd;
+        }
+
+        /* Spacing for radio button itself */
+        .options input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        /* Styling for text area */
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+            resize: none;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Submit button styling */
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        /* Error message styling */
+        #error {
+            color: #d32f2f;
+            padding: 12px;
+            background: #ffebee;
+            border-left: 4px solid #d32f2f;
+            margin: 15px 0;
+            border-radius: 4px;
+            display: none;
+        }
+
+        /* Result display styling */
+        #result {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 15px;
+            background: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Container for all feedback items */
+        #feedback {
+            margin-top: 20px;
+        }
+
+        #feedback h3 {
+            margin-bottom: 15px;
+            color: #c62828;
+        }
+
+        /* Styling for individual feedback items (wrong answers) */
+        .feedback-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: #fff3e0;
+            border-left: 4px solid #ef6c00;
+            border-radius: 4px;
+        }
+
+        /* Styling for the correct answer text within feedback */
+        .correct-answer {
+            color: #2e7d32;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        /* Style for map section */
+        #map-section {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        #map-section h4 {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #map-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #f0f0f0;
+            margin-bottom: 15px;
+            border: 2px dashed #aaa;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Akbar and Jahangir Questionnaire</h1>
+        <form id="akbarJahangirQuizForm">
+            <div id="error"></div>
+            <div id="result"></div>
+            <div id="feedback"></div>
+            <section>
+                <h2>Akbar Questions</h2>
+                <div class="question">
+                    <p>1. What was Akbar's original name?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="A) Abu'l-Fath Jalal ud-din Muhammad Akbar"> A) Abu'l-Fath Jalal ud-din Muhammad Akbar</label>
+                        <label><input type="radio" name="q1" value="B) Nuruddin Muhammad Jahangir"> B) Nuruddin Muhammad Jahangir</label>
+                        <label><input type="radio" name="q1" value="C) Hem Chandra Vikramaditya"> C) Hem Chandra Vikramaditya</label>
+                        <label><input type="radio" name="q1" value="D) Kamran Mirza"> D) Kamran Mirza</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>2. Who were Akbar's parents?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="A) Humayun and Hamida Banu Begum"> A) Humayun and Hamida Banu Begum</label>
+                        <label><input type="radio" name="q2" value="B) Babur and Maryam Begum"> B) Babur and Maryam Begum</label>
+                        <label><input type="radio" name="q2" value="C) Sher Shah and  Maham Anga"> C) Sher Shah and  Maham Anga</label>
+                         <label><input type="radio" name="q2" value="D)  Askari Mirza and Gulbadan Begum"> D)  Askari Mirza and Gulbadan Begum</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>3. At what age was Akbar enthroned?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q3" value="A) 12"> A) 12</label>
+                        <label><input type="radio" name="q3" value="B) 13"> B) 13</label>
+                        <label><input type="radio" name="q3" value="C) 15"> C) 15</label>
+                        <label><input type="radio" name="q3" value="D) 20"> D) 20</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>4. Who led the Mughal army in the Second Battle of Panipat?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q4" value="A) Akbar"> A) Akbar</label>
+                        <label><input type="radio" name="q4" value="B) Hemu"> B) Hemu</label>
+                        <label><input type="radio" name="q4" value="C) Bairam Khan"> C) Bairam Khan</label>
+                        <label><input type="radio" name="q4" value="D) Adil Shah"> D) Adil Shah</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>5. Which Rajput princess did Akbar marry?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q5" value="A) Harka Bai (Jodha Bai)"> A) Harka Bai (Jodha Bai)</label>
+                        <label><input type="radio" name="q5" value="B)  Rani Durgavati"> B)  Rani Durgavati</label>
+                        <label><input type="radio" name="q5" value="C)  Rani Padmini"> C)  Rani Padmini</label>
+                        <label><input type="radio" name="q5" value="D)  Mirabai"> D)  Mirabai</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>6. What tax did Akbar abolish to promote religious harmony?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q6" value="A) Jizya"> A) Jizya</label>
+                        <label><input type="radio" name="q6" value="B) Land Tax"> B) Land Tax</label>
+                        <label><input type="radio" name="q6" value="C) Trade Tax"> C) Trade Tax</label>
+                        <label><input type="radio" name="q6" value="D)  Salt Tax"> D)  Salt Tax</label>
+                    </div>
+                </div>
+                 <div class="question">
+                    <p>7. What was the name of the hall built for religious discussions?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q7" value="A) Ibadat Khana"> A) Ibadat Khana</label>
+                        <label><input type="radio" name="q7" value="B) Diwan-i-Khas"> B) Diwan-i-Khas</label>
+                        <label><input type="radio" name="q7" value="C) Buland Darwaza"> C) Buland Darwaza</label>
+                        <label><input type="radio" name="q7" value="D)  Anup Talao"> D)  Anup Talao</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>8. What declaration gave Akbar the power to interpret Islamic Law?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q8" value="A) Mahzar"> A) Mahzar</label>
+                        <label><input type="radio" name="q8" value="B)  Firman"> B)  Firman</label>
+                        <label><input type="radio" name="q8" value="C)  Dastur"> C)  Dastur</label>
+                        <label><input type="radio" name="q8" value="D)  Hukmnama"> D)  Hukmnama</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>9. What was the concept of Universal Peace propounded by Akbar?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q9" value="A) Sulh-i-Kul"> A) Sulh-i-Kul</label>
+                        <label><input type="radio" name="q9" value="B)  Wahdat-ul-Wujud"> B)  Wahdat-ul-Wujud</label>
+                        <label><input type="radio" name="q9" value="C)  Tauhid-i-Ilahi"> C)  Tauhid-i-Ilahi</label>
+                        <label><input type="radio" name="q9" value="D)  Din-i-Ilahi"> D)  Din-i-Ilahi</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>10. What was the nature of Din-i-Ilahi?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q10" value="A) A new religion"> A) A new religion</label>
+                        <label><input type="radio" name="q10" value="B) A code of moral conduct"> B) A code of moral conduct</label>
+                        <label><input type="radio" name="q10" value="C) A political alliance"> C) A political alliance</label>
+                        <label><input type="radio" name="q10" value="D)  A military strategy"> D)  A military strategy</label>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <h2>Jahangir Questions</h2>
+                <div class="question">
+                    <p>11. What was Jahangir's original name?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q11" value="A) Abu'l-Fath Jalal ud-din Muhammad Akbar"> A) Abu'l-Fath Jalal ud-din Muhammad Akbar</label>
+                        <label><input type="radio" name="q11" value="B) Nuruddin Muhammad Jahangir"> B) Nuruddin Muhammad Jahangir</label>
+                        <label><input type="radio" name="q11" value="C) Hem Chandra Vikramaditya"> C) Hem Chandra Vikramaditya</label>
+                        <label><input type="radio" name="q11" value="D) Kamran Mirza"> D) Kamran Mirza</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>12. What type of works did Jahangir author?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q12" value="A) Poetry"> A) Poetry</label>
+                        <label><input type="radio" name="q12" value="B)  Autobiography"> B)  Autobiography</label>
+                        <label><input type="radio" name="q12" value="C)  Religious Treatise"> C)  Religious Treatise</label>
+                        <label><input type="radio" name="q12" value="D)  Epic"> D)  Epic</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>13. What was the name of Jahangir's autobiography?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q13" value="A) Akbarnama"> A) Akbarnama</label>
+                        <label><input type="radio" name="q13" value="B)  Humayunnama"> B)  Humayunnama</label>
+                        <label><input type="radio" name="q13" value="C) Tuzuk-i-Jahangiri"> C) Tuzuk-i-Jahangiri</label>
+                        <label><input type="radio" name="q13" value="D)  Baburnama"> D)  Baburnama</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>14. Which region's conflict did Jahangir end in 1615 CE?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q14" value="A) Mewar"> A) Mewar</label>
+                        <label><input type="radio" name="q14" value="B)  Bengal"> B)  Bengal</label>
+                        <label><input type="radio" name="q14" value="C)  Punjab"> C)  Punjab</label>
+                        <label><input type="radio" name="q14" value="D)  Kashmir"> D)  Kashmir</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>15. Who was the English diplomat who visited Jahangir's court?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q15" value="A) Sir Walter Raleigh"> A) Sir Walter Raleigh</label>
+                        <label><input type="radio" name="q15" value="B)  Sir Francis Drake"> B)  Sir Francis Drake</label>
+                        <label><input type="radio" name="q15" value="C)  Sir Thomas Roe"> C)  Sir Thomas Roe</label>
+                        <label><input type="radio" name="q15" value="D)  John Milton"> D)  John Milton</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>16. What was the real name of Jahangir's last wife?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q16" value="A) Mumtaz Mahal"> A) Mumtaz Mahal</label>
+                        <label><input type="radio" name="q16" value="B)  Mehrunissa"> B)  Mehrunissa</label>
+                        <label><input type="radio" name="q16" value="C)  Jodha Bai"> C)  Jodha Bai</label>
+                        <label><input type="radio" name="q16" value="D)  Rukaiya Begum"> D)  Rukaiya Begum</label>
+                    </div>
+                </div>
+            </section>
+            <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+        </form>
+    </div>
+    <script>
+       const correctAnswers = {
+            q1: "A) Abu'l-Fath Jalal ud-din Muhammad Akbar",
+            q2: "A) Humayun and Hamida Banu Begum",
+            q3: "B) 13",
+            q4: "C) Bairam Khan",
+            q5: "A) Harka Bai (Jodha Bai)",
+            q6: "A) Jizya",
+            q7: "A) Ibadat Khana",
+            q8: "A) Mahzar",
+            q9: "A) Sulh-i-Kul",
+            q10: "B) A code of moral conduct",
+            q11: "B) Nuruddin Muhammad Jahangir",
+            q12: "B)  Autobiography",
+            q13: "C) Tuzuk-i-Jahangiri",
+            q14: "A) Mewar",
+            q15: "C)  Sir Thomas Roe",
+            q16: "B)  Mehrunissa"
+        };
+
+        const totalQuestions = 16;
+
+        function submitQuiz() {
+            const form = document.getElementById('akbarJahangirQuizForm');
+            const errorDiv = document.getElementById('error');
+            const resultDiv = document.getElementById('result');
+            const feedbackDiv = document.getElementById('feedback');
+
+            errorDiv.style.display = 'none';
+            errorDiv.innerHTML = '';
+            resultDiv.innerHTML = '';
+            feedbackDiv.innerHTML = '';
+
+            let unanswered = [];
+            let score = 0;
+            let wrongAnswersFeedback = [];
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+
+                if (!selectedOption) {
+                    unanswered.push(i);
+                } else if (selectedOption.value === correctAnswers[questionName]) {
+                    score++;
+                } else {
+                    const questionDiv = selectedOption.closest('.question');
+                    const questionTextElement = questionDiv ? questionDiv.querySelector('p') : `Question ${i}`;
+                    const questionText = questionDiv ? questionTextElement.textContent : `Question ${i} text not found`;
+                    wrongAnswersFeedback.push({
+                        number: i,
+                        text: questionText.trim(),
+                        correct: correctAnswers[questionName] || "Correct answer not defined"
+                    });
+                }
+            }
+
+            if (unanswered.length > 0) {
+                errorDiv.innerHTML = `⚠️ Please answer all questions. Missing answers for questions: ${unanswered.join(', ')}`;
+                errorDiv.style.display = 'block';
+                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            resultDiv.innerHTML = `Your Score: <span style="color:${score >= 12 ? '#2e7d32' : '#d32f2f'}">${score} / ${totalQuestions}</span>`;
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            if (wrongAnswersFeedback.length > 0) {
+                feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+                wrongAnswersFeedback.forEach(item => {
+                    feedbackDiv.innerHTML += `
+                        <div class="feedback-item">
+                            <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+                            <p class="correct-answer">Correct answer: ${item.correct}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+            }
+        }
+    </script>
+</body>
+</html>
