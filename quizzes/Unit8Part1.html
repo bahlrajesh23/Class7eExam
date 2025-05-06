@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Burning and Endothermic Reactions Questionnaire</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+
+        /* Container for the quiz elements */
+        .quiz-container {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Link back style */
+        .navigation-link {
+            display: block;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navigation-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Styling for each question block */
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            border-left: 5px solid #1e88e5;
+        }
+
+        /* Question text styling */
+        .question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Styling for radio button options */
+        .options label {
+            display: block;
+            margin: 10px 0 10px 5px;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .options label:hover {
+            background-color: #e3f2fd;
+        }
+
+        /* Spacing for radio button itself */
+        .options input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        /* Styling for text area (Not used in this quiz, but kept for structure) */
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+            resize: none;
+            font-family: Arial, sans-serif;
+            display: none; /* Hide since not used */
+        }
+
+        /* Submit button styling */
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        /* Error message styling */
+        #error {
+            color: #d32f2f;
+            padding: 12px;
+            background: #ffebee;
+            border-left: 4px solid #d32f2f;
+            margin: 15px 0;
+            border-radius: 4px;
+            display: none;
+        }
+
+        /* Result display styling */
+        #result {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 15px;
+            background: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Container for all feedback items */
+        #feedback {
+            margin-top: 20px;
+        }
+
+        #feedback h3 {
+            margin-bottom: 15px;
+            color: #c62828;
+        }
+
+        /* Styling for individual feedback items (wrong answers) */
+        .feedback-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: #fff3e0;
+            border-left: 4px solid #ef6c00;
+            border-radius: 4px;
+        }
+
+        /* Styling for the correct answer text within feedback */
+        .correct-answer {
+            color: #2e7d32;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+         /* Style for map section (Not used in this specific quiz, but kept for structure) */
+        #map-section {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            display: none; /* Hide since not used */
+        }
+
+        #map-section h4 {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #map-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #f0f0f0;
+            margin-bottom: 15px;
+            border: 2px dashed #aaa;
+            border-radius: 5px;
+            display: none; /* Hide since not used */
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="navigation-link">⬅️ Back to Quiz List</a>
+    <div class="quiz-container">
+        <h1>Burning and Chemical Reactions Questionnaire</h1>
+        <form id="chemicalReactionsQuizForm">
+            <div id="error"></div>
+            <div id="result"></div>
+            <div id="feedback"></div>
+            <section>
+                <h2>Multiple Choice Questions</h2>
+
+                <div class="question">
+                    <p>1. What is needed for combustion to take place?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="0"> A. Fuel, light, and water</label>
+                        <label><input type="radio" name="q1" value="1"> B. Oxygen, fuel, and heat</label>
+                        <label><input type="radio" name="q1" value="0"> C. Heat, water, and smoke</label>
+                        <label><input type="radio" name="q1" value="0"> D. Fuel, sound, and gas</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>2. What is a fuel?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="0"> A. A substance that reacts with nitrogen</label>
+                        <label><input type="radio" name="q2" value="0"> B. A source of water energy</label>
+                        <label><input type="radio" name="q2" value="1"> C. A substance that reacts with oxygen during burning</label>
+                        <label><input type="radio" name="q2" value="0"> D. A type of gas used in cooling</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>3. Which of the following is not a fuel?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q3" value="0"> A. Charcoal</label>
+                        <label><input type="radio" name="q3" value="0"> B. Wood</label>
+                        <label><input type="radio" name="q3" value="0"> C. Coal</label>
+                        <label><input type="radio" name="q3" value="1"> D. Oxygen</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>4. What happens when fuel burns?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q4" value="0"> A. Chemical energy is lost</label>
+                        <label><input type="radio" name="q4" value="1"> B. Chemical energy is changed into thermal, light, and sound energy</label>
+                        <label><input type="radio" name="q4" value="0"> C. Thermal energy turns into chemical energy</label>
+                        <label><input type="radio" name="q4" value="0"> D. Energy remains unchanged</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>5. What is combustion?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q5" value="0"> A. A type of nuclear reaction</label>
+                        <label><input type="radio" name="q5" value="0"> B. Another term for freezing</label>
+                        <label><input type="radio" name="q5" value="0"> C. A process that uses water to produce fire</label>
+                        <label><input type="radio" name="q5" value="1"> D. Another term for burning</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>6. What is an exothermic reaction?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q6" value="0"> A. A reaction that uses up thermal energy</label>
+                        <label><input type="radio" name="q6" value="1"> B. A reaction in which thermal energy is given out</label>
+                        <label><input type="radio" name="q6" value="0"> C. A reaction that absorbs sound</label>
+                        <label><input type="radio" name="q6" value="0"> D. A reaction with no temperature change</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>7. How can you tell that burning is an exothermic reaction?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q7" value="0"> A. Because it creates bubbles</label>
+                        <label><input type="radio" name="q7" value="0"> B. Because it produces smoke</label>
+                        <label><input type="radio" name="q7" value="1"> C. Because it gives off thermal energy and raises the temperature</label>
+                        <label><input type="radio" name="q7" value="0"> D. Because it changes the color of the flame</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>8. What type of reaction is the combustion of hydrogen?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q8" value="0"> A. Endothermic reaction</label>
+                        <label><input type="radio" name="q8" value="1"> B. Exothermic reaction</label>
+                        <label><input type="radio" name="q8" value="0"> C. Neutral reaction</label>
+                        <label><input type="radio" name="q8" value="0"> D. Cold reaction</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>9. What are the products formed when hydrogen burns in oxygen?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q9" value="0"> A. Carbon dioxide</label>
+                        <label><input type="radio" name="q9" value="0"> B. Nitrogen</label>
+                        <label><input type="radio" name="q9" value="1"> C. Water</label>
+                        <label><input type="radio" name="q9" value="0"> D. Hydrogen peroxide</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>10. What types of energy are released when hydrogen burns?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q10" value="0"> A. Only thermal energy</label>
+                        <label><input type="radio" name="q10" value="1"> B. Kinetic, thermal, sound, and light energy</label>
+                        <label><input type="radio" name="q10" value="0"> C. Electrical and magnetic energy</label>
+                        <label><input type="radio" name="q10" value="0"> D. Nuclear and solar energy</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>11. In the experiment, what is the role of the spark generator?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q11" value="0"> A. To cool down the hydrogen</label>
+                        <label><input type="radio" name="q11" value="0"> B. To push the stopper</label>
+                        <label><input type="radio" name="q11" value="1"> C. To provide energy to start the reaction</label>
+                        <label><input type="radio" name="q11" value="0"> D. To fill the bottle with gas</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>12. Why does the plastic bottle move quickly along the string in the experiment?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q12" value="0"> A. It is pulled by the string</label>
+                        <label><input type="radio" name="q12" value="0"> B. The stopper is magnetized</label>
+                        <label><input type="radio" name="q12" value="1"> C. The release of energy from the reaction pushes the stopper out, propelling the bottle</label>
+                        <label><input type="radio" name="q12" value="0"> D. Air pressure sucks the bottle forward</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>13. What gases are used in the bottle for the experiment?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q13" value="0"> A. Helium and air</label>
+                        <label><input type="radio" name="q13" value="1"> B. Oxygen and hydrogen</label>
+                        <label><input type="radio" name="q13" value="0"> C. Nitrogen and carbon dioxide</label>
+                        <label><input type="radio" name="q13" value="0"> D. Hydrogen and carbon monoxide</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>14. What are the reactants in the sherbet sweet reaction?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q14" value="0"> A. Sodium citrate and water</label>
+                        <label><input type="radio" name="q14" value="1"> B. Sodium hydrogen carbonate and citric acid</label>
+                        <label><input type="radio" name="q14" value="0"> C. Citric acid and carbon dioxide</label>
+                        <label><input type="radio" name="q14" value="0"> D. Sodium hydrogen carbonate and carbon dioxide</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>15. Which of the following are the products of the sherbet sweet reaction?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q15" value="1"> A. Sodium citrate, water, and carbon dioxide</label>
+                        <label><input type="radio" name="q15" value="0"> B. Potassium chloride and water</label>
+                        <label><input type="radio" name="q15" value="0"> C. Carbon dioxide and heat</label>
+                        <label><input type="radio" name="q15" value="0"> D. Sodium hydroxide and oxygen</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>16. What type of reaction takes place when sherbet sweets dissolve in your mouth?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q16" value="0"> A. Exothermic reaction</label>
+                        <label><input type="radio" name="q16" value="0"> B. Displacement reaction</label>
+                        <label><input type="radio" name="q16" value="1"> C. Endothermic reaction</label>
+                        <label><input type="radio" name="q16" value="0"> D. Combustion reaction</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>17. Why do sherbet sweets make your mouth feel cool?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q17" value="0"> A. They are very sweet</label>
+                        <label><input type="radio" name="q17" value="0"> B. They evaporate quickly</label>
+                        <label><input type="radio" name="q17" value="1"> C. The reaction absorbs heat from your mouth</label>
+                        <label><input type="radio" name="q17" value="0"> D. They contain menthol</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>18. What causes the 'fizzy' feeling when you eat sherbet?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q18" value="0"> A. Release of heat</label>
+                        <label><input type="radio" name="q18" value="0"> B. Absorption of moisture</label>
+                        <label><input type="radio" name="q18" value="1"> C. Production of carbon dioxide gas</label>
+                        <label><input type="radio" name="q18" value="0"> D. Movement of the sweet</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>19. When potassium chloride is stirred into water, what type of process occurs?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q19" value="0"> A. Combustion</label>
+                        <label><input type="radio" name="q19" value="0"> B. Exothermic reaction</label>
+                        <label><input type="radio" name="q19" value="1"> C. Endothermic process</label>
+                        <label><input type="radio" name="q19" value="0"> D. Neutralization</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>20. Why does the beaker feel cold when potassium chloride dissolves in water?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q20" value="0"> A. A chemical reaction releases cold energy</label>
+                        <label><input type="radio" name="q20" value="1"> B. The process absorbs thermal energy from the surroundings</label>
+                        <label><input type="radio" name="q20" value="0"> C. Potassium chloride is a cooling substance</label>
+                        <label><input type="radio" name="q20" value="0"> D. It forms ice in the water</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>21. Why is ice melting called an endothermic process and not an endothermic reaction?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q21" value="0"> A) Because it involves a chemical change.</label>
+                        <label><input type="radio" name="q21" value="0"> B) Because it releases thermal energy to the surroundings.</label>
+                        <label><input type="radio" name="q21" value="1"> C) Because it is a physical change, not a chemical reaction.</label>
+                        <label><input type="radio" name="q21" value="0"> D) Because it only occurs at high temperatures.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>22. Which of the following is another example of an endothermic process besides ice melting?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q22" value="0"> A) Water freezing</label>
+                        <label><input type="radio" name="q22" value="0"> B) Condensation of steam</label>
+                        <label><input type="radio" name="q22" value="1"> C) Boiling water</label>
+                        <label><input type="radio" name="q22" value="0"> D) Burning wood</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>23. After swimming, a person may feel cold when they come out of the pool. Why does this happen?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q23" value="1"> A) The water absorbs thermal energy from their body to evaporate.</label>
+                        <label><input type="radio" name="q23" value="0"> B) The water releases heat to their skin.</label>
+                        <label><input type="radio" name="q23" value="0"> C) The body produces less heat in water.</label>
+                        <label><input type="radio" name="q23" value="0"> D) The wind cools them down instantly.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>24. Is water freezing an endothermic or exothermic process?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q24" value="0"> A) Endothermic, because it absorbs heat.</label>
+                        <label><input type="radio" name="q24" value="1"> B) Exothermic, because it releases heat.</label>
+                        <label><input type="radio" name="q24" value="0"> C) Neither, because it is a chemical reaction.</label>
+                        <label><input type="radio" name="q24" value="0"> D) Both, depending on the temperature.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>25. Which statement correctly describes an exothermic process?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q25" value="0"> A) Thermal energy is absorbed from the surroundings.</label>
+                        <label><input type="radio" name="q25" value="1"> B) Thermal energy is released to the surroundings.</label>
+                        <label><input type="radio" name="q25" value="0"> C) No energy change occurs.</label>
+                        <label><input type="radio" name="q25" value="0"> D) It only happens in chemical reactions.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>26. In an endothermic process, what happens to the particles of a substance?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q26" value="0"> A) They lose energy and slow down.</label>
+                        <label><input type="radio" name="q26" value="1"> B) They absorb energy and move more freely.</label>
+                        <label><input type="radio" name="q26" value="0"> C) They remain completely stationary.</label>
+                        <label><input type="radio" name="q26" value="0"> D) They break apart into smaller particles.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>27. Which of the following is an example of an exothermic process?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q27" value="0"> A) Ice melting</label>
+                        <label><input type="radio" name="q27" value="0"> B) Water evaporating</label>
+                        <label><input type="radio" name="q27" value="1"> C) Steam condensing</label>
+                        <label><input type="radio" name="q27" value="0"> D) Wax melting</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>28. What happens to the forces between particles when ice melts?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q28" value="0"> A) They become stronger.</label>
+                        <label><input type="radio" name="q28" value="1"> B) They weaken, allowing particles to slide past each other.</label>
+                        <label><input type="radio" name="q28" value="0"> C) They disappear completely.</label>
+                        <label><input type="radio" name="q28" value="0"> D) They turn into chemical bonds.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>29. Why does boiling water require thermal energy?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q29" value="0"> A) To break the chemical bonds in water molecules.</label>
+                        <label><input type="radio" name="q29" value="1"> B) To overcome the forces holding the liquid particles together.</label>
+                        <label><input type="radio" name="q29" value="0"> C) To turn water into a solid.</label>
+                        <label><input type="radio" name="q29" value="0"> D) To decrease the movement of particles.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>30. Which of the following best defines an endothermic process?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q30" value="0"> A) A process that releases heat to the surroundings.</label>
+                        <label><input type="radio" name="q30" value="1"> B) A process that absorbs heat from the surroundings.</label>
+                        <label><input type="radio" name="q30" value="0"> C) A process that occurs without any energy change.</label>
+                        <label><input type="radio" name="q30" value="0"> D) A process that only happens in chemical reactions.</label>
+                    </div>
+                </div>
+
+
+            </section>
+            <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+        </form>
+    </div>
+    <script>
+        const correctAnswers = {
+            q1: "B. Oxygen, fuel, and heat",
+            q2: "C. A substance that reacts with oxygen during burning",
+            q3: "D. Oxygen",
+            q4: "B. Chemical energy is changed into thermal, light, and sound energy",
+            q5: "D. Another term for burning",
+            q6: "B. A reaction in which thermal energy is given out",
+            q7: "C. Because it gives off thermal energy and raises the temperature",
+            q8: "B. Exothermic reaction",
+            q9: "C. Water",
+            q10: "B. Kinetic, thermal, sound, and light energy",
+            q11: "C. To provide energy to start the reaction",
+            q12: "C. The release of energy from the reaction pushes the stopper out, propelling the bottle",
+            q13: "B. Oxygen and hydrogen",
+            q14: "B. Sodium hydrogen carbonate and citric acid",
+            q15: "A. Sodium citrate, water, and carbon dioxide",
+            q16: "C. Endothermic reaction",
+            q17: "C. The reaction absorbs heat from your mouth",
+            q18: "C. Production of carbon dioxide gas",
+            q19: "C. Endothermic process",
+            q20: "B. The process absorbs thermal energy from the surroundings",
+            q21: "C) Because it is a physical change, not a chemical reaction.",
+            q22: "C) Boiling water",
+            q23: "A) The water absorbs thermal energy from their body to evaporate.",
+            q24: "B) Exothermic, because it releases heat.",
+            q25: "B) Thermal energy is released to the surroundings.",
+            q26: "B) They absorb energy and move more freely.",
+            q27: "C) Steam condensing",
+            q28: "B) They weaken, allowing particles to slide past each other.",
+            q29: "B) To overcome the forces holding the liquid particles together.",
+            q30: "B) A process that absorbs heat from the surroundings."
+        };
+
+        const totalQuestions = 30; // Updated total number of questions
+
+        function submitQuiz() {
+            const form = document.getElementById('chemicalReactionsQuizForm');
+            const errorDiv = document.getElementById('error');
+            const resultDiv = document.getElementById('result');
+            const feedbackDiv = document.getElementById('feedback');
+
+            errorDiv.style.display = 'none';
+            errorDiv.innerHTML = '';
+            resultDiv.innerHTML = '';
+            feedbackDiv.innerHTML = '';
+
+            let unanswered = [];
+            let score = 0;
+            let wrongAnswersFeedback = [];
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+
+                if (!selectedOption) {
+                    unanswered.push(i);
+                } else if (selectedOption.value === "1") {
+                    score++;
+                } else {
+                    const questionDiv = selectedOption.closest('.question');
+                    const questionTextElement = questionDiv ? questionDiv.querySelector('p') : `Question ${i}`;
+                    const questionText = questionDiv ? questionTextElement.textContent : `Question ${i} text not found`;
+                    wrongAnswersFeedback.push({
+                        number: i,
+                        text: questionText.trim(),
+                        correct: correctAnswers[questionName] || "Correct answer not defined"
+                    });
+                }
+            }
+
+            if (unanswered.length > 0) {
+                errorDiv.innerHTML = `⚠️ Please answer all questions. Missing answers for questions: ${unanswered.join(', ')}`;
+                errorDiv.style.display = 'block';
+                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            // Adjust score threshold for color based on new total (e.g., >= 80%)
+            const passScore = totalQuestions * 0.8;
+             resultDiv.innerHTML = `Your Score: <span style="color:${score >= passScore ? '#2e7d32' : '#d32f2f'}">${score} / ${totalQuestions}</span>`;
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+
+            if (wrongAnswersFeedback.length > 0) {
+                feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+                wrongAnswersFeedback.forEach(item => {
+                    feedbackDiv.innerHTML += `
+                        <div class="feedback-item">
+                            <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+                            <p class="correct-answer">Correct answer: ${item.correct}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+            }
+        }
+    </script>
+</body>
+</html>
