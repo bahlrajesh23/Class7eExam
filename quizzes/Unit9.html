@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Earth's Magnetic Field and Electromagnets Questionnaire</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+
+        /* Container for the quiz elements */
+        .quiz-container {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Link back style */
+        .navigation-link {
+            display: block;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navigation-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Styling for each question block */
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            border-left: 5px solid #1e88e5;
+        }
+
+        /* Question text styling */
+        .question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Styling for radio button options */
+        .options label {
+            display: block;
+            margin: 10px 0 10px 5px;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .options label:hover {
+            background-color: #e3f2fd;
+        }
+
+        /* Spacing for radio button itself */
+        .options input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        /* Styling for text area (Not used in this quiz, but kept for structure) */
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+            resize: none;
+            font-family: Arial, sans-serif;
+            display: none; /* Hide since not used */
+        }
+
+        /* Submit button styling */
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        /* Error message styling */
+        #error {
+            color: #d32f2f;
+            padding: 12px;
+            background: #ffebee;
+            border-left: 4px solid #d32f2f;
+            margin: 15px 0;
+            border-radius: 4px;
+            display: none;
+        }
+
+        /* Result display styling */
+        #result {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 15px;
+            background: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Container for all feedback items */
+        #feedback {
+            margin-top: 20px;
+        }
+
+        #feedback h3 {
+            margin-bottom: 15px;
+            color: #c62828;
+        }
+
+        /* Styling for individual feedback items (wrong answers) */
+        .feedback-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: #fff3e0;
+            border-left: 4px solid #ef6c00;
+            border-radius: 4px;
+        }
+
+        /* Styling for the correct answer text within feedback */
+        .correct-answer {
+            color: #2e7d32;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+         /* Style for map section (Not used in this specific quiz, but kept for structure) */
+        #map-section {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            display: none; /* Hide since not used */
+        }
+
+        #map-section h4 {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #map-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #f0f0f0;
+            margin-bottom: 15px;
+            border: 2px dashed #aaa;
+            border-radius: 5px;
+            display: none; /* Hide since not used */
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="navigation-link">⬅️ Back to Quiz List</a>
+    <div class="quiz-container">
+        <h1>Earth's Magnetic Field and Electromagnets Questionnaire</h1>
+        <form id="magnetismQuizForm">
+            <div id="error"></div>
+            <div id="result"></div>
+            <div id="feedback"></div>
+            <section>
+                <h2>Multiple Choice Questions</h2>
+
+                <div class="question">
+                    <p>1. What is the main topic discussed in the page shown in the image?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="0"> A) The Earth's gravitational field</label>
+                        <label><input type="radio" name="q1" value="1"> B) The Earth's magnetic field</label>
+                        <label><input type="radio" name="q1" value="0"> C) The Earth's atmospheric pressure</label>
+                        <label><input type="radio" name="q1" value="0"> D) The Earth's rotation</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>2. According to the text, who is credited with discovering the magnetic properties of lodestone?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="0"> A) Only the Greeks</label>
+                        <label><input type="radio" name="q2" value="0"> B) Only the Chinese</label>
+                        <label><input type="radio" name="q2" value="1"> C) Both the Greeks and the Chinese</label>
+                        <label><input type="radio" name="q2" value="0"> D) Neither the Greeks nor the Chinese</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>3. What is the name of the Greek shepherd mentioned in the text?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q3" value="1"> A) Magnes</label>
+                        <label><input type="radio" name="q3" value="0"> B) Lodestone</label>
+                        <label><input type="radio" name="q3" value="0"> C) Compass</label>
+                        <label><input type="radio" name="q3" value="0"> D) Magnetite</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>4. What is the purpose of the compass on a ship or aeroplane, as mentioned in the text?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q4" value="0"> A) To measure the Earth's gravitational field</label>
+                        <label><input type="radio" name="q4" value="1"> B) To navigate through oceans and deserts</label>
+                        <label><input type="radio" name="q4" value="0"> C) To predict the weather</label>
+                        <label><input type="radio" name="q4" value="0"> D) To communicate with other vessels</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>5. According to the text, what is the current location of the magnetic north?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q5" value="0"> A) Near the geographic north pole</label>
+                        <label><input type="radio" name="q5" value="1"> B) In the Arctic Ocean, north of Alaska</label>
+                        <label><input type="radio" name="q5" value="0"> C) In the Antarctic Ocean, south of Antarctica</label>
+                        <label><input type="radio" name="q5" value="0"> D) Near the equator</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>6. What is the name of the navigation system that does not use the Earth's magnetic field?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q6" value="1"> A) Satnav</label>
+                        <label><input type="radio" name="q6" value="1"> B) GPS</label> <label><input type="radio" name="q6" value="0"> C) Compass navigation</label>
+                        <label><input type="radio" name="q6" value="0"> D) Celestial navigation</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>7. What do some animals use to navigate over long distances?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q7" value="0"> A) The Earth's gravitational field</label>
+                        <label><input type="radio" name="q7" value="1"> B) The Earth's magnetic field</label>
+                        <label><input type="radio" name="q7" value="0"> C) The Earth's electric field</label>
+                        <label><input type="radio" name="q7" value="0"> D) The Earth's atmospheric pressure</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>8. What is the Earth's magnetic field similar to?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q8" value="1"> A) A bar magnet</label>
+                        <label><input type="radio" name="q8" value="0"> B) A solenoid</label>
+                        <label><input type="radio" name="q8" value="0"> C) A coil</label>
+                        <label><input type="radio" name="q8" value="0"> D) A capacitor</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>9. What causes the natural appearance of lights visible in the night sky close to the north and south poles?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q9" value="0"> A) The Earth's gravitational field</label>
+                        <label><input type="radio" name="q9" value="1"> B) The Earth's magnetic field</label>
+                        <label><input type="radio" name="q9" value="0"> C) The Earth's electric field</label>
+                        <label><input type="radio" name="q9" value="0"> D) The Earth's rotation</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>10. What is the difference between the geographic north and the magnetic north?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q10" value="1"> A) The geographic north is the direction towards the Earth's rotational axis, while the magnetic north is the direction towards the Earth's magnetic field lines.</label>
+                        <label><input type="radio" name="q10" value="0"> B) The geographic north is the direction towards the Earth's magnetic field lines, while the magnetic north is the direction towards the Earth's rotational axis.</label>
+                        <label><input type="radio" name="q10" value="0"> C) The geographic north and magnetic north are the same.</label>
+                        <label><input type="radio" name="q10" value="0"> D) The geographic north is at the Earth's core, while the magnetic north is at the Earth's surface.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>11. What is the primary cause of the Earth's magnetic field?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q11" value="0"> A) The Earth's rotation</label>
+                        <label><input type="radio" name="q11" value="1"> B) The Earth's core</label>
+                        <label><input type="radio" name="q11" value="0"> C) The Earth's atmosphere</label>
+                        <label><input type="radio" name="q11" value="0"> D) The Earth's oceans</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>12. What is the main metal responsible for generating the Earth's magnetic field?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q12" value="1"> A) Iron</label>
+                        <label><input type="radio" name="q12" value="0"> B) Nickel</label>
+                        <label><input type="radio" name="q12" value="0"> C) Copper</label>
+                        <label><input type="radio" name="q12" value="0"> D) Zinc</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>13. Why does the position of magnetic north change over time?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q13" value="0"> A) Due to the Earth's rotation</label>
+                        <label><input type="radio" name="q13" value="1"> B) Due to the movement of the Earth's core</label>
+                        <label><input type="radio" name="q13" value="0"> C) Due to the Earth's atmosphere</label>
+                        <label><input type="radio" name="q13" value="0"> D) Due to the Earth's oceans</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>14. What is the speed at which the magnetic north moves?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q14" value="0"> A) 10 km per year</label>
+                        <label><input type="radio" name="q14" value="1"> B) 60 km per year</label>
+                        <label><input type="radio" name="q14" value="0"> C) 100 km per year</label>
+                        <label><input type="radio" name="q14" value="0"> D) 500 km per year</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>15. What is the relationship between the direction of the magnetic field lines and the direction that a magnetic compass will point?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q15" value="0"> A) They are perpendicular to each other</label>
+                        <label><input type="radio" name="q15" value="0"> B) They are parallel to each other</label>
+                        <label><input type="radio" name="q15" value="1"> C) They are in the same direction</label>
+                        <label><input type="radio" name="q15" value="0"> D) They are in opposite directions</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>16. What is the material in the middle of the coil called?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q16" value="0"> A. Wire</label>
+                        <label><input type="radio" name="q16" value="1"> B. Core</label>
+                        <label><input type="radio" name="q16" value="0"> C. Cell</label>
+                        <label><input type="radio" name="q16" value="0"> D. Magnet</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>17. What happens to the magnetic material when current passes through the coil?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q17" value="0"> A. It loses its magnetism</label>
+                        <label><input type="radio" name="q17" value="0"> B. It becomes demagnetized</label>
+                        <label><input type="radio" name="q17" value="1"> C. It becomes magnetized</label>
+                        <label><input type="radio" name="q17" value="0"> D. It remains unchanged</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>18. How can you determine the poles of an electromagnet?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q18" value="0"> A. By using a thermometer</label>
+                        <label><input type="radio" name="q18" value="1"> B. By using a magnetic compass or a bar magnet with known poles</label>
+                        <label><input type="radio" name="q18" value="0"> C. By measuring its weight</label>
+                        <label><input type="radio" name="q18" value="0"> D. By observing its color</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>19. What happens when you bring a bar magnet with known poles close to the electromagnet?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q19" value="0"> A. The electromagnet disappears</label>
+                        <label><input type="radio" name="q19" value="0"> B. The bar magnet gets stuck to the electromagnet</label>
+                        <label><input type="radio" name="q19" value="1"> C. Opposite poles attract and like poles repel</label>
+                        <label><input type="radio" name="q19" value="0"> D. The electromagnet becomes demagnetized</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>20. How can you reverse the poles of an electromagnet?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q20" value="0"> A. By changing the color of the wire</label>
+                        <label><input type="radio" name="q20" value="1"> B. By wrapping the coil around in the opposite direction or reversing the connections on the cell or power supply</label>
+                        <label><input type="radio" name="q20" value="0"> C. By increasing the current</label>
+                        <label><input type="radio" name="q20" value="0"> D. By decreasing the number of turns in the coil</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>21. How are fire doors typically held open in relation to electromagnets?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q21" value="0"> A) By a mechanical latch</label>
+                        <label><input type="radio" name="q21" value="1"> B) By an electromagnet connected to a fire alarm</label>
+                        <label><input type="radio" name="q21" value="0"> C) By a spring mechanism</label>
+                        <label><input type="radio" name="q21" value="0"> D) Manually</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>22. What is the primary use of powerful electromagnets in hospitals?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q22" value="0"> A) Sorting scrap metal</label>
+                        <label><input type="radio" name="q22" value="1"> B) In MRI scanners</label>
+                        <label><input type="radio" name="q22" value="0"> C) In electric bells</label>
+                        <label><input type="radio" name="q22" value="0"> D) In toasters</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>23. What is the purpose of using electromagnets in sorting scrap metal?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q23" value="0"> A) To attract all types of metals</label>
+                        <label><input type="radio" name="q23" value="0"> B) To attract non-magnetic metals</label>
+                        <label><input type="radio" name="q23" value="1"> C) To attract iron and steel, leaving other non-magnetic metals behind</label>
+                        <label><input type="radio" name="q23" value="0"> D) To repel all metals</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>24. How does an electromagnet function in a toaster?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q24" value="0"> A) It heats the toast</label>
+                        <label><input type="radio" name="q24" value="0"> B) It holds down a metal basket with bread</label>
+                        <label><input type="radio" name="q24" value="0"> C) It pops up the toast when turned off</label>
+                        <label><input type="radio" name="q24" value="1"> D) Both B and C</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>25. What is the role of an electromagnet in an electric bell?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q25" value="0"> A) To produce sound directly</label>
+                        <label><input type="radio" name="q25" value="1"> B) To make the hammer move</label>
+                        <label><input type="radio" name="q25" value="0"> C) To amplify the sound</label>
+                        <label><input type="radio" name="q25" value="0"> D) To turn off the bell</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>26. What do electric motors use electromagnets for?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q26" value="0"> A) To change kinetic energy into electrical energy</label>
+                        <label><input type="radio" name="q26" value="1"> B) To change electrical energy into kinetic energy</label>
+                        <label><input type="radio" name="q26" value="0"> C) To store electrical energy</label>
+                        <label><input type="radio" name="q26" value="0"> D) To dissipate electrical energy</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>27. What are the three essential components required to make an electromagnet?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q27" value="1"> A) A coil of wire, a magnetic core inside the coil, and an electric current flowing in the coil</label>
+                        <label><input type="radio" name="q27" value="0"> B) A coil of wire, a non-magnetic core inside the coil, and an electric current flowing in the coil</label>
+                        <label><input type="radio" name="q27" value="0"> C) A coil of wire, a magnetic core outside the coil, and an electric current flowing in the coil</label>
+                        <label><input type="radio" name="q27" value="0"> D) A straight wire, a magnetic core, and an electric current</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>28. What factors affect the strength of an electromagnet?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q28" value="1"> A) Number of turns in the coil, material of the core, and current in the coil</label>
+                        <label><input type="radio" name="q28" value="0"> B) Number of turns in the coil and material of the core</label>
+                        <label><input type="radio" name="q28" value="0"> C) Material of the core and current in the coil</label>
+                        <label><input type="radio" name="q28" value="0"> D) Number of turns in the coil and current in the coil</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>29. How does increasing the number of turns on the coil affect the strength of the electromagnet?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q29" value="0"> A) It decreases the strength</label>
+                        <label><input type="radio" name="q29" value="0"> B) It keeps the strength the same</label>
+                        <label><input type="radio" name="q29" value="1"> C) It increases the strength</label>
+                        <label><input type="radio" name="q29" value="0"> D) It makes the electromagnet non-functional</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>30. What happens to the strength of the electromagnet when the current in the coil is increased?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q30" value="0"> A) It decreases</label>
+                        <label><input type="radio" name="q30" value="0"> B) It remains the same</label>
+                        <label><input type="radio" name="q30" value="1"> C) It increases</label>
+                        <label><input type="radio" name="q30" value="0"> D) It becomes zero</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>31. Why is soft iron preferred over steel as the core material in electromagnets?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q31" value="0"> A) Because soft iron is more expensive than steel</label>
+                        <label><input type="radio" name="q31" value="0"> B) Because soft iron makes weaker electromagnets than steel</label>
+                        <label><input type="radio" name="q31" value="1"> C) Because soft iron makes stronger electromagnets than steel</label>
+                        <label><input type="radio" name="q31" value="0"> D) Because soft iron is less available than steel</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>32. Why does an electromagnet for sorting scrap metal need to be stronger than the one used in a toaster?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q32" value="0"> A) Because scrap metal is heavier than a toaster handle.</label>
+                        <label><input type="radio" name="q32" value="0"> B) Because the electromagnet in a toaster is not used for lifting.</label>
+                        <label><input type="radio" name="q32" value="1"> C) Because scrap metal requires a stronger magnetic field to be lifted.</label>
+                        <label><input type="radio" name="q32" value="0"> D) Because toasters do not use electromagnets.</label>
+                    </div>
+                </div>
+
+                 <div class="question">
+                    <p>33. What are the three factors that affect the strength of an electromagnet?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q33" value="1"> A) Current, number of turns, and core material.</label>
+                        <label><input type="radio" name="q33" value="0"> B) Voltage, resistance, and temperature.</label>
+                        <label><input type="radio" name="q33" value="0"> C) Power, frequency, and coil size.</label>
+                        <label><input type="radio" name="q33" value="0"> D) All of the above.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>34. Which core material will make the strongest electromagnet given the same current and number of turns?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q34" value="0"> A) Rubber</label>
+                        <label><input type="radio" name="q34" value="0"> B) Wood</label>
+                        <label><input type="radio" name="q34" value="0"> C) Nickel</label>
+                        <label><input type="radio" name="q34" value="1"> D) Soft Iron</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>35. Why does CERN use a significant amount of electricity?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q35" value="0"> A) Because it operates 24/7.</label>
+                        <label><input type="radio" name="q35" value="1"> B) Because it uses very strong electromagnets for particle acceleration.</label>
+                        <label><input type="radio" name="q35" value="0"> C) Because it has a large number of computers.</label>
+                        <label><input type="radio" name="q35" value="0"> D) Because it is located in a cold climate.</label>
+                    </div>
+                </div>
+
+
+            </section>
+            <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+        </form>
+    </div>
+    <script>
+        const correctAnswers = {
+            q1: "B) The Earth's magnetic field",
+            q2: "C) Both the Greeks and the Chinese",
+            q3: "A) Magnes",
+            q4: "B) To navigate through oceans and deserts",
+            q5: "B) In the Arctic Ocean, north of Alaska",
+            q6: "A) Satnav", // Or potentially "B) GPS" if both are acceptable based on source text
+            q7: "B) The Earth's magnetic field",
+            q8: "A) A bar magnet",
+            q9: "B) The Earth's magnetic field",
+            q10: "A) The geographic north is the direction towards the Earth's rotational axis, while the magnetic north is the direction towards the Earth's magnetic field lines.",
+            q11: "B) The Earth's core",
+            q12: "A) Iron",
+            q13: "B) Due to the movement of the Earth's core",
+            q14: "B) 60 km per year",
+            q15: "C) They are in the same direction",
+            q16: "B. Core",
+            q17: "C. It becomes magnetized",
+            q18: "B. By using a magnetic compass or a bar magnet with known poles",
+            q19: "C. Opposite poles attract and like poles repel",
+            q20: "B. By wrapping the coil around in the opposite direction or reversing the connections on the cell or power supply",
+            q21: "B) By an electromagnet connected to a fire alarm",
+            q22: "B) In MRI scanners",
+            q23: "C) To attract iron and steel, leaving other non-magnetic metals behind",
+            q24: "D) Both B and C",
+            q25: "B) To make the hammer move",
+            q26: "B) To change electrical energy into kinetic energy",
+            q27: "A) A coil of wire, a magnetic core inside the coil, and an electric current flowing in the coil",
+            q28: "A) Number of turns in the coil, material of the core, and current in the coil",
+            q29: "C) It increases the strength",
+            q30: "C) It increases",
+            q31: "C) Because soft iron makes stronger electromagnets than steel",
+            q32: "C) Because scrap metal requires a stronger magnetic field to be lifted.",
+            q33: "A) Current, number of turns, and core material.",
+            q34: "D) Soft Iron",
+            q35: "B) Because it uses very strong electromagnets for particle acceleration."
+        };
+
+        const totalQuestions = 35; // Updated total number of questions
+
+        function submitQuiz() {
+            const form = document.getElementById('magnetismQuizForm');
+            const errorDiv = document.getElementById('error');
+            const resultDiv = document.getElementById('result');
+            const feedbackDiv = document.getElementById('feedback');
+
+            errorDiv.style.display = 'none';
+            errorDiv.innerHTML = '';
+            resultDiv.innerHTML = '';
+            feedbackDiv.innerHTML = '';
+
+            let unanswered = [];
+            let score = 0;
+            let wrongAnswersFeedback = [];
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+
+                if (!selectedOption) {
+                    unanswered.push(i);
+                } else if (selectedOption.value === "1") {
+                    score++;
+                } else {
+                    const questionDiv = selectedOption.closest('.question');
+                    const questionTextElement = questionDiv ? questionDiv.querySelector('p') : `Question ${i}`;
+                    const questionText = questionDiv ? questionTextElement.textContent : `Question ${i} text not found`;
+                    wrongAnswersFeedback.push({
+                        number: i,
+                        text: questionText.trim(),
+                        correct: correctAnswers[questionName] || "Correct answer not defined"
+                    });
+                }
+            }
+
+            if (unanswered.length > 0) {
+                errorDiv.innerHTML = `⚠️ Please answer all questions. Missing answers for questions: ${unanswered.join(', ')}`;
+                errorDiv.style.display = 'block';
+                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            // Adjust score threshold for color based on new total (e.g., >= 80%)
+            const passScore = totalQuestions * 0.8;
+             resultDiv.innerHTML = `Your Score: <span style="color:${score >= passScore ? '#2e7d32' : '#d32f2f'}">${score} / ${totalQuestions}</span>`;
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+
+            if (wrongAnswersFeedback.length > 0) {
+                feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+                wrongAnswersFeedback.forEach(item => {
+                    feedbackDiv.innerHTML += `
+                        <div class="feedback-item">
+                            <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+                            <p class="correct-answer">Correct answer: ${item.correct}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+            }
+        }
+    </script>
+</body>
+</html>
