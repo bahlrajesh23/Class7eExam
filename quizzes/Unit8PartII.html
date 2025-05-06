@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Metal Reactions Questionnaire</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+
+        /* Container for the quiz elements */
+        .quiz-container {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Link back style */
+        .navigation-link {
+            display: block;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navigation-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Styling for each question block */
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            border-left: 5px solid #1e88e5;
+        }
+
+        /* Question text styling */
+        .question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Styling for radio button options */
+        .options label {
+            display: block;
+            margin: 10px 0 10px 5px;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .options label:hover {
+            background-color: #e3f2fd;
+        }
+
+        /* Spacing for radio button itself */
+        .options input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        /* Styling for text area (Not used in this quiz, but kept for structure) */
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+            resize: none;
+            font-family: Arial, sans-serif;
+            display: none; /* Hide since not used */
+        }
+
+        /* Submit button styling */
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        /* Error message styling */
+        #error {
+            color: #d32f2f;
+            padding: 12px;
+            background: #ffebee;
+            border-left: 4px solid #d32f2f;
+            margin: 15px 0;
+            border-radius: 4px;
+            display: none;
+        }
+
+        /* Result display styling */
+        #result {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 15px;
+            background: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Container for all feedback items */
+        #feedback {
+            margin-top: 20px;
+        }
+
+        #feedback h3 {
+            margin-bottom: 15px;
+            color: #c62828;
+        }
+
+        /* Styling for individual feedback items (wrong answers) */
+        .feedback-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: #fff3e0;
+            border-left: 4px solid #ef6c00;
+            border-radius: 4px;
+        }
+
+        /* Styling for the correct answer text within feedback */
+        .correct-answer {
+            color: #2e7d32;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+         /* Style for map section (Not used in this specific quiz, but kept for structure) */
+        #map-section {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            display: none; /* Hide since not used */
+        }
+
+        #map-section h4 {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #map-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #f0f0f0;
+            margin-bottom: 15px;
+            border: 2px dashed #aaa;
+            border-radius: 5px;
+            display: none; /* Hide since not used */
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="navigation-link">⬅️ Back to Quiz List</a>
+    <div class="quiz-container">
+        <h1>Metal Reactions Questionnaire</h1>
+        <form id="metalReactionsQuizForm">
+            <div id="error"></div>
+            <div id="result"></div>
+            <div id="feedback"></div>
+            <section>
+                <h2>Multiple Choice Questions</h2>
+
+                <div class="question">
+                    <p>31. What is the general equation for the reaction between a metal and an acid?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q31" value="0"> A) Metal + Acid → Salt + Water</label>
+                        <label><input type="radio" name="q31" value="1"> B) Metal + Acid → Salt + Hydrogen</label>
+                        <label><input type="radio" name="q31" value="0"> C) Metal + Acid → Metal Oxide + Hydrogen</label>
+                        <label><input type="radio" name="q31" value="0"> D) Metal + Acid → Base + Salt</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>32. Which of the following metals is stored under oil to prevent reaction with water vapor in the air?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q32" value="0"> A) Magnesium</label>
+                        <label><input type="radio" name="q32" value="0"> B) Zinc</label>
+                        <label><input type="radio" name="q32" value="1"> C) Sodium</label>
+                        <label><input type="radio" name="q32" value="0"> D) Copper</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>33. What gas is produced when a metal reacts with water?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q33" value="0"> A) Oxygen</label>
+                        <label><input type="radio" name="q33" value="0"> B) Carbon dioxide</label>
+                        <label><input type="radio" name="q33" value="1"> C) Hydrogen</label>
+                        <label><input type="radio" name="q33" value="0"> D) Nitrogen</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>34. Why is the reaction between magnesium and steam more vigorous than with liquid water?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q34" value="1"> A) Steam has higher energy particles, increasing collision frequency.</label>
+                        <label><input type="radio" name="q34" value="0"> B) Liquid water is more reactive than steam.</label>
+                        <label><input type="radio" name="q34" value="0"> C) Steam contains less hydrogen than water.</label>
+                        <label><input type="radio" name="q34" value="0"> D) Magnesium dissolves faster in steam.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>35. Which of the following metals does NOT react with water at all?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q35" value="0"> A) Calcium</label>
+                        <label><input type="radio" name="q35" value="1"> B) Gold</label>
+                        <label><input type="radio" name="q35" value="0"> C) Potassium</label>
+                        <label><input type="radio" name="q35" value="0"> D) Magnesium</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>36. What safety precaution is essential when handling sodium or potassium in water?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q36" value="0"> A) Use a safety screen and wear gloves.</label>
+                        <label><input type="radio" name="q36" value="0"> B) Keep the metals submerged in oil until use.</label>
+                        <label><input type="radio" name="q36" value="0"> C) Perform the reaction in an open beaker.</label>
+                        <label><input type="radio" name="q36" value="1"> D) Both A and B.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>37. In the rust experiment, why is calcium chloride used in Test Tube 3?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q37" value="1"> A) To absorb water and create dry air.</label>
+                        <label><input type="radio" name="q37" value="0"> B) To speed up rust formation.</label>
+                        <label><input type="radio" name="q37" value="0"> C) To react with the iron nail.</label>
+                        <label><input type="radio" name="q37" value="0"> D) To produce hydrogen gas.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>38. What is the correct word equation for the reaction between calcium and water?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q38" value="0"> A) Calcium + Water → Calcium Oxide + Hydrogen</label>
+                        <label><input type="radio" name="q38" value="0"> B) Calcium + Water → Calcium Hydroxide + Oxygen</label>
+                        <label><input type="radio" name="q38" value="1"> C) Calcium + Water → Calcium Hydroxide + Hydrogen</label>
+                        <label><input type="radio" name="q38" value="0"> D) Calcium + Water → Calcium Carbonate + Hydrogen</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>39. Which factor is most important for a fair test when comparing metal reactivity with water?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q39" value="0"> A) Using different amounts of each metal.</label>
+                        <label><input type="radio" name="q39" value="1"> B) Ensuring all metals are exposed to the same conditions (e.g., temperature, surface area).</label>
+                        <label><input type="radio" name="q39" value="0"> C) Testing metals on different days.</label>
+                        <label><input type="radio" name="q39" value="0"> D) Using tap water instead of distilled water.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>40. What does it mean if a metal is described as "inert"?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q40" value="0"> A) It reacts violently with water.</label>
+                        <label><input type="radio" name="q40" value="1"> B) It shows little or no chemical reactivity.</label>
+                        <label><input type="radio" name="q40" value="0"> C) It forms multiple compounds with oxygen.</label>
+                        <label><input type="radio" name="q40" value="0"> D) It dissolves easily in acid.</label>
+                    </div>
+                </div>
+
+            </section>
+            <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+        </form>
+    </div>
+    <script>
+        const correctAnswers = {
+            q31: "B) Metal + Acid → Salt + Hydrogen",
+            q32: "C) Sodium",
+            q33: "C) Hydrogen",
+            q34: "A) Steam has higher energy particles, increasing collision frequency.",
+            q35: "B) Gold",
+            q36: "D) Both A and B.",
+            q37: "A) To absorb water and create dry air.",
+            q38: "C) Calcium + Water → Calcium Hydroxide + Hydrogen",
+            q39: "B) Ensuring all metals are exposed to the same conditions (e.g., temperature, surface area).",
+            q40: "B) It shows little or no chemical reactivity."
+        };
+
+        const totalQuestions = 10; // Total number of questions in this specific quiz segment
+
+        function submitQuiz() {
+            const form = document.getElementById('metalReactionsQuizForm');
+            const errorDiv = document.getElementById('error');
+            const resultDiv = document.getElementById('result');
+            const feedbackDiv = document.getElementById('feedback');
+
+            errorDiv.style.display = 'none';
+            errorDiv.innerHTML = '';
+            resultDiv.innerHTML = '';
+            feedbackDiv.innerHTML = '';
+
+            let unanswered = [];
+            let score = 0;
+            let wrongAnswersFeedback = [];
+
+            // Loop through questions q31 to q40
+            for (let i = 31; i <= 40; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+
+                if (!selectedOption) {
+                    unanswered.push(i);
+                } else if (selectedOption.value === "1") {
+                    score++;
+                } else {
+                    const questionDiv = selectedOption.closest('.question');
+                    const questionTextElement = questionDiv ? questionDiv.querySelector('p') : `Question ${i}`;
+                    const questionText = questionDiv ? questionTextElement.textContent : `Question ${i} text not found`;
+                    wrongAnswersFeedback.push({
+                        number: i,
+                        text: questionText.trim(),
+                        correct: correctAnswers[questionName] || "Correct answer not defined"
+                    });
+                }
+            }
+
+            if (unanswered.length > 0) {
+                errorDiv.innerHTML = `⚠️ Please answer all questions. Missing answers for questions: ${unanswered.join(', ')}`;
+                errorDiv.style.display = 'block';
+                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            // Adjust score threshold for color based on total questions in this segment
+            const passScore = totalQuestions * 0.8; // Example: 80% to pass this segment
+             resultDiv.innerHTML = `Your Score: <span style="color:${score >= passScore ? '#2e7d32' : '#d32f2f'}">${score} / ${totalQuestions}</span>`;
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+
+            if (wrongAnswersFeedback.length > 0) {
+                feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+                wrongAnswersFeedback.forEach(item => {
+                    feedbackDiv.innerHTML += `
+                        <div class="feedback-item">
+                            <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+                            <p class="correct-answer">Correct answer: ${item.correct}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+            }
+        }
+    </script>
+</body>
+</html>
