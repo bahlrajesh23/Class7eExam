@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A Desert in Arizona Questionnaire</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+
+        /* Container for the quiz elements */
+        .quiz-container {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Link back style */
+        .navigation-link {
+            display: block;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navigation-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Styling for each question block */
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            border-left: 5px solid #1e88e5;
+        }
+
+        /* Question text styling */
+        .question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Styling for radio button options */
+        .options label {
+            display: block;
+            margin: 10px 0 10px 5px;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .options label:hover {
+            background-color: #e3f2fd;
+        }
+
+        /* Spacing for radio button itself */
+        .options input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        /* Styling for text area */
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+            resize: none;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Submit button styling */
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        /* Error message styling */
+        #error {
+            color: #d32f2f;
+            padding: 12px;
+            background: #ffebee;
+            border-left: 4px solid #d32f2f;
+            margin: 15px 0;
+            border-radius: 4px;
+            display: none;
+        }
+
+        /* Result display styling */
+        #result {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 15px;
+            background: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Container for all feedback items */
+        #feedback {
+            margin-top: 20px;
+        }
+
+        #feedback h3 {
+            margin-bottom: 15px;
+            color: #c62828;
+        }
+
+        /* Styling for individual feedback items (wrong answers) */
+        .feedback-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: #fff3e0;
+            border-left: 4px solid #ef6c00;
+            border-radius: 4px;
+        }
+
+        /* Styling for the correct answer text within feedback */
+        .correct-answer {
+            color: #2e7d32;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        /* Style for map section (Not used in this specific quiz, but kept for structure) */
+        #map-section {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            display: none; /* Hide since not used */
+        }
+
+        #map-section h4 {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #map-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #f0f0f0;
+            margin-bottom: 15px;
+            border: 2px dashed #aaa;
+            border-radius: 5px;
+            display: none; /* Hide since not used */
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="navigation-link">⬅️ Back to Quiz List</a>
+    <div class="quiz-container">
+        <h1>A Desert in Arizona Questionnaire</h1>
+        <form id="arizonaDesertQuizForm">
+            <div id="error"></div>
+            <div id="result"></div>
+            <div id="feedback"></div>
+            <section>
+                <h2>Multiple Choice Questions</h2>
+
+                <div class="question">
+                    <p>1. Where is the Sonoran Desert located?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="0"> A) California, USA</label>
+                        <label><input type="radio" name="q1" value="1"> B) Arizona, USA</label>
+                        <label><input type="radio" name="q1" value="0"> C) Texas, USA</label>
+                        <label><input type="radio" name="q1" value="0"> D) New Mexico, USA</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>2. What is the main challenge for animals and plants to live in deserts?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="0"> A) Extreme temperatures</label>
+                        <label><input type="radio" name="q2" value="1"> B) Lack of rainfall</label>
+                        <label><input type="radio" name="q2" value="0"> C) Abundance of predators</label>
+                        <label><input type="radio" name="q2" value="0"> D) Competition for resources</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>3. What adaptations do organisms need to survive in deserts?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q3" value="0"> A) Ability to fly</label>
+                        <label><input type="radio" name="q3" value="0"> B) Ability to swim</label>
+                        <label><input type="radio" name="q3" value="1"> C) Adaptations to survive with little water</label>
+                        <label><input type="radio" name="q3" value="0"> D) Ability to migrate</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>4. What type of plants are the tall plants in the photograph?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q4" value="0"> A) Palm trees</label>
+                        <label><input type="radio" name="q4" value="1"> B) Saguaro cacti</label>
+                        <label><input type="radio" name="q4" value="0"> C) Desert willows</label>
+                        <label><input type="radio" name="q4" value="0"> D) Mesquite trees</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>5. How old can the saguaro cacti in the photograph be?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q5" value="0"> A) Less than 10 years</label>
+                        <label><input type="radio" name="q5" value="0"> B) Between 10-50 years</label>
+                        <label><input type="radio" name="q5" value="1"> C) More than 100 years</label>
+                        <label><input type="radio" name="q5" value="0"> D) Unknown</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>6. How do the roots of the saguaro cacti help them survive?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q6" value="0"> A) By storing water in their stems</label>
+                        <label><input type="radio" name="q6" value="1"> B) By spreading out widely to absorb rain</label>
+                        <label><input type="radio" name="q6" value="0"> C) By producing deep taproots</label>
+                        <label><input type="radio" name="q6" value="0"> D) By having no roots at all</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>7. What type of bird makes holes in the cacti to make its nest?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q7" value="0"> A) Cactus wren</label>
+                        <label><input type="radio" name="q7" value="1"> B) Gila woodpecker</label>
+                        <label><input type="radio" name="q7" value="0"> C) Roadrunner</label>
+                        <label><input type="radio" name="q7" value="0"> D) Hummingbird</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>8. Why do cactus wrens use teddy bear cholla to make their nests?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q8" value="0"> A) Because they are colorful</label>
+                        <label><input type="radio" name="q8" value="0"> B) Because they are fragrant</label>
+                        <label><input type="radio" name="q8" value="1"> C) Because they are spiky and protect from predators</label>
+                        <label><input type="radio" name="q8" value="0"> D) Because they are abundant</label>
+                    </div>
+                </div>
+
+                 <div class="question">
+                    <p>9. What do lizards, tortoises, and other animals do during the hot days in the Sonoran Desert?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q9" value="0"> A) They come out to feed.</label>
+                        <label><input type="radio" name="q9" value="1"> B) They rest in the shade of plants or burrow into the soil.</label>
+                        <label><input type="radio" name="q9" value="0"> C) They migrate to cooler areas.</label>
+                        <label><input type="radio" name="q9" value="0"> D) They hibernate.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>10. What happens when it rains in the Sonoran Desert?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q10" value="0"> A) The desert becomes barren.</label>
+                        <label><input type="radio" name="q10" value="1"> B) Many plants quickly produce flowers.</label>
+                        <label><input type="radio" name="q10" value="0"> C) The temperature drops significantly.</label>
+                        <label><input type="radio" name="q10" value="0"> D) The animals become dormant.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>11. What role do insects play in the Sonoran Desert ecosystem?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q11" value="1"> A) They feed on the nectar and pollen in flowers, helping plants reproduce by pollinating them.</label>
+                        <label><input type="radio" name="q11" value="0"> B) They only feed on the nectar in flowers.</label>
+                        <label><input type="radio" name="q11" value="0"> C) They only pollinate the plants.</label>
+                        <label><input type="radio" name="q11" value="0"> D) They have no role in the ecosystem.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>12. What do bats feed on at night in the Sonoran Desert?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q12" value="0"> A) Insects</label>
+                        <label><input type="radio" name="q12" value="1"> B) Nectar from the flowers of agave plants</label>
+                        <label><input type="radio" name="q12" value="0"> C) Seeds</label>
+                        <label><input type="radio" name="q12" value="0"> D) Small animals</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>13. What do ants do with the seeds they collect?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q13" value="0"> A) They eat them immediately.</label>
+                        <label><input type="radio" name="q13" value="1"> B) They take them into their nests to provide a food store.</label>
+                        <label><input type="radio" name="q13" value="0"> C) They bury them in various locations.</label>
+                        <label><input type="radio" name="q13" value="0"> D) They leave them on the surface.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>14. What happens to some of the uneaten seeds collected by ants?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q14" value="0"> A) They rot.</label>
+                        <label><input type="radio" name="q14" value="0"> B) They are eaten by other animals.</label>
+                        <label><input type="radio" name="q14" value="1"> C) They may germinate to produce new plants.</label>
+                        <label><input type="radio" name="q14" value="0"> D) They remain dormant forever.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>15. What is the main idea of the section "Interactions in the Sonoran Desert"?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q15" value="0"> A) The Sonoran Desert is a barren landscape.</label>
+                        <label><input type="radio" name="q15" value="1"> B) The different animals and plants in the Sonoran Desert depend on each other and interact with each other.</label>
+                        <label><input type="radio" name="q15" value="0"> C) The Sonoran Desert is home to a variety of predators.</label>
+                        <label><input type="radio" name="q15" value="0"> D) The Sonoran Desert is characterized by extreme temperatures.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>16. What helps plants to photosynthesise in the desert?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q16" value="0"> A) Soil</label>
+                        <label><input type="radio" name="q16" value="1"> B) Bright sunlight</label>
+                        <label><input type="radio" name="q16" value="0"> C) Temperature</label>
+                        <label><input type="radio" name="q16" value="0"> D) Rocks</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>17. Why do some animals in the desert dig burrows?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q17" value="0"> A) To hunt for food</label>
+                        <label><input type="radio" name="q17" value="1"> B) To shelter from the heat during the day</label>
+                        <label><input type="radio" name="q17" value="0"> C) To build nests</label>
+                        <label><input type="radio" name="q17" value="0"> D) To escape predators</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>18. What do rocks and soil provide for plants?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q18" value="0"> A) Shelter</label>
+                        <label><input type="radio" name="q18" value="0"> B) Water</label>
+                        <label><input type="radio" name="q18" value="1"> C) Minerals</label>
+                        <label><input type="radio" name="q18" value="0"> D) Shade</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>19. Why are some animals in the desert nocturnal?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q19" value="0"> A) To avoid predators</label>
+                        <label><input type="radio" name="q19" value="0"> B) To hunt for food at night</label>
+                        <label><input type="radio" name="q19" value="1"> C) To avoid overheating or drying out</label>
+                        <label><input type="radio" name="q19" value="0"> D) To migrate to other places</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>20. What is the effect of high temperature during the day in the desert?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q20" value="0"> A) It helps plants grow faster</label>
+                        <label><input type="radio" name="q20" value="0"> B) It has no effect on animals</label>
+                        <label><input type="radio" name="q20" value="1"> C) It can cause animals to overheat or dry out</label>
+                        <label><input type="radio" name="q20" value="0"> D) It reduces the need for water</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>21. Where is it cooler for animals like tarantulas to shelter during the day?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q21" value="0"> A) Under rocks</label>
+                        <label><input type="radio" name="q21" value="1"> B) Underneath the soil</label>
+                        <label><input type="radio" name="q21" value="0"> C) In trees</label>
+                        <label><input type="radio" name="q21" value="0"> D) In water</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>22. What is essential for all organisms to survive?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q22" value="0"> A) Air</label>
+                        <label><input type="radio" name="q22" value="1"> B) Water</label>
+                        <label><input type="radio" name="q22" value="0"> C) Soil</label>
+                        <label><input type="radio" name="q22" value="0"> D) Sunlight</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>23. What do plants use to make food?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q23" value="0"> A) Respiration</label>
+                        <label><input type="radio" name="q23" value="1"> B) Photosynthesis</label>
+                        <label><input type="radio" name="q23" value="0"> C) Decomposition</label>
+                        <label><input type="radio" name="q23" value="0"> D) Fermentation</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>24. What is the role of plants in a food web?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q24" value="0"> A) Consumers</label>
+                        <label><input type="radio" name="q24" value="0"> B) Decomposers</label>
+                        <label><input type="radio" name="q24" value="1"> C) Producers</label>
+                        <label><input type="radio" name="q24" value="0"> D) Predators</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>25. What happens to the energy as animals eat desert plants and each other?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q25" value="0"> A) It is lost</label>
+                        <label><input type="radio" name="q25" value="1"> B) It is passed through the desert food web</label>
+                        <label><input type="radio" name="q25" value="0"> C) It is stored in the soil</label>
+                        <label><input type="radio" name="q25" value="0"> D) It is released into the air</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>26. What is the term for the study of ecosystems?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q26" value="1"> A) Ecology</label>
+                        <label><input type="radio" name="q26" value="0"> B) Biology</label>
+                        <label><input type="radio" name="q26" value="0"> C) Botany</label>
+                        <label><input type="radio" name="q26" value="0"> D) Zoology</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>27. What is an ecosystem?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q27" value="1"> A) A network of interactions between living and non-living things</label>
+                        <label><input type="radio" name="q27" value="0"> B) A group of organisms of the same species</label>
+                        <label><input type="radio" name="q27" value="0"> C) A community of organisms and their environment</label>
+                        <label><input type="radio" name="q27" value="0"> D) A food web</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>28. How do droppings from kangaroo rats affect the desert ecosystem?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q28" value="0"> A) They pollute the air</label>
+                        <label><input type="radio" name="q28" value="1"> B) They become part of the soil</label>
+                        <label><input type="radio" name="q28" value="0"> C) They harm other animals</label>
+                        <label><input type="radio" name="q28" value="0"> D) They have no effect</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>29. What is the effect of plant roots on the soil?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q29" value="0"> A) They loosen the soil</label>
+                        <label><input type="radio" name="q29" value="1"> B) They hold the soil together</label>
+                        <label><input type="radio" name="q29" value="0"> C) They have no effect on the soil</label>
+                        <label><input type="radio" name="q29" value="0"> D) They make the soil dry</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>30. How do animals help plants reproduce?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q30" value="0"> A) By eating their seeds</label>
+                        <label><input type="radio" name="q30" value="1"> B) By pollinating their flowers or spreading their seeds</label>
+                        <label><input type="radio" name="q30" value="0"> C) By destroying their habitats</label>
+                        <label><input type="radio" name="q30" value="0"> D) By competing with them for resources</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>31. What can be said about the interactions in an ecosystem?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q31" value="0"> A) They are simple and straightforward</label>
+                        <label><input type="radio" name="q31" value="1"> B) They are very complicated</label>
+                        <label><input type="radio" name="q31" value="0"> C) They are well understood by ecologists</label>
+                        <label><input type="radio" name="q31" value="0"> D) They are not important</label>
+                    </div>
+                </div>
+
+                 <div class="question">
+                    <p>32. What is the term for the place where an organism naturally lives?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q32" value="0"> A) Ecosystem</label>
+                        <label><input type="radio" name="q32" value="1"> B) Habitat</label>
+                        <label><input type="radio" name="q32" value="0"> C) Community</label>
+                        <label><input type="radio" name="q32" value="0"> D) Population</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>33. What is the habitat of a saguaro cactus?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q33" value="0"> A) Underneath rocks and soil</label>
+                        <label><input type="radio" name="q33" value="0"> B) Inside saguaro flowers</label>
+                        <label><input type="radio" name="q33" value="1"> C) The open desert</label>
+                        <label><input type="radio" name="q33" value="0"> D) Burrows underground</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>34. Where do Gila woodpeckers make their nests?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q34" value="0"> A) In burrows underground</label>
+                        <label><input type="radio" name="q34" value="1"> B) In saguaro cacti</label>
+                        <label><input type="radio" name="q34" value="0"> C) On the soil surface</label>
+                        <label><input type="radio" name="q34" value="0"> D) Inside saguaro flowers</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>35. What is the habitat of desert ants?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q35" value="0"> A) Inside saguaro flowers</label>
+                        <label><input type="radio" name="q35" value="1"> B) Underneath rocks and soil and on the soil surface</label>
+                        <label><input type="radio" name="q35" value="0"> C) In burrows underground</label>
+                        <label><input type="radio" name="q35" value="0"> D) In saguaro cacti</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>36. Where do termites live?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q36" value="0"> A) Inside saguaro flowers</label>
+                        <label><input type="radio" name="q36" value="1"> B) At the base of saguaro stems</label>
+                        <label><input type="radio" name="q36" value="0"> C) In burrows underground</label>
+                        <label><input type="radio" name="q36" value="0"> D) On the soil surface</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>37. What is the difference between an ecosystem and a habitat?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q37" value="0"> A) An ecosystem refers to the living organisms, while a habitat refers to the non-living environment.</label>
+                        <label><input type="radio" name="q37" value="1"> B) An ecosystem refers to the interactions between living and non-living things, while a habitat refers to the place where an organism lives.</label>
+                        <label><input type="radio" name="q37" value="0"> C) An ecosystem refers to the place where an organism lives, while a habitat refers to the interactions between living and non-living things.</label>
+                        <label><input type="radio" name="q37" value="0"> D) An ecosystem and a habitat are the same thing.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>38. What type of ecosystem is being described in the given text?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q38" value="0"> A) Forest ecosystem</label>
+                        <label><input type="radio" name="q38" value="1"> B) Desert ecosystem</label>
+                        <label><input type="radio" name="q38" value="0"> C) Marine ecosystem</label>
+                        <label><input type="radio" name="q38" value="0"> D) Freshwater ecosystem</label>
+                    </div>
+                </div>
+
+
+            </section>
+            <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+        </form>
+    </div>
+    <script>
+        const correctAnswers = {
+            q1: "B) Arizona, USA",
+            q2: "B) Lack of rainfall",
+            q3: "C) Adaptations to survive with little water",
+            q4: "B) Saguaro cacti",
+            q5: "C) More than 100 years",
+            q6: "B) By spreading out widely to absorb rain",
+            q7: "B) Gila woodpecker",
+            q8: "C) Because they are spiky and protect from predators",
+            q9: "B) They rest in the shade of plants or burrow into the soil.",
+            q10: "B) Many plants quickly produce flowers.",
+            q11: "A) They feed on the nectar and pollen in flowers, helping plants reproduce by pollinating them.",
+            q12: "B) Nectar from the flowers of agave plants",
+            q13: "B) They take them into their nests to provide a food store.",
+            q14: "C) They may germinate to produce new plants.",
+            q15: "B) The different animals and plants in the Sonoran Desert depend on each other and interact with each other.",
+            q16: "B) Bright sunlight",
+            q17: "B) To shelter from the heat during the day",
+            q18: "C) Minerals",
+            q19: "C) To avoid overheating or drying out",
+            q20: "C) It can cause animals to overheat or dry out",
+            q21: "B) Underneath the soil",
+            q22: "B) Water",
+            q23: "B) Photosynthesis",
+            q24: "C) Producers",
+            q25: "B) It is passed through the desert food web",
+            q26: "A) Ecology",
+            q27: "A) A network of interactions between living and non-living things",
+            q28: "B) They become part of the soil",
+            q29: "B) They hold the soil together",
+            q30: "B) By pollinating their flowers or spreading their seeds",
+            q31: "B) They are very complicated",
+            q32: "B) Habitat",
+            q33: "C) The open desert",
+            q34: "B) In saguaro cacti",
+            q35: "B) Underneath rocks and soil and on the soil surface",
+            q36: "B) At the base of saguaro stems",
+            q37: "B) An ecosystem refers to the interactions between living and non-living things, while a habitat refers to the place where an organism lives.",
+            q38: "B) Desert ecosystem"
+        };
+
+        const totalQuestions = 38; // Updated total number of questions
+
+        function submitQuiz() {
+            const form = document.getElementById('arizonaDesertQuizForm');
+            const errorDiv = document.getElementById('error');
+            const resultDiv = document.getElementById('result');
+            const feedbackDiv = document.getElementById('feedback');
+
+            errorDiv.style.display = 'none';
+            errorDiv.innerHTML = '';
+            resultDiv.innerHTML = '';
+            feedbackDiv.innerHTML = '';
+
+            let unanswered = [];
+            let score = 0;
+            let wrongAnswersFeedback = [];
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+
+                if (!selectedOption) {
+                    unanswered.push(i);
+                } else if (selectedOption.value === "1") {
+                    score++;
+                } else {
+                    const questionDiv = selectedOption.closest('.question');
+                    const questionTextElement = questionDiv ? questionDiv.querySelector('p') : `Question ${i}`;
+                    const questionText = questionDiv ? questionTextElement.textContent : `Question ${i} text not found`;
+                    wrongAnswersFeedback.push({
+                        number: i,
+                        text: questionText.trim(),
+                        correct: correctAnswers[questionName] || "Correct answer not defined"
+                    });
+                }
+            }
+
+            if (unanswered.length > 0) {
+                errorDiv.innerHTML = `⚠️ Please answer all questions. Missing answers for questions: ${unanswered.join(', ')}`;
+                errorDiv.style.display = 'block';
+                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            // Adjust score threshold for color based on new total
+             resultDiv.innerHTML = `Your Score: <span style="color:${score >= totalQuestions * 0.8 ? '#2e7d32' : '#d32f2f'}">${score} / ${totalQuestions}</span>`;
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+
+            if (wrongAnswersFeedback.length > 0) {
+                feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+                wrongAnswersFeedback.forEach(item => {
+                    feedbackDiv.innerHTML += `
+                        <div class="feedback-item">
+                            <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+                            <p class="correct-answer">Correct answer: ${item.correct}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+            }
+        }
+    </script>
+</body>
+</html>
