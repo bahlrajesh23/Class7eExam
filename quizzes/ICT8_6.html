@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Software Design and Development Questionnaire</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+
+        /* Container for the quiz elements */
+        .quiz-container {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Link back style */
+        .navigation-link {
+            display: block;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navigation-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Styling for each question block */
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            border-left: 5px solid #1e88e5;
+        }
+
+        /* Question text styling */
+        .question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Styling for radio button options */
+        .options label {
+            display: block;
+            margin: 10px 0 10px 5px;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .options label:hover {
+            background-color: #e3f2fd;
+        }
+
+        /* Spacing for radio button itself */
+        .options input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        /* Styling for text area (Not used in this quiz, but kept for structure) */
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+            resize: none;
+            font-family: Arial, sans-serif;
+            display: none; /* Hide since not used */
+        }
+
+        /* Submit button styling */
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        /* Error message styling */
+        #error {
+            color: #d32f2f;
+            padding: 12px;
+            background: #ffebee;
+            border-left: 4px solid #d32f2f;
+            margin: 15px 0;
+            border-radius: 4px;
+            display: none;
+        }
+
+        /* Result display styling */
+        #result {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 15px;
+            background: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Container for all feedback items */
+        #feedback {
+            margin-top: 20px;
+        }
+
+        #feedback h3 {
+            margin-bottom: 15px;
+            color: #c62828;
+        }
+
+        /* Styling for individual feedback items (wrong answers) */
+        .feedback-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: #fff3e0;
+            border-left: 4px solid #ef6c00;
+            border-radius: 4px;
+        }
+
+        /* Styling for the correct answer text within feedback */
+        .correct-answer {
+            color: #2e7d32;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+         /* Style for map section (Not used in this specific quiz, but kept for structure) */
+        #map-section {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            display: none; /* Hide since not used */
+        }
+
+        #map-section h4 {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #map-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #f0f0f0;
+            margin-bottom: 15px;
+            border: 2px dashed #aaa;
+            border-radius: 5px;
+            display: none; /* Hide since not used */
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="navigation-link">⬅️ Back to Quiz List</a>
+    <div class="quiz-container">
+        <h1>Software Design and Development Questionnaire</h1>
+        <form id="softwareDesignQuizForm">
+            <div id="error"></div>
+            <div id="result"></div>
+            <div id="feedback"></div>
+            <section>
+                <h2>Multiple Choice Questions</h2>
+
+                <div class="question">
+                    <p>1. Name the five stages of the waterfall model.</p>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="0"> A) Planning, Coding, Testing, Deployment, Maintenance</label>
+                        <label><input type="radio" name="q1" value="1"> B) Plan, Design, Develop, Test, Review and evaluate</label>
+                        <label><input type="radio" name="q1" value="0"> C) Requirements, Design, Implementation, Verification, Maintenance</label>
+                        <label><input type="radio" name="q1" value="0"> D) Analysis, Design, Build, Test, Deploy</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>2. What is the importance of the ‘Planning stage’ in the waterfall model?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="0"> A) It involves writing the code for the software.</label>
+                        <label><input type="radio" name="q2" value="1"> B) It involves gathering and understanding all the client’s requirements and breaking the project into sub-tasks.</label>
+                        <label><input type="radio" name="q2" value="0"> C) It focuses on fixing errors in the software.</label>
+                        <label><input type="radio" name="q2" value="0"> D) It is where the final product is delivered to the client.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>3. In the waterfall model, when does the client typically see the final product?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q3" value="0"> A) After the planning stage.</label>
+                        <label><input type="radio" name="q3" value="0"> B) After the development stage.</label>
+                        <label><input type="radio" name="q3" value="1"> C) Only at the end of the process, after all stages are completed.</label>
+                        <label><input type="radio" name="q3" value="0"> D) After each stage to provide feedback.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>4. What is decomposition in the planning stage of the waterfall model?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q4" value="0"> A) The process of combining different parts of the project.</label>
+                        <label><input type="radio" name="q4" value="1"> B) The process of breaking down the project into its sub-tasks.</label>
+                        <label><input type="radio" name="q4" value="0"> C) The process of writing the code for the software.</label>
+                        <label><input type="radio" name="q4" value="0"> D) The process of testing the software for errors.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>5. What is the primary activity in the ‘Testing stage’ of the waterfall model?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q5" value="1"> A) The product is checked and more feedback is gathered, and test data is used to identify and fix errors.</label>
+                        <label><input type="radio" name="q5" value="0"> B) The product is evaluated as per the feedback received earlier.</label>
+                        <label><input type="radio" name="q5" value="0"> C) Further improvements are made before the final solution is launched.</label>
+                        <label><input type="radio" name="q5" value="0"> D) The client delivers the project requirements.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>6. What is the primary activity in the ‘Review and Evaluate’ stage of the waterfall model?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q6" value="0"> A) Writing the code for the software.</label>
+                        <label><input type="radio" name="q6" value="0"> B) Gathering and understanding client requirements.</label>
+                        <label><input type="radio" name="q6" value="1"> C) The product is evaluated as per the feedback, and further improvements are made before the final solution is launched.</label>
+                        <label><input type="radio" name="q6" value="0"> D) Using test data to identify errors.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>7. Explain Iterative process.</p>
+                    <div class="options">
+                        <label><input type="radio" name="q7" value="0"> A) A process that follows a fixed sequence with no changes allowed.</label>
+                        <label><input type="radio" name="q7" value="1"> B) A way of solving problems by repeating steps to improve the solution each time, with client feedback at each stage.</label>
+                        <label><input type="radio" name="q7" value="0"> C) A process where the client is not involved until the very end.</label>
+                        <label><input type="radio" name="q7" value="0"> D) A process that only involves testing the final product.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>8. What happens in the development stage and why is it important?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q8" value="0"> A) Client requirements are gathered.</label>
+                        <label><input type="radio" name="q8" value="1"> B) Programmers write code to create the software based on the design, turning ideas into a working program.</label>
+                        <label><input type="radio" name="q8" value="0"> C) The final product is delivered to the client.</label>
+                        <label><input type="radio" name="q8" value="0"> D) The product is evaluated against feedback.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>9. What is a key difference between the Waterfall process and Iterative process regarding changes?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q9" value="0"> A) Both processes make changes difficult once a stage is completed.</label>
+                        <label><input type="radio" name="q9" value="1"> B) The waterfall process makes changes difficult, while the iterative process allows changes and improvements at each stage.</label>
+                        <label><input type="radio" name="q9" value="0"> C) The iterative process makes changes difficult, while the waterfall process allows changes at each stage.</label>
+                        <label><input type="radio" name="q9" value="0"> D) Neither process allows for any changes after the initial planning.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>10. What is a key difference between the Waterfall process and Iterative process regarding client involvement?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q10" value="0"> A) In both processes, the client sees the final product only at the end.</label>
+                        <label><input type="radio" name="q10" value="0"> B) In both processes, the client is involved after each stage.</label>
+                        <label><input type="radio" name="q10" value="1"> C) In the waterfall process, the client usually sees the final product only at the end, while in the iterative process, the client is involved after each stage.</label>
+                        <label><input type="radio" name="q10" value="0"> D) Client involvement is not a factor in either process.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>11. What are program libraries?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q11" value="0"> A) Physical locations where programmers work.</label>
+                        <label><input type="radio" name="q11" value="1"> B) Collections of pre-written code that programmers can use to save time and effort.</label>
+                        <label><input type="radio" name="q11" value="0"> C) Software programs used for managing projects.</label>
+                        <label><input type="radio" name="q11" value="0"> D) Devices used for storing large amounts of data.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>12. What is the benefit of using program libraries?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q12" value="0"> A) They make programs run slower.</label>
+                        <label><input type="radio" name="q12" value="0"> B) They require programmers to write more code.</label>
+                        <label><input type="radio" name="q12" value="1"> C) They allow developers to build programs more efficiently without writing every function from scratch.</label>
+                        <label><input type="radio" name="q12" value="0"> D) They are only used for very complex tasks.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>13. Which of the following is given as an example of a program library in the presentation?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q13" value="0"> A) The operating system</label>
+                        <label><input type="radio" name="q13" value="0"> B) A web browser</label>
+                        <label><input type="radio" name="q13" value="1"> C) The turtle library in Python</label>
+                        <label><input type="radio" name="q13" value="0"> D) A word processor</label>
+                    </div>
+                </div>
+
+                 <div class="question">
+                    <p>14. What is done with test data in the Testing stage of the waterfall model?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q14" value="0"> A) Used to gather client requirements.</label>
+                        <label><input type="radio" name="q14" value="0"> B) Used to write code.</label>
+                        <label><input type="radio" name="q14" value="1"> C) Used to identify errors, and they are fixed.</label>
+                        <label><input type="radio" name="q14" value="0"> D) Used to evaluate the final product.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>15. What is done in the Review and Evaluate stage of the waterfall model regarding improvements?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q15" value="0"> A) Initial design is created.</label>
+                        <label><input type="radio" name="q15" value="0"> B) Programmers write code.</label>
+                        <label><input type="radio" name="q15" value="1"> C) Further improvements are made before the final solution is launched.</label>
+                        <label><input type="radio" name="q15" value="0"> D) Test data is used to find errors.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>16. According to the presentation, what makes changes difficult once a stage is completed in the Waterfall process?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q16" value="0"> A) Client feedback</label>
+                        <label><input type="radio" name="q16" value="0"> B) The iterative nature</label>
+                        <label><input type="radio" name="q16" value="1"> C) The fixed sequence</label>
+                        <label><input type="radio" name="q16" value="0"> D) Lack of testing</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>17. What do program libraries contain that helps programmers save time?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q17" value="0"> A) Project requirements</label>
+                        <label><input type="radio" name="q17" value="0"> B) Client feedback</label>
+                        <label><input type="radio" name="q17" value="1"> C) Functions and routines that perform common tasks</label>
+                        <label><input type="radio" name="q17" value="0"> D) Test data</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>18. What is the main benefit mentioned for using program libraries?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q18" value="0"> A) Makes the software run slower.</label>
+                        <label><input type="radio" name="q18" value="0"> B) Makes the software more secure.</label>
+                        <label><input type="radio" name="q18" value="1"> C) Allows developers to build programs more efficiently without writing every function from scratch.</label>
+                        <label><input type="radio" name="q18" value="0"> D) Reduces the need for testing.</label>
+                    </div>
+                </div>
+
+
+            </section>
+            <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+        </form>
+    </div>
+    <script>
+        const correctAnswers = {
+            q1: "B) Plan, Design, Develop, Test, Review and evaluate",
+            q2: "B) It involves gathering and understanding all the client’s requirements and breaking the project into sub-tasks.",
+            q3: "C) Only at the end of the process, after all stages are completed.",
+            q4: "B) The process of breaking down the project into its sub-tasks.",
+            q5: "A) The product is checked and more feedback is gathered, and test data is used to identify and fix errors.",
+            q6: "C) The product is evaluated as per the feedback, and further improvements are made before the final solution is launched.",
+            q7: "B) A way of solving problems by repeating steps to improve the solution each time, with client feedback at each stage.",
+            q8: "B) Programmers write code to create the software based on the design, turning ideas into a working program.",
+            q9: "B) The waterfall process makes changes difficult, while the iterative process allows changes and improvements at each stage.",
+            q10: "C) In the waterfall process, the client usually sees the final product only at the end, while in the iterative process, the client is involved after each stage.",
+            q11: "B) Collections of pre-written code that programmers can use to save time and effort.",
+            q12: "C) They allow developers to build programs more efficiently without writing every function from scratch.",
+            q13: "C) The turtle library in Python",
+            q14: "C) Used to identify errors, and they are fixed.",
+            q15: "C) Further improvements are made before the final solution is launched.",
+            q16: "C) The fixed sequence",
+            q17: "C) Functions and routines that perform common tasks",
+            q18: "C) Allows developers to build programs more efficiently without writing every function from scratch."
+        };
+
+        const totalQuestions = 18; // Updated total number of questions
+
+        function submitQuiz() {
+            const form = document.getElementById('softwareDesignQuizForm');
+            const errorDiv = document.getElementById('error');
+            const resultDiv = document.getElementById('result');
+            const feedbackDiv = document.getElementById('feedback');
+
+            errorDiv.style.display = 'none';
+            errorDiv.innerHTML = '';
+            resultDiv.innerHTML = '';
+            feedbackDiv.innerHTML = '';
+
+            let unanswered = [];
+            let score = 0;
+            let wrongAnswersFeedback = [];
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+
+                if (!selectedOption) {
+                    unanswered.push(i);
+                } else if (selectedOption.value === "1") {
+                    score++;
+                } else {
+                    const questionDiv = selectedOption.closest('.question');
+                    const questionTextElement = questionDiv ? questionDiv.querySelector('p') : `Question ${i}`;
+                    const questionText = questionDiv ? questionTextElement.textContent : `Question ${i} text not found`;
+                    wrongAnswersFeedback.push({
+                        number: i,
+                        text: questionText.trim(),
+                        correct: correctAnswers[questionName] || "Correct answer not defined"
+                    });
+                }
+            }
+
+            if (unanswered.length > 0) {
+                errorDiv.innerHTML = `⚠️ Please answer all questions. Missing answers for questions: ${unanswered.join(', ')}`;
+                errorDiv.style.display = 'block';
+                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            // Adjust score threshold for color based on total questions
+            const passScore = totalQuestions * 0.8; // Example: 80% to pass
+             resultDiv.innerHTML = `Your Score: <span style="color:${score >= passScore ? '#2e7d32' : '#d32f2f'}">${score} / ${totalQuestions}</span>`;
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+
+            if (wrongAnswersFeedback.length > 0) {
+                feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+                wrongAnswersFeedback.forEach(item => {
+                    feedbackDiv.innerHTML += `
+                        <div class="feedback-item">
+                            <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+                            <p class="correct-answer">Correct answer: ${item.correct}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+            }
+        }
+    </script>
+</body>
+</html>
