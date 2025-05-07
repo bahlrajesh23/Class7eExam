@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ICT Questionnaire</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+
+        /* Container for the quiz elements */
+        .quiz-container {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Link back style */
+        .navigation-link {
+            display: block;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navigation-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Styling for each question block */
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            border-left: 5px solid #1e88e5;
+        }
+
+        /* Question text styling */
+        .question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Styling for radio button options */
+        .options label {
+            display: block;
+            margin: 10px 0 10px 5px;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .options label:hover {
+            background-color: #e3f2fd;
+        }
+
+        /* Spacing for radio button itself */
+        .options input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        /* Styling for text area (Not used in this quiz, but kept for structure) */
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+            resize: none;
+            font-family: Arial, sans-serif;
+            display: none; /* Hide since not used */
+        }
+
+        /* Submit button styling */
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        /* Error message styling */
+        #error {
+            color: #d32f2f;
+            padding: 12px;
+            background: #ffebee;
+            border-left: 4px solid #d32f2f;
+            margin: 15px 0;
+            border-radius: 4px;
+            display: none;
+        }
+
+        /* Result display styling */
+        #result {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 15px;
+            background: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Container for all feedback items */
+        #feedback {
+            margin-top: 20px;
+        }
+
+        #feedback h3 {
+            margin-bottom: 15px;
+            color: #c62828;
+        }
+
+        /* Styling for individual feedback items (wrong answers) */
+        .feedback-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: #fff3e0;
+            border-left: 4px solid #ef6c00;
+            border-radius: 4px;
+        }
+
+        /* Styling for the correct answer text within feedback */
+        .correct-answer {
+            color: #2e7d32;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+         /* Style for map section (Not used in this specific quiz, but kept for structure) */
+        #map-section {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            display: none; /* Hide since not used */
+        }
+
+        #map-section h4 {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #map-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #f0f0f0;
+            margin-bottom: 15px;
+            border: 2px dashed #aaa;
+            border-radius: 5px;
+            display: none; /* Hide since not used */
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="navigation-link">⬅️ Back to Quiz List</a>
+    <div class="quiz-container">
+        <h1>ICT Questionnaire</h1>
+        <form id="ictQuizForm">
+            <div id="error"></div>
+            <div id="result"></div>
+            <div id="feedback"></div>
+            <section>
+                <h2>Multiple Choice Questions</h2>
+
+                <div class="question">
+                    <p>1. What is a transistor?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="0"> A) A large electronic device that amplifies sound signals.</label>
+                        <label><input type="radio" name="q1" value="1"> B) A small electronic device that acts like a switch or amplifier for electrical signals.</label>
+                        <label><input type="radio" name="q1" value="0"> C) A mechanical device used in old computers.</label>
+                        <label><input type="radio" name="q1" value="0"> D) A type of computer program.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>2. According to the presentation, what is one way transistors are used in computers?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="0"> A) To display images on the screen.</label>
+                        <label><input type="radio" name="q2" value="0"> B) To connect to the internet.</label>
+                        <label><input type="radio" name="q2" value="1"> C) To perform calculations and control how information flows.</label>
+                        <label><input type="radio" name="q2" value="0"> D) To store large amounts of data.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>3. Where are transistors found?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q3" value="0"> A) Only in very old computers</label>
+                        <label><input type="radio" name="q3" value="0"> B) Only in televisions and remote controls</label>
+                        <label><input type="radio" name="q3" value="1"> C) In almost every electronic device</label>
+                        <label><input type="radio" name="q3" value="0"> D) Only in power plants</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>4. What are logic gates?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q4" value="0"> A) Physical gates that control access to computer rooms.</label>
+                        <label><input type="radio" name="q4" value="1"> B) Tiny electronic devices in computers that take inputs and give one output.</label>
+                        <label><input type="radio" name="q4" value="0"> C) Software programs used to create digital art.</label>
+                        <label><input type="radio" name="q4" value="0"> D) The parts of a computer that display graphics.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>5. What is the purpose of logic gates?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q5" value="0"> A) To store data.</label>
+                        <label><input type="radio" name="q5" value="1"> B) To help computers make decisions.</label>
+                        <label><input type="radio" name="q5" value="0"> C) To connect different parts of a computer.</label>
+                        <label><input type="radio" name="q5" value="0"> D) To amplify sound.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>6. Which of the following is a type of logic gate?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q6" value="0"> A) CPU</label>
+                        <label><input type="radio" name="q6" value="0"> B) RAM</label>
+                        <label><input type="radio" name="q6" value="1"> C) AND Gate</label>
+                        <label><input type="radio" name="q6" value="0"> D) Hard Drive</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>7. For an AND gate, what must be true for the output to be "yes"?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q7" value="0"> A) Only one input needs to be "yes."</label>
+                        <label><input type="radio" name="q7" value="1"> B) Both inputs need to be "yes."</label>
+                        <label><input type="radio" name="q7" value="0"> C) Both inputs need to be "no."</label>
+                        <label><input type="radio" name="q7" value="0"> D) The output is always "yes".</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>8: If one input is "yes" and the other is "no," what is the output of an OR gate?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q8" value="1"> A) "yes"</label>
+                        <label><input type="radio" name="q8" value="0"> B) "no"</label>
+                        <label><input type="radio" name="q8" value="0"> C) The output is unpredictable.</label>
+                        <label><input type="radio" name="q8" value="0"> D) The gate doesn't work</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>9. What does a NOT gate do to its input?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q9" value="0"> A) Doubles it</label>
+                        <label><input type="radio" name="q9" value="1"> B) Inverts it</label>
+                        <label><input type="radio" name="q9" value="0"> C) Ignores it</label>
+                        <label><input type="radio" name="q9" value="0"> D) Adds one to it</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>10. What is a truth table?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q10" value="0"> A) A table of facts.</label>
+                        <label><input type="radio" name="q10" value="1"> B) A way to show how something works in logic or computing by showing all possible inputs and their corresponding outputs.</label>
+                        <label><input type="radio" name="q10" value="0"> C) A table of mathematical formulas</label>
+                        <label><input type="radio" name="q10" value="0"> D) A table showing how to connect computer wires.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>11. Why are truth tables used?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q11" value="0"> A) To confuse people.</label>
+                        <label><input type="radio" name="q11" value="1"> B) To make it easy to understand how logic gates or decision-making systems work.</label>
+                        <label><input type="radio" name="q11" value="0"> C) To store large amounts of data.</label>
+                        <label><input type="radio" name="q11" value="0"> D) To display graphics on a computer screen.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>12. What is software?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q12" value="0"> A) The physical parts of a computer.</label>
+                        <label><input type="radio" name="q12" value="1"> B) A term used for the programs that control the computer system</label>
+                        <label><input type="radio" name="q12" value="0"> C) The case that holds all of the computer parts.</label>
+                        <label><input type="radio" name="q12" value="0"> D) A type of computer game</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>13. What is the purpose of secondary storage devices?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q13" value="0"> A) To process data.</label>
+                        <label><input type="radio" name="q13" value="1"> B) To store data for a long time, even when the computer is turned off.</label>
+                        <label><input type="radio" name="q13" value="0"> C) To display images.</label>
+                        <label><input type="radio" name="q13" value="0"> D) To connect to the internet.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>14. Which of the following is an example of a secondary storage device?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q14" value="0"> A) RAM</label>
+                        <label><input type="radio" name="q14" value="0"> B) CPU</label>
+                        <label><input type="radio" name="q14" value="1"> C) Hard drive</label>
+                        <label><input type="radio" name="q14" value="0"> D) Motherboard</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>15. What is primary memory?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q15" value="0"> A) Long term storage</label>
+                        <label><input type="radio" name="q15" value="1"> B) The computer's main memory, where data and programs are stored temporarily while in use.</label>
+                        <label><input type="radio" name="q15" value="0"> C) A type of output device</label>
+                        <label><input type="radio" name="q15" value="0"> D) A type of security software</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>16. What is the function of RAM?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q16" value="0"> A) Stores data permanently</label>
+                        <label><input type="radio" name="q16" value="0"> B) Stores the operating system</label>
+                        <label><input type="radio" name="q16" value="1"> C) Stores data and programs temporarily while they are being used</label>
+                        <label><input type="radio" name="q16" value="0"> D) Stores instructions for starting the computer</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>17. What happens to the data in RAM when the computer is turned off?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q17" value="0"> A) It is saved to the hard drive.</label>
+                        <label><input type="radio" name="q17" value="0"> B) It is not affected</label>
+                        <label><input type="radio" name="q17" value="1"> C) It is erased</label>
+                        <label><input type="radio" name="q17" value="0"> D) It is transferred to ROM</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>18. What is the function of ROM?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q18" value="0"> A) Stores data and programs currently in use</label>
+                        <label><input type="radio" name="q18" value="0"> B) Stores the operating system</label>
+                        <label><input type="radio" name="q18" value="0"> C) Stores data temporarily</label>
+                        <label><input type="radio" name="q18" value="1"> D) Contains important instructions for starting the computer</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>19. What is bandwidth?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q19" value="0"> A) The physical width of a network cable.</label>
+                        <label><input type="radio" name="q19" value="1"> B) The amount of data that can be sent or received over a network in a certain amount of time.</label>
+                        <label><input type="radio" name="q19" value="0"> C) The number of devices connected to a network.</label>
+                        <label><input type="radio" name="q19" value="0"> D) The speed of the computer's processor.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>20. What unit is bandwidth typically measured in?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q20" value="0"> A) Bytes per second (Bps)</label>
+                        <label><input type="radio" name="q20" value="0"> B) Hertz (Hz)</label>
+                        <label><input type="radio" name="q20" value="0"> C) Watts</label>
+                        <label><input type="radio" name="q20" value="1"> D) Bits per second (bps)</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>21. What is compression?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q21" value="0"> A) A method to make files larger.</label>
+                        <label><input type="radio" name="q21" value="1"> B) A way to make files smaller so they take up less space and can be sent faster.</label>
+                        <label><input type="radio" name="q21" value="0"> C) A technique to improve sound quality.</label>
+                        <label><input type="radio" name="q21" value="0"> D) A process to create new types of files.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>22. What is the purpose of compression?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q22" value="0"> A) To make files take up more space</label>
+                        <label><input type="radio" name="q22" value="1"> B) To make files smaller</label>
+                        <label><input type="radio" name="q22" value="0"> C) To slow down internet speeds</label>
+                        <label><input type="radio" name="q22" value="0"> D) To make files incompatible</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>23. What does RLE stand for?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q23" value="0"> A) Real-time language encoding</label>
+                        <label><input type="radio" name="q23" value="1"> B) Run-Length Encoding</label>
+                        <label><input type="radio" name="q23" value="0"> C) Random line equalizer</label>
+                        <label><input type="radio" name="q23" value="0"> D) Rapid loading engine</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>24. How does RLE work?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q24" value="0"> A) By rearranging the order of data.</label>
+                        <label><input type="radio" name="q24" value="1"> B) By storing consecutive repeating data as a single value with a count.</label>
+                        <label><input type="radio" name="q24" value="0"> C) By deleting redundant data.</label>
+                        <label><input type="radio" name="q24" value="0"> D) By encrypting the data.</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>25. If we have the data "AAAABBBCC," how would RLE compress it?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q25" value="0"> A) AB</label>
+                        <label><input type="radio" name="q25" value="1"> B) 4A3B2C</label>
+                        <label><input type="radio" name="q25" value="0"> C) A4B3C2</label>
+                        <label><input type="radio" name="q25" value="0"> D) ABC</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>26. What is a binary number system?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q26" value="0"> A) A number system with base 10</label>
+                        <label><input type="radio" name="q26" value="1"> B) A number system with base 2, using only the digits 0 and 1.</label>
+                        <label><input type="radio" name="q26" value="0"> C) A number system with base 16</label>
+                        <label><input type="radio" name="q26" value="0"> D) A number system with base 8</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>27. Why do computers use binary numbers?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q27" value="0"> A) Because they are easier for humans to understand.</label>
+                        <label><input type="radio" name="q27" value="0"> B) Because they are the only number system.</label>
+                        <label><input type="radio" name="q27" value="1"> C) Because computers store values using only two states (0 and 1).</label>
+                        <label><input type="radio" name="q27" value="0"> D) Because they are more efficient for complex calculations.</label>
+                    </div>
+                </div>
+
+            </section>
+            <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+        </form>
+    </div>
+    <script>
+        const correctAnswers = {
+            q1: "B) A small electronic device that acts like a switch or amplifier for electrical signals.",
+            q2: "C) To perform calculations and control how information flows.",
+            q3: "C) In almost every electronic device",
+            q4: "B) Tiny electronic devices in computers that take inputs and give one output.",
+            q5: "B) To help computers make decisions.",
+            q6: "C) AND Gate",
+            q7: "B) Both inputs need to be \"yes.\"",
+            q8: "A) \"yes\"",
+            q9: "B) Inverts it",
+            q10: "B) A way to show how something works in logic or computing by showing all possible inputs and their corresponding outputs.",
+            q11: "B) To make it easy to understand how logic gates or decision-making systems work.",
+            q12: "B) A term used for the programs that control the computer system",
+            q13: "B) To store data for a long time, even when the computer is turned off.",
+            q14: "C) Hard drive",
+            q15: "B) The computer's main memory, where data and programs are stored temporarily while in use.",
+            q16: "C) Stores data and programs temporarily while they are being used",
+            q17: "C) It is erased",
+            q18: "D) Contains important instructions for starting the computer",
+            q19: "B) The amount of data that can be sent or received over a network in a certain amount of time.",
+            q20: "D) Bits per second (bps)",
+            q21: "B) A way to make files smaller so they take up less space and can be sent faster.",
+            q22: "B) To make files smaller",
+            q23: "B) Run-Length Encoding",
+            q24: "B) By storing consecutive repeating data as a single value with a count.",
+            q25: "B) 4A3B2C",
+            q26: "B) A number system with base 2, using only the digits 0 and 1.",
+            q27: "C) Because computers store values using only two states (0 and 1).",
+        };
+
+        const totalQuestions = 27; // Total number of questions
+
+        function submitQuiz() {
+            const form = document.getElementById('ictQuizForm');
+            const errorDiv = document.getElementById('error');
+            const resultDiv = document.getElementById('result');
+            const feedbackDiv = document.getElementById('feedback');
+
+            errorDiv.style.display = 'none';
+            errorDiv.innerHTML = '';
+            resultDiv.innerHTML = '';
+            feedbackDiv.innerHTML = '';
+
+            let unanswered = [];
+            let score = 0;
+            let wrongAnswersFeedback = [];
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+
+                if (!selectedOption) {
+                    unanswered.push(i);
+                } else if (selectedOption.value === "1") {
+                    score++;
+                } else {
+                    const questionDiv = selectedOption.closest('.question');
+                    const questionTextElement = questionDiv ? questionDiv.querySelector('p') : `Question ${i}`;
+                    const questionText = questionDiv ? questionTextElement.textContent : `Question ${i} text not found`;
+                    wrongAnswersFeedback.push({
+                        number: i,
+                        text: questionText.trim(),
+                        correct: correctAnswers[questionName] || "Correct answer not defined"
+                    });
+                }
+            }
+
+            if (unanswered.length > 0) {
+                errorDiv.innerHTML = `⚠️ Please answer all questions. Missing answers for questions: ${unanswered.join(', ')}`;
+                errorDiv.style.display = 'block';
+                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            // Adjust score threshold for color based on total questions
+            const passScore = totalQuestions * 0.8; // Example: 80% to pass
+             resultDiv.innerHTML = `Your Score: <span style="color:${score >= passScore ? '#2e7d32' : '#d32f2f'}">${score} / ${totalQuestions}</span>`;
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+
+            if (wrongAnswersFeedback.length > 0) {
+                feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+                wrongAnswersFeedback.forEach(item => {
+                    feedbackDiv.innerHTML += `
+                        <div class="feedback-item">
+                            <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+                            <p class="correct-answer">Correct answer: ${item.correct}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+            }
+        }
+    </script>
+</body>
+</html>
