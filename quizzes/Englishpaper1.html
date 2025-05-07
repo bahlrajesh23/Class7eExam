@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Class 7 English Language & Literature Quiz</title>
+  <style>
+    /* General body styling */
+    body {
+      font-family: Arial, sans-serif; /* Standard font */
+      max-width: 800px; /* Limit content width for readability */
+      margin: 20px auto; /* Center the content with margin */
+      padding: 20px; /* Padding around the content */
+      background-color: #f0f4f8; /* Light background for the page */
+    }
+    /* Container for the quiz elements */
+    .quiz-container {
+      background: #ffffff; /* White background for the quiz area */
+      padding: 25px; /* Padding inside the container */
+      border-radius: 8px; /* Rounded corners */
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Subtle shadow */
+    }
+    /* Main heading for the quiz */
+    .quiz-container > h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 25px;
+    }
+    /* Section headings */
+    h2 {
+        color: #1a237e;
+        border-bottom: 2px solid #1e88e5;
+        padding-bottom: 5px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+    /* Sub-section headings */
+    h3 {
+        color: #0d47a1;
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+    /* Passage text styling */
+    .passage {
+        background-color: #e3f2fd;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        font-style: italic;
+        line-height: 1.6;
+    }
+     /* Link back style */
+    .navigation-link {
+        display: block;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #1a73e8;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .navigation-link:hover {
+        text-decoration: underline;
+    }
+    /* Styling for each question block */
+    .question {
+      margin-bottom: 25px; /* Space below each question */
+      padding: 20px; /* Padding inside question block */
+      background: #f9f9f9; /* Slightly off-white background for questions */
+      border-radius: 5px; /* Rounded corners */
+      border-left: 5px solid #1e88e5; /* Accent border on the left */
+    }
+    /* Question text styling */
+    .question p {
+        font-weight: bold; /* Make question text bold */
+        margin-bottom: 10px; /* Space below question text */
+        color: #333; /* Darker text color */
+    }
+    /* Styling for radio button options */
+    .options label {
+      display: block; /* Each option on a new line */
+      margin: 10px 0 10px 5px; /* Spacing around options */
+      padding: 8px; /* Padding inside label */
+      border-radius: 4px; /* Rounded corners for label */
+      cursor: pointer; /* Indicate it's clickable */
+      transition: background-color 0.2s ease-in-out; /* Smooth background transition on hover */
+    }
+    .options label:hover {
+        background-color: #e3f2fd; /* Light blue background on hover */
+    }
+    /* Spacing for radio button itself */
+    .options input[type="radio"] {
+        margin-right: 8px; /* Space between radio button and text */
+    }
+    /* Submit button styling */
+    button {
+      background: #4CAF50; /* Green background */
+      color: white; /* White text */
+      border: none; /* No border */
+      padding: 12px 25px; /* Padding inside button */
+      border-radius: 4px; /* Rounded corners */
+      cursor: pointer; /* Pointer cursor on hover */
+      font-size: 16px; /* Font size */
+      margin-top: 30px; /* Space above the button */
+      display: block; /* Make it a block element */
+      margin-left: auto; /* Center button (along with margin-right: auto) */
+      margin-right: auto;
+      transition: background-color 0.3s ease; /* Smooth transition */
+    }
+    button:hover {
+      background: #45a049; /* Darker green on hover */
+    }
+    /* Error message styling */
+    #error {
+      color: #d32f2f; /* Red text color */
+      padding: 12px; /* Padding */
+      background: #ffebee; /* Light red background */
+      border-left: 4px solid #d32f2f; /* Red accent border */
+      margin: 15px 0; /* Margin top and bottom */
+      border-radius: 4px; /* Rounded corners */
+      display: none; /* Hidden by default */
+    }
+    /* Result display styling */
+    #result {
+      font-weight: bold; /* Bold text */
+      font-size: 1.2em; /* Larger font size */
+      margin: 20px 0; /* Margin top and bottom */
+      padding: 15px; /* Padding */
+      background: #e8f5e9; /* Light green background */
+      border-left: 4px solid #2e7d32; /* Green accent border */
+      border-radius: 4px; /* Rounded corners */
+      text-align: center; /* Center the text */
+    }
+    /* Container for all feedback items */
+     #feedback {
+        margin-top: 20px; /* Add space above the feedback section */
+     }
+    #feedback h3 {
+        margin-bottom: 15px; /* Space below the feedback heading */
+        color: #c62828; /* Reddish color for the heading */
+        font-size: 1.1em;
+    }
+    /* Styling for individual feedback items (wrong answers) */
+    .feedback-item {
+      margin: 15px 0; /* Margin top and bottom */
+      padding: 15px; /* Padding */
+      background: #fff3e0; /* Light orange background */
+      border-left: 4px solid #ef6c00; /* Orange accent border */
+      border-radius: 4px; /* Rounded corners */
+    }
+    /* Styling for the correct answer text within feedback */
+    .correct-answer {
+      color: #2e7d32; /* Green text color for correct answer */
+      font-weight: bold; /* Bold text */
+      margin-top: 8px; /* Space above the correct answer text */
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Class 7 English Language & Literature Quiz</h1>
+    <form id="quizForm">
+      <div id="error"></div>
+      <div id="result"></div>
+      <div id="feedback"></div>
+
+      <h2>Paper 1: Non-Fiction (Practice)</h2>
+
+      <h3>Section 1.A: Unseen Comprehension (Non-Fiction)</h3>
+      <div class="passage">
+        <p>The Amazon rainforest, often called the "Lungs of the Planet," is the largest tropical rainforest in the world, covering an area of over 5.5 million square kilometers. It spans across nine countries in South America, with the majority lying within Brazil. This incredible ecosystem is home to an estimated 10% of the world's known species, including around 40,000 plant species, 3,000 freshwater fish species, and more than 370 types of reptiles.</p>
+        <p>The Amazon River, the lifeblood of the rainforest, is the second-longest river in the world and the largest by water discharge. It flows for approximately 6,400 kilometers before emptying into the Atlantic Ocean. The sheer biodiversity of the Amazon is astounding, with new species still being discovered regularly. Indigenous communities have lived in harmony with the rainforest for thousands of years, possessing vast traditional knowledge about its flora and fauna.</p>
+        <p>However, this vital ecosystem is under threat. Deforestation, primarily for cattle ranching, agriculture (like soy and palm oil), logging, and mining, is a major concern. Scientists warn that continued deforestation could lead to irreversible damage, impacting global climate patterns and leading to a significant loss of biodiversity. Conservation efforts are underway, but the challenge is immense, requiring global cooperation and sustainable practices.</p>
+      </div>
+
+      <div class="question">
+        <p>1. What is a common nickname for the Amazon rainforest?</p>
+        <div class="options">
+          <label><input type="radio" name="q1" value="0"> The Green Heart of Earth</label>
+          <label><input type="radio" name="q1" value="1"> Lungs of the Planet</label>
+          <label><input type="radio" name="q1" value="0"> The World's Aviary</label>
+          <label><input type="radio" name="q1" value="0"> The Great Green Expanse</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>2. Why is the Amazon rainforest often called the "Lungs of the Planet"?</p>
+        <div class="options">
+          <label><input type="radio" name="q2" value="0"> Due to its shape on the map.</label>
+          <label><input type="radio" name="q2" value="1"> Because it produces significant oxygen and absorbs carbon dioxide.</label>
+          <label><input type="radio" name="q2" value="0"> Because it is home to many large-lunged animals.</label>
+          <label><input type="radio" name="q2" value="0"> Because it is the quietest place on Earth.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>3. The Amazon rainforest spans across how many countries?</p>
+        <div class="options">
+          <label><input type="radio" name="q3" value="0"> Five</label>
+          <label><input type="radio" name="q3" value="0"> Seven</label>
+          <label><input type="radio" name="q3" value="1"> Nine</label>
+          <label><input type="radio" name="q3" value="0"> Eleven</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>4. Which country contains the largest part of the Amazon rainforest?</p>
+        <div class="options">
+          <label><input type="radio" name="q4" value="0"> Colombia</label>
+          <label><input type="radio" name="q4" value="1"> Brazil</label>
+          <label><input type="radio" name="q4" value="0"> Peru</label>
+          <label><input type="radio" name="q4" value="0"> Ecuador</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>5. Approximately how many plant species are estimated to be in the Amazon?</p>
+        <div class="options">
+          <label><input type="radio" name="q5" value="0"> 10,000</label>
+          <label><input type="radio" name="q5" value="0"> 25,000</label>
+          <label><input type="radio" name="q5" value="1"> 40,000</label>
+          <label><input type="radio" name="q5" value="0"> 100,000</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>6. What are two main distinctions of the Amazon River?</p>
+        <div class="options">
+          <label><input type="radio" name="q6" value="0"> Widest and deepest river</label>
+          <label><input type="radio" name="q6" value="1"> Second-longest and largest by water discharge</label>
+          <label><input type="radio" name="q6" value="0"> Longest and fastest flowing</label>
+          <label><input type="radio" name="q6" value="0"> Most polluted and most tributaries</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>7. Which of these is NOT listed as a primary cause of deforestation in the Amazon?</p>
+        <div class="options">
+          <label><input type="radio" name="q7" value="0"> Cattle ranching</label>
+          <label><input type="radio" name="q7" value="0"> Agriculture (soy, palm oil)</label>
+          <label><input type="radio" name="q7" value="1"> Building national parks</label>
+          <label><input type="radio" name="q7" value="0"> Logging and mining</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>8. What is a potential consequence of continued deforestation?</p>
+        <div class="options">
+          <label><input type="radio" name="q8" value="0"> Increase in global oxygen levels</label>
+          <label><input type="radio" name="q8" value="1"> Significant loss of biodiversity</label>
+          <label><input type="radio" name="q8" value="0"> Cooling of global climate patterns</label>
+          <label><input type="radio" name="q8" value="0"> Expansion of indigenous territories</label>
+        </div>
+      </div>
+
+      <h3>Section 1.B: Language Features (Non-Fiction - Amazon Passage)</h3>
+      <div class="question">
+        <p>9. Which of the following is a statistic from the passage showing the Amazon's scale?</p>
+        <div class="options">
+          <label><input type="radio" name="q9" value="0"> "The lifeblood of the rainforest"</label>
+          <label><input type="radio" name="q9" value="1"> "covering an area of over 5.5 million square kilometers"</label>
+          <label><input type="radio" name="q9" value="0"> "Indigenous communities have lived in harmony"</label>
+          <label><input type="radio" name="q9" value="0"> "The challenge is immense"</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>10. What descriptive phrase is used for the Amazon River in the passage?</p>
+        <div class="options">
+          <label><input type="radio" name="q10" value="0"> "The Great Waterway"</label>
+          <label><input type="radio" name="q10" value="0"> "South America's Vein"</label>
+          <label><input type="radio" name="q10" value="1"> "the lifeblood of the rainforest"</label>
+          <label><input type="radio" name="q10" value="0"> "the second-longest river"</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>11. Which word from the passage indicates a negative consequence?</p>
+        <div class="options">
+          <label><input type="radio" name="q11" value="0"> "astounding"</label>
+          <label><input type="radio" name="q11" value="0"> "harmony"</label>
+          <label><input type="radio" name="q11" value="1"> "threat"</label>
+          <label><input type="radio" name="q11" value="0"> "sustainable"</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>12. Which phrase from the passage suggests ongoing discovery?</p>
+        <div class="options">
+          <label><input type="radio" name="q12" value="0"> "lived in harmony"</label>
+          <label><input type="radio" name="q12" value="1"> "new species still being discovered regularly"</label>
+          <label><input type="radio" name="q12" value="0"> "vast traditional knowledge"</label>
+          <label><input type="radio" name="q12" value="0"> "Conservation efforts are underway"</label>
+        </div>
+      </div>
+
+      <h3>Section 1.C: Grammar, Vocabulary, and Punctuation (Non-Fiction - Amazon Passage)</h3>
+      <div class="question">
+        <p>13. Find a word in the passage that means "variety of life in a particular habitat or ecosystem."</p>
+        <div class="options">
+          <label><input type="radio" name="q13" value="0"> "ecosystem"</label>
+          <label><input type="radio" name="q13" value="0"> "species"</label>
+          <label><input type="radio" name="q13" value="1"> "biodiversity"</label>
+          <label><input type="radio" name="q13" value="0"> "fauna"</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>14. The phrase "Lungs of the Planet" is enclosed in quotation marks. Why?</p>
+        <div class="options">
+          <label><input type="radio" name="q14" value="0"> To show it's a direct quote from a scientist.</label>
+          <label><input type="radio" name="q14" value="1"> To indicate it's a specific nickname or a metaphorical title.</label>
+          <label><input type="radio" name="q14" value="0"> To emphasize its importance.</label>
+          <label><input type="radio" name="q14" value="0"> To show it's a foreign phrase.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>15. Change to passive voice: "Deforestation threatens this vital ecosystem."</p>
+        <div class="options">
+          <label><input type="radio" name="q15" value="0"> This vital ecosystem is threatening deforestation.</label>
+          <label><input type="radio" name="q15" value="1"> This vital ecosystem is threatened by deforestation.</label>
+          <label><input type="radio" name="q15" value="0"> By deforestation, this vital ecosystem is threatened.</label>
+          <label><input type="radio" name="q15" value="0"> Deforestation is a threat to this vital ecosystem.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>16. What does "spans across" mean in "It spans across nine countries"?</p>
+        <div class="options">
+          <label><input type="radio" name="q16" value="0"> Jumps over</label>
+          <label><input type="radio" name="q16" value="1"> Extends or stretches over</label>
+          <label><input type="radio" name="q16" value="0"> Is divided by</label>
+          <label><input type="radio" name="q16" value="0"> Originates from</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>17. What is the primary purpose of the commas in: "Deforestation, primarily for cattle ranching, agriculture..., logging, and mining, is a major concern."?</p>
+        <div class="options">
+          <label><input type="radio" name="q17" value="0"> To separate two main clauses.</label>
+          <label><input type="radio" name="q17" value="1"> To set off a list of examples and an interrupting phrase.</label>
+          <label><input type="radio" name="q17" value="0"> To indicate a pause for breath.</label>
+          <label><input type="radio" name="q17" value="0"> To join two adjectives.</label>
+        </div>
+      </div>
+
+      <h2>Paper 2: Fiction (Practice)</h2>
+      <h3>Section 2.A: Unseen Comprehension (Fiction)</h3>
+      <div class="passage">
+        <p>The old house stood on a hill overlooking the town. It had been empty for years, and the townsfolk whispered stories about it – tales of flickering lights, strange noises, and a mysterious old woman who had once lived there. Maya, a curious and adventurous girl of twelve, had always been fascinated by the house. One crisp autumn afternoon, armed with a flashlight and a sense of daring, she decided to explore it.</p>
+        <p>The rusty gates creaked open with a groan that seemed to echo through the silent, overgrown garden. As Maya tiptoed up the crumbling stone path, the wind whistled through the broken window panes, sounding like a mournful sigh. The front door was ajar, a dark, inviting slit. Taking a deep breath, she pushed it open.</p>
+        <p>Inside, dust lay thick on everything, like a soft grey blanket. Cobwebs draped the furniture, and the air was heavy with the scent of decay and forgotten things. A grand staircase spiralled upwards into the gloom. From somewhere deep within the house, Maya thought she heard a faint, tinkling sound, like a distant wind chime. Her heart hammered against her ribs, a mixture of fear and excitement.</p>
+      </div>
+
+      <div class="question">
+        <p>18. Where was the old house located?</p>
+        <div class="options">
+          <label><input type="radio" name="q18" value="0"> In the middle of the town</label>
+          <label><input type="radio" name="q18" value="1"> On a hill overlooking the town</label>
+          <label><input type="radio" name="q18" value="0"> By the river</label>
+          <label><input type="radio" name="q18" value="0"> Deep in the forest</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>19. Why were the townsfolk interested in the house?</p>
+        <div class="options">
+          <label><input type="radio" name="q19" value="0"> They wanted to buy it.</label>
+          <label><input type="radio" name="q19" value="1"> They whispered spooky stories about it.</label>
+          <label><input type="radio" name="q19" value="0"> It was a famous historical landmark.</label>
+          <label><input type="radio" name="q19" value="0"> It had a beautiful garden.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>20. How is Maya's personality described?</p>
+        <div class="options">
+          <label><input type="radio" name="q20" value="0"> Shy and timid</label>
+          <label><input type="radio" name="q20" value="1"> Curious and adventurous</label>
+          <label><input type="radio" name="q20" value="0"> Grumpy and reserved</label>
+          <label><input type="radio" name="q20" value="0"> Calm and studious</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>21. What two items did Maya take for her exploration?</p>
+        <div class="options">
+          <label><input type="radio" name="q21" value="0"> A map and a compass</label>
+          <label><input type="radio" name="q21" value="0"> A camera and a notebook</label>
+          <label><input type="radio" name="q21" value="1"> A flashlight and a sense of daring</label>
+          <label><input type="radio" name="q21" value="0"> Food and water</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>22. Which sound did Maya hear as she approached the house through the garden?</p>
+        <div class="options">
+          <label><input type="radio" name="q22" value="0"> Dogs barking</label>
+          <label><input type="radio" name="q22" value="1"> The wind whistling through broken window panes</label>
+          <label><input type="radio" name="q22" value="0"> Music playing softly</label>
+          <label><input type="radio" name="q22" value="0"> Children laughing</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>23. What was the condition of the front door?</p>
+        <div class="options">
+          <label><input type="radio" name="q23" value="0"> Locked tightly</label>
+          <label><input type="radio" name="q23" value="0"> Newly painted</label>
+          <label><input type="radio" name="q23" value="1"> Ajar (slightly open)</label>
+          <label><input type="radio" name="q23" value="0"> Boarded up</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>24. Which detail describes the interior of the house?</p>
+        <div class="options">
+          <label><input type="radio" name="q24" value="0"> Brightly lit rooms</label>
+          <label><input type="radio" name="q24" value="1"> Dust lay thick on everything</label>
+          <label><input type="radio" name="q24" value="0"> Freshly baked bread scent</label>
+          <label><input type="radio" name="q24" value="0"> Modern furniture</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>25. What sound did Maya think she heard from deep within the house?</p>
+        <div class="options">
+          <label><input type="radio" name="q25" value="0"> A loud bang</label>
+          <label><input type="radio" name="q25" value="0"> Footsteps</label>
+          <label><input type="radio" name="q25" value="1"> A faint, tinkling sound</label>
+          <label><input type="radio" name="q25" value="0"> Someone calling her name</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>26. How did Maya feel as she stood inside the house?</p>
+        <div class="options">
+          <label><input type="radio" name="q26" value="0"> Only scared</label>
+          <label><input type="radio" name="q26" value="0"> Only excited</label>
+          <label><input type="radio" name="q26" value="1"> A mixture of fear and excitement</label>
+          <label><input type="radio" name="q26" value="0"> Bored and uninterested</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>27. What does "her heart hammered against her ribs" suggest?</p>
+        <div class="options">
+          <label><input type="radio" name="q27" value="0"> She was physically hurt.</label>
+          <label><input type="radio" name="q27" value="1"> Her heart was beating very fast and hard due to strong emotion.</label>
+          <label><input type="radio" name="q27" value="0"> She was cold.</label>
+          <label><input type="radio" name="q27" value="0"> She was trying to break her ribs.</label>
+        </div>
+      </div>
+
+      <h3>Section 2.B: Language Features (Fiction - Old House Story)</h3>
+      <div class="question">
+        <p>28. Identify a simile from the story excerpt.</p>
+        <div class="options">
+          <label><input type="radio" name="q28" value="0"> "The old house stood on a hill"</label>
+          <label><input type="radio" name="q28" value="1"> "dust lay thick on everything, like a soft grey blanket"</label>
+          <label><input type="radio" name="q28" value="0"> "A grand staircase spiralled upwards"</label>
+          <label><input type="radio" name="q28" value="0"> "Her heart hammered against her ribs"</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>29. Which phrase is an example of personification?</p>
+        <div class="options">
+          <label><input type="radio" name="q29" value="0"> "empty for years"</label>
+          <label><input type="radio" name="q29" value="0"> "armed with a flashlight"</label>
+          <label><input type="radio" name="q29" value="1"> "the wind whistled...sounding like a mournful sigh"</label>
+          <label><input type="radio" name="q29" value="0"> "Cobwebs draped the furniture"</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>30. Which of these is a sensory detail related to sound from the passage?</p>
+        <div class="options">
+          <label><input type="radio" name="q30" value="0"> "crisp autumn afternoon"</label>
+          <label><input type="radio" name="q30" value="1"> "The rusty gates creaked open with a groan"</label>
+          <label><input type="radio" name="q30" value="0"> "crumbling stone path"</label>
+          <label><input type="radio" name="q30" value="0"> "dark, inviting slit"</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>31. Which word/phrase creates a sense of mystery or spookiness?</p>
+        <div class="options">
+          <label><input type="radio" name="q31" value="0"> "overlooking the town"</label>
+          <label><input type="radio" name="q31" value="0"> "sense of daring"</label>
+          <label><input type="radio" name="q31" value="1"> "flickering lights, strange noises"</label>
+          <label><input type="radio" name="q31" value="0"> "grand staircase"</label>
+        </div>
+      </div>
+
+      <h3>Section 2.C: Grammar, Vocabulary, and Punctuation (Fiction - Old House Story)</h3>
+      <div class="question">
+        <p>32. Which word from the first paragraph means "very interested or attracted by something"?</p>
+        <div class="options">
+          <label><input type="radio" name="q32" value="0"> "whispered"</label>
+          <label><input type="radio" name="q32" value="0"> "mysterious"</label>
+          <label><input type="radio" name="q32" value="1"> "fascinated"</label>
+          <label><input type="radio" name="q32" value="0"> "adventurous"</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>33. If the text said "the townsfolk's stories," why would an apostrophe be used in "townsfolk's"?</p>
+        <div class="options">
+          <label><input type="radio" name="q33" value="0"> To show a plural.</label>
+          <label><input type="radio" name="q33" value="1"> To show possession.</label>
+          <label><input type="radio" name="q33" value="0"> To indicate a contraction.</label>
+          <label><input type="radio" name="q33" value="0"> To separate syllables.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>34. What is the tense of the verb "stood" in the first sentence: "The old house stood on a hill..."?</p>
+        <div class="options">
+          <label><input type="radio" name="q34" value="0"> Present tense</label>
+          <label><input type="radio" name="q34" value="1"> Simple past tense</label>
+          <label><input type="radio" name="q34" value="0"> Future tense</label>
+          <label><input type="radio" name="q34" value="0"> Present perfect tense</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>35. What does "ajar" mean in "The front door was ajar"?</p>
+        <div class="options">
+          <label><input type="radio" name="q35" value="0"> Wide open</label>
+          <label><input type="radio" name="q35" value="0"> Locked</label>
+          <label><input type="radio" name="q35" value="1"> Slightly open</label>
+          <label><input type="radio" name="q35" value="0"> Broken</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>36. If written as "a twelve-year-old girl," what is the purpose of the hyphens?</p>
+        <div class="options">
+          <label><input type="radio" name="q36" value="0"> To indicate a pause.</label>
+          <label><input type="radio" name="q36" value="1"> To join words to form a compound adjective.</label>
+          <label><input type="radio" name="q36" value="0"> To show a range of numbers.</label>
+          <label><input type="radio" name="q36" value="0"> To separate a prefix.</label>
+        </div>
+      </div>
+
+      <h2>Section 3: Language and Grammar (Targeted Exercises)</h2>
+
+      <div class="question">
+        <p>37. Rewrite in past perfect tense: "She explores the old house."</p>
+        <div class="options">
+          <label><input type="radio" name="q37" value="0"> She did explore the old house.</label>
+          <label><input type="radio" name="q37" value="0"> She was exploring the old house.</label>
+          <label><input type="radio" name="q37" value="1"> She had explored the old house.</label>
+          <label><input type="radio" name="q37" value="0"> She will have explored the old house.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>38. What does "cartographer" most likely mean in: "The cartographer meticulously drew the ancient map."?</p>
+        <div class="options">
+          <label><input type="radio" name="q38" value="0"> A storyteller</label>
+          <label><input type="radio" name="q38" value="1"> A map-maker</label>
+          <label><input type="radio" name="q38" value="0"> An explorer</label>
+          <label><input type="radio" name="q38" value="0"> A librarian</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>39. Identify the figurative language: "The news hit him like a ton of bricks."</p>
+        <div class="options">
+          <label><input type="radio" name="q39" value="0"> Metaphor</label>
+          <label><input type="radio" name="q39" value="1"> Simile</label>
+          <label><input type="radio" name="q39" value="0"> Personification</label>
+          <label><input type="radio" name="q39" value="0"> Hyperbole</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>40. Add punctuation to show strong emotion: "He shouted I won"</p>
+        <div class="options">
+          <label><input type="radio" name="q40" value="0"> He shouted, "I won."</label>
+          <label><input type="radio" name="q40" value="1"> He shouted, "I won!"</label>
+          <label><input type="radio" name="q40" value="0"> He shouted, "I won?"</label>
+          <label><input type="radio" name="q40" value="0"> He shouted. "I won"</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>41. Identify the sentence type: "Although it was raining, they decided to go for a walk, and they took an umbrella."</p>
+        <div class="options">
+          <label><input type="radio" name="q41" value="0"> Simple</label>
+          <label><input type="radio" name="q41" value="0"> Compound</label>
+          <label><input type="radio" name="q41" value="0"> Complex</label>
+          <label><input type="radio" name="q41" value="1"> Compound-complex</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>42. What does the prefix "un-" usually mean in a word like "unhappy"?</p>
+        <div class="options">
+          <label><input type="radio" name="q42" value="0"> Again</label>
+          <label><input type="radio" name="q42" value="1"> Not</label>
+          <label><input type="radio" name="q42" value="0"> Before</label>
+          <label><input type="radio" name="q42" value="0"> Very</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>43. What does the suffix "-ful" usually mean in a word like "careful"?</p>
+        <div class="options">
+          <label><input type="radio" name="q43" value="0"> Without</label>
+          <label><input type="radio" name="q43" value="1"> Full of</label>
+          <label><input type="radio" name="q43" value="0"> Able to be</label>
+          <label><input type="radio" name="q43" value="0"> One who does</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>44. Identify the subordinating conjunction: "She will call you when she arrives."</p>
+        <div class="options">
+          <label><input type="radio" name="q44" value="0"> She</label>
+          <label><input type="radio" name="q44" value="0"> will call</label>
+          <label><input type="radio" name="q44" value="1"> when</label>
+          <label><input type="radio" name="q44" value="0"> arrives</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>45. Which of the following is an imperative sentence?</p>
+        <div class="options">
+          <label><input type="radio" name="q45" value="0"> Are you opening the window?</label>
+          <label><input type="radio" name="q45" value="1"> Open the window now.</label>
+          <label><input type="radio" name="q45" value="0"> He opened the window.</label>
+          <label><input type="radio" name="q45" value="0"> The window is open.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>46. Which modal verb expresses ability in: "He can swim very well."?</p>
+        <div class="options">
+          <label><input type="radio" name="q46" value="0"> swim</label>
+          <label><input type="radio" name="q46" value="0"> very</label>
+          <label><input type="radio" name="q46" value="1"> can</label>
+          <label><input type="radio" name="q46" value="0"> well</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>47. Which sentence uses more emotive language to describe a lost dog?</p>
+        <div class="options">
+          <label><input type="radio" name="q47" value="0"> The dog was not there.</label>
+          <label><input type="radio" name="q47" value="1"> The poor, whimpering puppy was utterly alone and terrified.</label>
+          <label><input type="radio" name="q47" value="0"> Someone reported a missing dog.</label>
+          <label><input type="radio" name="q47" value="0"> The dog left the house.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>48. In "The bright sun shone brilliantly," what is the adjective?</p>
+        <div class="options">
+          <label><input type="radio" name="q48" value="0"> sun</label>
+          <label><input type="radio" name="q48" value="0"> shone</label>
+          <label><input type="radio" name="q48" value="1"> bright</label>
+          <label><input type="radio" name="q48" value="0"> brilliantly</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>49. In "The bright sun shone brilliantly," what is the adverb?</p>
+        <div class="options">
+          <label><input type="radio" name="q49" value="0"> bright</label>
+          <label><input type="radio" name="q49" value="0"> sun</label>
+          <label><input type="radio" name="q49" value="0"> shone</label>
+          <label><input type="radio" name="q49" value="1"> brilliantly</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>50. Choose a suitable preposition: "The cat jumped ___ the fence."</p>
+        <div class="options">
+          <label><input type="radio" name="q50" value="0"> in</label>
+          <label><input type="radio" name="q50" value="1"> over</label>
+          <label><input type="radio" name="q50" value="0"> through</label>
+          <label><input type="radio" name="q50" value="0"> at</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>51. Is the sentence in active or passive voice: "The children ate the cake."?</p>
+        <div class="options">
+          <label><input type="radio" name="q51" value="1"> Active voice</label>
+          <label><input type="radio" name="q51" value="0"> Passive voice</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>52. What does the phrasal verb "look up to" mean in "Children often look up to their older siblings"?</p>
+        <div class="options">
+          <label><input type="radio" name="q52" value="0"> To search for information about.</label>
+          <label><input type="radio" name="q52" value="1"> To admire and respect.</label>
+          <label><input type="radio" name="q52" value="0"> To physically look upwards at.</label>
+          <label><input type="radio" name="q52" value="0"> To expect something from.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>53. Identify the prepositional phrase: "The bird sang sweetly in the tall tree."</p>
+        <div class="options">
+          <label><input type="radio" name="q53" value="0"> The bird sang</label>
+          <label><input type="radio" name="q53" value="0"> sang sweetly</label>
+          <label><input type="radio" name="q53" value="1"> in the tall tree</label>
+          <label><input type="radio" name="q53" value="0"> sweetly in</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>54. Choose a suitable connective: "She studied hard for the test; ____, she felt nervous."</p>
+        <div class="options">
+          <label><input type="radio" name="q54" value="0"> therefore</label>
+          <label><input type="radio" name="q54" value="1"> however</label>
+          <label><input type="radio" name="q54" value="0"> because</label>
+          <label><input type="radio" name="q54" value="0"> so</label>
+        </div>
+      </div>
+
+      <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+    </form>
+  </div>
+
+  <script>
+    // Object storing the correct answer TEXT for each question.
+    const correctAnswers = {
+      q1: "Lungs of the Planet",
+      q2: "Because it produces significant oxygen and absorbs carbon dioxide.",
+      q3: "Nine",
+      q4: "Brazil",
+      q5: "40,000",
+      q6: "Second-longest and largest by water discharge",
+      q7: "Building national parks",
+      q8: "Significant loss of biodiversity",
+      q9: "covering an area of over 5.5 million square kilometers",
+      q10: "the lifeblood of the rainforest",
+      q11: "threat",
+      q12: "new species still being discovered regularly",
+      q13: "biodiversity",
+      q14: "To indicate it's a specific nickname or a metaphorical title.",
+      q15: "This vital ecosystem is threatened by deforestation.",
+      q16: "Extends or stretches over",
+      q17: "To set off a list of examples and an interrupting phrase.",
+      q18: "On a hill overlooking the town",
+      q19: "They whispered spooky stories about it.",
+      q20: "Curious and adventurous",
+      q21: "A flashlight and a sense of daring",
+      q22: "The wind whistling through broken window panes",
+      q23: "Ajar (slightly open)",
+      q24: "Dust lay thick on everything",
+      q25: "A faint, tinkling sound",
+      q26: "A mixture of fear and excitement",
+      q27: "Her heart was beating very fast and hard due to strong emotion.",
+      q28: "dust lay thick on everything, like a soft grey blanket",
+      q29: "the wind whistled...sounding like a mournful sigh",
+      q30: "The rusty gates creaked open with a groan",
+      q31: "flickering lights, strange noises",
+      q32: "fascinated",
+      q33: "To show possession.",
+      q34: "Simple past tense",
+      q35: "Slightly open",
+      q36: "To join words to form a compound adjective.",
+      q37: "She had explored the old house.",
+      q38: "A map-maker",
+      q39: "Simile",
+      q40: 'He shouted, "I won!"',
+      q41: "Compound-complex",
+      q42: "Not",
+      q43: "Full of",
+      q44: "when",
+      q45: "Open the window now.",
+      q46: "can",
+      q47: "The poor, whimpering puppy was utterly alone and terrified.",
+      q48: "bright",
+      q49: "brilliantly",
+      q50: "over",
+      q51: "Active voice",
+      q52: "To admire and respect.",
+      q53: "in the tall tree",
+      q54: "however"
+    };
+
+    // Total number of questions in the quiz
+    const totalQuestions = 54; // Updated to reflect all questions
+
+    // Function executed when the "Submit Quiz" button is clicked
+    function submitQuiz() {
+      const form = document.getElementById('quizForm'); // Get form element
+      const errorDiv = document.getElementById('error');
+      const resultDiv = document.getElementById('result');
+      const feedbackDiv = document.getElementById('feedback');
+
+      // --- Reset displays on each submission ---
+      errorDiv.style.display = 'none'; // Hide error message
+      errorDiv.innerHTML = ''; // Clear previous error text
+      resultDiv.innerHTML = ''; // Clear previous result text
+      feedbackDiv.innerHTML = ''; // Clear previous feedback text
+
+      // --- Check if all questions are answered ---
+      let unanswered = []; // Array to store the numbers of unanswered questions
+      // Loop from 1 to totalQuestions
+      for (let i = 1; i <= totalQuestions; i++) {
+        // Check if there is NO checked radio button for the question name q{i}
+        if (!document.querySelector(`input[name="q${i}"]:checked`)) {
+          unanswered.push(i); // Add the question number to the unanswered list
+        }
+      }
+
+      // If there are any unanswered questions
+      if (unanswered.length > 0) {
+        // Construct and display the error message
+        errorDiv.innerHTML = `⚠️ Please answer all ${totalQuestions} questions. Missing answers for questions: ${unanswered.join(', ')}`;
+        errorDiv.style.display = 'block'; // Make the error message visible
+        errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the error message
+        return; // Stop the function execution
+      }
+
+      // --- Calculate score and collect feedback ---
+      let score = 0; // Initialize score
+      let wrongAnswersFeedback = []; // Array to store info about incorrect answers
+
+      // Loop through each question again
+      for (let i = 1; i <= totalQuestions; i++) {
+        const questionName = `q${i}`; // e.g., "q1", "q2"
+        // Find the radio button that is checked for this question
+        const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+
+        // Check if the selected option's value is "1" (indicating correct)
+        if (selectedOption && selectedOption.value === "1") {
+          score++; // Increment score if correct
+        } else if (selectedOption) { // If an option was selected but it was wrong (value != "1")
+          // Find the parent '.question' div for the current radio button
+          const questionDiv = selectedOption.closest('.question');
+          // Find the question text (<p> tag) within that div
+          const questionTextElement = questionDiv ? questionDiv.querySelector('p') : null;
+          const questionText = questionTextElement ? questionTextElement.textContent : `Question ${i} text not found`; // Fallback text
+
+          // Add details about the incorrect answer to the feedback array
+          wrongAnswersFeedback.push({
+            number: i, // Question number
+            text: questionText.trim(), // The text of the question
+            correct: correctAnswers[questionName] || "Correct answer not defined" // The correct answer text from the object
+          });
+        }
+      }
+
+      // --- Display results ---
+      // Show the final score. Color the score green if >= 70% (approx), red otherwise.
+      const passingScore = Math.ceil(totalQuestions * 0.7);
+      resultDiv.innerHTML = `Your Score: <span style="color:${score >= passingScore ? '#2e7d32' : '#d32f2f'}">${score} / ${totalQuestions}</span>`;
+      resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the results
+
+      // --- Display feedback for wrong answers ---
+      // Check if there were any incorrect answers
+      if (wrongAnswersFeedback.length > 0) {
+        // Start the feedback section with a heading
+        feedbackDiv.innerHTML = '<h3>Review Incorrect Answers:</h3>';
+        // Loop through each item in the wrongAnswersFeedback array
+        wrongAnswersFeedback.forEach(item => {
+          // Append the HTML for each feedback item
+          feedbackDiv.innerHTML += `
+            <div class="feedback-item">
+              <p><strong>Question ${item.number}:</strong> ${item.text}</p>
+              <p class="correct-answer">Correct answer: ${item.correct}</p>
+            </div>
+          `;
+        });
+      } else {
+        // If all answers were correct, display a success message
+        feedbackDiv.innerHTML = '<div style="color:green; font-weight:bold; text-align:center; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px;">🎉 Perfect! All answers correct! 🎉</div>';
+      }
+    }
+  </script>
+</body>
+</html>
